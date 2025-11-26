@@ -1,41 +1,33 @@
-const connect = require('../../config/dbconfig')
+const connect = require('../../config/dbconfig');
 
 const programsDao = {
-  table:'programs',
+    table: 'programs',
   // same as find all
-  findMovieInfo: (res, table)=> {
-    const sql =`SELECT p.programs_id, p.title, p.rating, p.animationType, p.runtime, p.yr_released, p.productionCo, p.budget, p.grossProfit, p.showing,  p.posterURL, p.description, p.fivePointRating,
-      CASE
-        WHEN p.budget IS NULL THEN
-        ELSE p.budget
-        END budget,
-      CASE
-        WHEN p.gross IS NULL THEN ''
-        ELSE p.gross
-        END gross
-      
-      FROM programs p
-      ORDER BY p.programs_id, p.title;`
-
-      connect.query(sql, (error, rows) => {
-      if (!error) {
-        if (rows.length === 1) {
-          res.json(...rows);
-        } else {
-          res.json(rows);
-        }
-      } else {
-        console.log(`DAO Error: ${error}`);
-        res.json({
-          message: "error",
-          table: `programs`,
-          error: error,
-        }); 
-      }
-    })
-  },
-  //alphebetize
-  sort(res, table, sorter) {
+    findMovieInfo (res, table) {
+        const sql = `SELECT p.programs_id, p.title, p.rating, p.animationType, p.runtime, p.yr_released, p.productionCo, p.budget, p.grossProfit, p.showing, p.posterURL, p.description, p.fivePointRating,
+            CASE WHEN p.budget IS NULL THEN NULL ELSE p.budget END budget,
+            CASE WHEN p.gross IS NULL THEN '' ELSE p.gross END gross
+            FROM programs p
+            ORDER BY p.programs_id, p.title;`;
+        connect.query(sql, (error, rows) => {
+            if (!error) {
+                if (rows.length === 1) {
+                    res.json(...rows);
+                } else {
+                    res.json(rows);
+                }
+            } else {
+                console.log(`DAO Error: ${error}`);
+                res.json({
+                    message: "error",
+                    table: `programs`,
+                    error: error,
+                });
+            }
+        });
+    },
+    //alphebetize
+    sort(res, table, sorter) {
         connect.query(
             `SELECT * FROM programs ORDER BY programs;`,
             (error, rows) => {
@@ -58,11 +50,30 @@ const programsDao = {
     },
     //unique1//
     findTheatrePrograms(res, table, sorter) {
-      connect.query(
-        `SELECT programs 
-        WHERE showing = 'theatre' AND 
-        WHERE yr_released = 2003`,
-        (error, rows) => {
+        connect.query(
+             `SELECT programs FROM programs WHERE showing = 'theatre' AND yr_released = 2003`,
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(rows[0]);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                        console.log(`Dao Error: ${error}`);
+                        res.json({
+                            message: 'error',
+                            table: `programs`,
+                            error: error
+                        });
+                    }
+                }
+            );
+        },
+        findLiveActionPrograms (res, table, sorter) {
+        connect.query(
+            `SELECT programs FROM programs WHERE animationType = 'Live Action'`,
+            (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
                         res.json(rows[0]);
@@ -78,19 +89,19 @@ const programsDao = {
                     });
                 }
             }
-                );
-        },
-    //unique#2//
+        );
+    },
+        
     findGenreByPrograms(res, table, id) {
         let sql = `SELECT 
-            p.programs_id,
-            p.programs, 
-            GROUP_CONCAT(CONCAT(g.genre,') ORDER BY g.genre SEPARATOR ', ') AS genre
-        FROM programs p
-        LEFT JOIN programs_to_genre ptg ON p.programs_id = ptg.programs_id
-        LEFT JOIN genre g ON ptg.genre_id = g.genre_id
-        WHERE p.programs_id = ?
-        GROUP BY p.programs_id, p.programs, g.genre`;
+                p.programs_id,
+                p.programs,
+                GROUP_CONCAT(CONCAT(g.genre, ')') ORDER BY g.genre SEPARATOR ', ') AS genre
+            FROM programs p
+            LEFT JOIN programs_to_genre ptg ON p.programs_id = ptg.programs_id
+            LEFT JOIN genre g ON ptg.genre_id = g.genre_id
+            WHERE p.programs_id = ?
+            GROUP BY p.programs_id, p.programs, g.genre`;
         connect.execute(
             sql,
             [id],
@@ -112,7 +123,7 @@ const programsDao = {
             }
         );
     },
-    findById(res, table, id) {
+    findById (res, table, id) {
         connect.query(
             `SELECT * FROM programs WHERE programs_id = ${id};`,
             (error, rows) => {
@@ -134,7 +145,7 @@ const programsDao = {
         );
     },
 
-    create(req, res, table) {
+    create (req, res, table) {
         if (Object.keys(req.body).length === 0) {
             res.json({
                 error: true,
@@ -158,8 +169,7 @@ const programsDao = {
             );
         }
     },
-
-    update(req, res, table) {
+        update(req, res, table) {
         if (isNaN(req.params.id)) {
             res.json({
                 error: true,
@@ -171,12 +181,11 @@ const programsDao = {
                 message: "No fields to update"
             });
         } else {
-            const fields = Object.keys(req.body); 
-            const values = Object.values(req.body); 
-
+            const fields = Object.keys(req.body);
+            const values = Object.values(req.body);
             connect.execute(
                 `UPDATE programs
-                SET ${fields.join(' = ?,')} = ? 
+                SET ${fields.join(' = ?,')} = ?
                 WHERE genre_id = ?;`,
                 [...values, req.params.id],
                 (error, dbres) => {
