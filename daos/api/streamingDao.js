@@ -77,8 +77,8 @@ const streamingDao = {
                 }
             }
         );  
-    }
-        findRatingByStreaming(res, table, id) {
+    },
+    findRatingByStreaming(res, table, id) {
         //unique#2//
         let sql = `SELECT 
             g.genre_id,

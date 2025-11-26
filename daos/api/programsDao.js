@@ -1,6 +1,4 @@
-
-
-const connect = require('../../config/dbconfig');
+const connect = require('../../config/dbconfig')
 
 const programsDao = {
   table:'programs',
@@ -58,8 +56,32 @@ const programsDao = {
             }
         );
     },
+    //unique1//
+    findTheatrePrograms(res, table, sorter) {
+      connect.query(
+        `SELECT programs 
+        WHERE showing = 'theatre' AND 
+        WHERE yr_released = 2003`,
+        (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(rows[0]);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`Dao Error: ${error}`);
+                    res.json({
+                        message: 'error',
+                        table: `programs`,
+                        error: error
+                    });
+                }
+            }
+                );
+        },
+    //unique#2//
     findGenreByPrograms(res, table, id) {
-        //unique#2//
         let sql = `SELECT 
             p.programs_id,
             p.programs, 
@@ -69,7 +91,6 @@ const programsDao = {
         LEFT JOIN genre g ON ptg.genre_id = g.genre_id
         WHERE p.programs_id = ?
         GROUP BY p.programs_id, p.programs, g.genre`;
-
         connect.execute(
             sql,
             [id],
@@ -91,7 +112,7 @@ const programsDao = {
             }
         );
     },
-        findById(res, table, id) {
+    findById(res, table, id) {
         connect.query(
             `SELECT * FROM programs WHERE programs_id = ${id};`,
             (error, rows) => {
@@ -176,7 +197,7 @@ const programsDao = {
     }
 };
 
-module.exports = programsDao
+module.exports = programsDao;
 
 
 
