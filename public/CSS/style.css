@@ -1,0 +1,17 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  margin:0;
+  padding:0;
+  background-color: #00ffff;
+  color:#07076C;
+}
+header{
+  background-color:#270721;
+  color:#00ffff;
+  
+}
+/* 00bfff,0080ff,0040ff,0000ff,4000ff,8000ff,bf00ff, indigo ff00ff */
+/* ff0000, yellow ffff00,  red ff0000 medbl 0080ff* /
+/* ffA6C9 */

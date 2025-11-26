@@ -17,9 +17,7 @@ server.use(helmet.contentSecurityPolicy({
 }))
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
-server.use('/public', express.static('public'))
-// server.set('view engine', ejs)
-// localhost:3000
-server.use('/', router)
+server.set('view engine', 'ejs')
+server.use('/', router) //localhost:3000
 
 server.listen(PORT, ()=> console.log(`Merry Christmas!!! at port ${PORT}`))
