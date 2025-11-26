@@ -1,0 +1,39 @@
+
+<%- include('../partials/header') %> 
+
+<main class="main" id="main">
+    <div class="container">
+      <h2 class="text-center">ADD A PRODUCTION COMPANY </h2>
+      <form 
+          action="http://localhost:3000/api/productionCo/create" 
+          method="POST"
+          class="form"
+          id="productionCoForm"
+      >
+      <div class="row mb-3">
+          <div class="col">
+          <label for="produtionCo" class="form-label">
+            Production Company
+          </label>
+          <input 
+            type="text"
+            id="productionCo"
+            name="productionCo"
+            class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button 
+            class="btn btn-primary"
+            type="submit"
+            role="button"
+          >ADD A PRODUCTION COMPANY
+          </button>
+        </div>
+      </div>
+      </form>
+    </div>
+</main>
+
+<%- include('../partials/footer') %> 

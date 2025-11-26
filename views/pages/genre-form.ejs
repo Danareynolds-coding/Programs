@@ -1,0 +1,38 @@
+<%- include('../partials/header') %> 
+
+<main class="main" id="main">
+    <div class="container">
+      <h2 class="text-center">ADD A GENRE to the GENRE list</h2>
+      <form 
+          action="http://localhost:3000/api/genre/create" 
+          method="POST"
+          class="form"
+          id="genreForm"
+      >
+      <div class="row mb-3">
+          <div class="col">
+          <label for="genre" class="form-label">
+            Genre
+          </label>
+          <input 
+            type="text"
+            id="genre"
+            name="genre"
+            class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button 
+            class="btn btn-primary"
+            type="submit"
+            role="button"
+          >ADD GENRE
+          </button>
+        </div>
+      </div>
+      </form>
+    </div>
+</main>
+
+<%- include('../partials/footer') %> 

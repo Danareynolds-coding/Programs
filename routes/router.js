@@ -2,36 +2,75 @@ const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
 
-// rootroute http://localhost:3000/api
 // router.get('/api', (req, res)=> {
 //   res.send('TEST')
-// })  
+// }) 
 
+// rootroute http://localhost:3000/api
 router.get('/api', (req, res)=> {
   res.json({
-  'Programs':`http://localhost:${PORT}/api/programs`
-  //,
-  // 'Actors': `http://localhost:${PORT}/api/actors`,
-  // 'Directors':`http://localhost:${PORT}/api/directors`,
-  // 'ProductionCo':`http://localhost:${PORT}/api/productionCo`,
-  // 'Genre': `http://localhost:${PORT}/api/genre`,
-  // 'Streaming': `http://localhost:${PORT}/api/streaming` 
-   })
+  'Programs':`http://localhost:${PORT}/api/programs`,
+  'Actors': `http://localhost:${PORT}/api/actors`,
+  'Directors':`http://localhost:${PORT}/api/directors`,
+  'ProductionCo':`http://localhost:${PORT}/api/productionCo`,
+  'Genre': `http://localhost:${PORT}/api/genre`,
+  'Streaming': `http://localhost:${PORT}/api/streaming` 
+  })
 })
 
- router.use('/api/programs', require('./api/programsRoutes'))
+//used to test- router.use('/api/programs', require('./api/programsRoutes'))
 
-// const endpoints = [
-  // 'programs',
-  //  'actor',
-  //  'director',
-  //  'genre',
-  //  'production',
-  //  'streaming'
-// ]
-// endpoints.forEach(endpoint => {
-//   router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
-// })
+const endpoints = [
+  'programs',
+   'actors',
+   'directors',
+   'genre',
+   'productionCo',
+   'streaming'
+]
+endpoints.forEach(endpoint => {
+  router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
+})
+
+//http://localhost:3000
+router.get('/', (req, res)=> {
+    res.render('pages/home', {
+      title: 'Merry Christmas',
+      name:"Christmas Programs"
+    })
+})
+
+// http://localhost:3000/actors-form
+router.get('/actors-form', (req, res)=> {
+    res.render('pages/actors-form', {
+      title: 'Actors Form',
+      name: 'Add an Actor'
+    })
+})
+
+// http://localhost:3000/directors-form
+router.get('/directors-form', (req, res)=> {
+    res.render('pages/directors-form', {
+      title: 'Directors Form',
+      name: 'Add a Director'
+    })
+})
+
+// http://localhost:3000/genre-form
+router.get('/genre-form', (req, res)=> {
+    res.render('pages/genre-form', {
+      title: 'Genre Form',
+      name: 'Add a Genre'
+    })
+})
+
+// http://localhost:3000/streaming-form
+router.get('/streaming-form', (req, res)=> {
+    res.render('pages/streaming-form', {
+      title: 'Streaming Form',
+      name: 'Add a Streaming Platform'
+    })
+})
 
 // error handling
 router.use((req, res, next)=> {

@@ -6,6 +6,41 @@ const programsDao = {
   ...require('./api/programsDao')
 }
 
-module.exports = {
-  programsDao
+const actorsDao = {
+  ...daoCommon,
+  ...require('./api/actorsDao')
 }
+
+const directorsDao = {
+  ...daoCommon,
+  ...require('./api/directorsDao')
+}
+
+const genreDao = {
+  ...daoCommon,
+  ...require('./api/genreDao')
+}
+
+const productionCoDao = {
+  ...daoCommon,
+  ...require('./api/productionCoDao')
+}
+
+const streamingDao = {
+  ...daoCommon,
+  ...require('./api/streamingDao')
+}
+
+module.exports = {
+  programsDao,
+  actorsDao,
+  directorsDao,
+  genreDao,
+  productionCoDao,
+  streamingDao
+}
+
+
+// module.exports = {
+  // programsDao
+// }
