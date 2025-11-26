@@ -47,18 +47,17 @@ const directorsDao = {
         }
         )
     },
-    findProgramsByDirectors(res, table, id) {
+    findProgramsByDirectors(res, table, id) {        //unique#1
         let sql = `SELECT 
             d.directors_id, 
             d.fName, 
             d.lName,
-            ImagePath,
-            GROUP_CONCAT(CONCAT(p.title,' (', p.yr_released, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+            GROUP_CONCAT(CONCAT(p.title,' (', p.fivePointRating, ')') ORDER BY p.title SEPARATOR ', ') AS programs
         FROM directors d
         LEFT JOIN programs_to_director mtd ON d.directors_id = ptd.directors_id
         LEFT JOIN programs p ON ptd.programs_id = p.programs_id
         WHERE d.directors_id = ?
-        GROUP BY d.directors_id, d.fName, d.lName, ImagePath`;
+        GROUP BY d.directors_id, d.fName, d.lName, p.fivePointRating ,p.title`;
         
         connect.execute(
             sql,
