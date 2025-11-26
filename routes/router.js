@@ -19,7 +19,7 @@ router.get('/api', (req, res)=> {
    })
 })
 
-// router.use('/api/programs', require('./api/programsRoutes'))
+ router.use('/api/programs', require('./api/programsRoutes'))
 
 // const endpoints = [
   // 'programs',
