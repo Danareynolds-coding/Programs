@@ -35,7 +35,7 @@ endpoints.forEach(endpoint => {
 //http://localhost:3000
 router.get('/', (req, res)=> {
     res.render('pages/home', {
-      title: 'Merry Christmas',
+      title: 'Christmas Movies and TV Programs',
       name:"Christmas Programs"
     })
 })
@@ -63,7 +63,13 @@ router.get('/genre-form', (req, res)=> {
       name: 'Add a Genre'
     })
 })
-
+// http://localhost:3000/productionCo-form
+router.get('/productionCo-form', (req, res)=> {
+    res.render('pages/productionCo-form', {
+      title: 'PRODUCTION COMPANY FORM',
+      name: 'Add a Production Company'
+    })
+})
 // http://localhost:3000/streaming-form
 router.get('/streaming-form', (req, res)=> {
     res.render('pages/streaming-form', {
