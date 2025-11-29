@@ -10,7 +10,31 @@ body{
 header{
   background-color:#270721;
   color:#00ffff;
-  
+}
+.addActors{
+  border-width: 2px;
+  border-color:#00ffff
+  background-color: #270721;
+  border-radius: 5px;
+  padding:4px;
+  }
+ul{list-style-type: none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+ul li{
+  float:left;
+  color:navy;
+}
+ul li a {
+  display:block;
+  text-align:center;
+  padding: 10px 10px;
+  text-decoration:none;
+}
+ul li a :hover{
+  background-color:ff00ff;
 }
 /* 00bfff,0080ff,0040ff,0000ff,4000ff,8000ff,bf00ff, indigo ff00ff */
 /* ff0000, yellow ffff00,  red ff0000 medbl 0080ff* /
