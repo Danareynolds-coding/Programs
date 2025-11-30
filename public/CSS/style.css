@@ -24,8 +24,10 @@ ul{list-style-type: none;
   overflow:hidden;
 }
 ul li{
+  margin:10px 10px 5px 10px;
+
   float:left;
-  color:navy;
+  color:00ffff;
 }
 ul li a {
   display:block;
@@ -34,7 +36,7 @@ ul li a {
   text-decoration:none;
 }
 ul li a :hover{
-  background-color:ff00ff;
+  background-color:ffffff;
 }
 /* 00bfff,0080ff,0040ff,0000ff,4000ff,8000ff,bf00ff, indigo ff00ff */
 /* ff0000, yellow ffff00,  red ff0000 medbl 0080ff* /

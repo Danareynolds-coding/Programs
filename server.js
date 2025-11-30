@@ -2,7 +2,7 @@ const express = require('express')
 const server = express()
 const router = require('./routes/router')
 const PORT = process.env.PORT || 3000
-
+const axios = require('axios')
 const cors = require('cors')
 const helmet = require('helmet')
 server.use(cors())
@@ -15,6 +15,7 @@ server.use(helmet.contentSecurityPolicy({
     "scriptSrc":["'self'", "cdn.jsdelivr.net"]
   }
 }))
+server.use(express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
 server.set('view engine', 'ejs')

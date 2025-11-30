@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
-
+const axios = require('axios')
 // router.get('/api', (req, res)=> {
 //   res.send('TEST')
 // }) 
@@ -31,13 +31,25 @@ const endpoints = [
 endpoints.forEach(endpoint => {
   router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
 })
-
+router.get('/', (req, res)=> {
+    res.render('pages/home', {
+      title: 'Christmas Movies and TV Programs',
+      name:"Christmas Programs"
+    })
+})
 //http://localhost:3000
 router.get('/', (req, res)=> {
     res.render('pages/home', {
       title: 'Christmas Movies and TV Programs',
       name:"Christmas Programs"
     })
+})
+//htps://localhost:3000/Programs
+router.get('pages/Actors',(req, res)=> {
+  res.render('pages/Programs', {
+    title:'Christmas Programs',
+    name:"Christmas Programs"
+  })
 })
 
 // http://localhost:3000/actors-form
