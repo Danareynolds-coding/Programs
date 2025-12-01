@@ -1,19 +1,22 @@
 
 <%- include('../partials/header') %> 
 
-<!-- <section class="section" id="movieSection">
-            <div class="container">
+<section class="section" id="movieSection">
+            <div class="Pcontainer">
                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="programRow">
-                    <div class="col">
+                     <% data.forEach(programs=> { %>
+                       <div class="col">
                         <div class="card">
-                            <img src="https://placehold.co/50x50" alt="poster for the Program img" class="img-fluid program-poster"/>
+                            <a href="http://localhost:3000/singleProgram"></a> <img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="imgPoster img-fluid"/></a>
                             <div class="card-body">
-                                <h2 class="movie-title text-capitalize" id="movieTitle"><%= title %></h2>
-                                <p class="card-text" id="yrReleased"><%= yr_released %></p>
+                                    <h2  class="ptitle"><%= programs.title %></h2>
+                                <p class="description"><%= programs.description %></p>
+                                <p class="card-text" id="yrReleased"><%= programs.yr_released %></p>
                             </div>
                         </div>
                     </div>
                 </div>
+            <%})%>
             </div>
-</section>             -->
+</section>             
 <%- include('../partials/footer') %>             

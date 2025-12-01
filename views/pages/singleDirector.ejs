@@ -5,12 +5,12 @@
 <section class="section" id="movieSection">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="programRow">
-                     <% data.forEach(actors=> { %>
+                     <% data.forEach(directors=> { %>
                        <div class="col">
-                        <div class="card">
-                            <img src="/image/imgActors/<%= actors.ImagePath %>" alt="actor img" class="imgActor img-fluid"/>
+                        <div class="Dcard">
+                            <img src="/image/imgDirectors/<%= directors.ImagePath %>" alt="director img" class="imgDirector img-fluid"/>
                             <div class="card-body">
-                                    <h2 class="name"><%= actors.fName%><%= actors.lName%></h2>
+                                    <h2 class="name"><%= directors.fName%><%= directors.lName%></h2>
                             </div>
                         </div>
                     </div>

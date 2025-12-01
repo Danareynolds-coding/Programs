@@ -11,10 +11,44 @@ header{
   background-color:#270721;
   color:#00ffff;
 }
+.imgPoster{
+  width: 18.75em;
+  height: 25em;
+  border-radius:20 px;
+
+}
+.card{
+  /* flex-wrap: wrap; */
+  margin: 1em;
+  width: 18.75em;
+  height: 50em;
+  font-size:xx-small;
+}
+.imgActor{
+  width:12em;
+  height:20em;
+  border-radius: 20px;
+}
+.Dcard{
+  margin:8px;
+  font-size:10px;
+  width:24em;
+  height:40em;
+}
+.ptitle{
+  font-size:medium
+}
+.description{
+  font-size:8px;
+}
+.imgDirector{
+  width:12em;
+  height:20em;
+}
 .addActors{
   border-width: 2px;
-  border-color:#00ffff
-  background-color: #270721;
+  border-color:#00ffff;
+  background-color:cornsilk;
   border-radius: 5px;
   padding:4px;
   }
@@ -38,6 +72,11 @@ ul li a {
 ul li a :hover{
   background-color:ffffff;
 }
+.Pcontainer{
+  display:flex;
+
+}
+
 /* 00bfff,0080ff,0040ff,0000ff,4000ff,8000ff,bf00ff, indigo ff00ff */
 /* ff0000, yellow ffff00,  red ff0000 medbl 0080ff* /
 /* ffA6C9 */

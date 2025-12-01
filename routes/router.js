@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const PORT = process.env.PORT || 3000
-const axios = require('axios')
-// router.get('/api', (req, res)=> {
-//   res.send('TEST')
-// }) 
+const axios = require('axios');
+
 
 // rootroute http://localhost:3000/api
 router.get('/api', (req, res)=> {
@@ -31,27 +29,76 @@ const endpoints = [
 endpoints.forEach(endpoint => {
   router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
 })
-router.get('/', (req, res)=> {
-    res.render('pages/home', {
-      title: 'Christmas Movies and TV Programs',
-      name:"Christmas Programs"
-    })
-})
+
 //http://localhost:3000
 router.get('/', (req, res)=> {
     res.render('pages/home', {
       title: 'Christmas Movies and TV Programs',
       name:"Christmas Programs"
     })
-})
+});
+//******************PAGES 
 //htps://localhost:3000/Programs
-router.get('pages/Actors',(req, res)=> {
-  res.render('pages/Programs', {
-    title:'Christmas Programs',
-    name:"Christmas Programs"
+router.get('/Programs', (req, res)=> {
+  const url = "http://localhost:3000/api/programs"
+  axios.get(url)
+  .then(resp => {
+    res.render('pages/Programs', {
+      title: 'Merry Christmas',
+      name:'Movies and TV Programs.',
+      data:resp.data
+  })
+  })
+});
+//http:localhost:3000/Actors
+router.get('/Actors',(req, res)=> {
+  const url = "http://localhost:3000/api/actors"
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/Actors', {
+          title:'Actors',
+          name:'ACTORS',
+          data:resp.data
+    })
   })
 })
+//http://localhost:3000/Directors
+router.get('/Directors',(req, res)=> {
+  const url = "http://localhost:3000/api/directors"
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/Directors', {
+      title:'Directors',
+      name:'DIRECTORS',
+      data:resp.data
+    })
+  })
+})
+//********************SINGLEPages
+//http://localhost:3000/singleProgram
+router.get('/singleProgram', (req, res)=> {
+  const url = `http://localhost:3000/api/programs/${id}`
+  axios.get(url)
+    .then(resp.render('pages/singleProgram',{
+      title:'Single Program',
+      name: 'Program'
+    }))
+})
 
+//http://localhost:3000/singleActor
+router.get('/singleActor', (req, res)=> {
+  const url = `http://localhost:3000/api/programs/${id}`
+  axios.get(url)
+    .then(resp.render('pages/singleProgram',{
+      title:'Single Program',
+      name: 'Program'
+    }))
+})
+
+//http://localhost:3000/singleDirector
+
+
+//********************FORMS
 // http://localhost:3000/actors-form
 router.get('/actors-form', (req, res)=> {
     res.render('pages/actors-form', {
