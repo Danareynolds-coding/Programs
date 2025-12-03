@@ -48,60 +48,17 @@ const programsDao = {
             }
         );
     },
-    //unique1//
-    findTheatrePrograms(res, table, sorter) {
-        connect.query(
-             `SELECT programs FROM programs WHERE showing = 'theatre' AND yr_released = 2003`,
-            (error, rows) => {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(rows[0]);
-                    } else {
-                        res.json(rows);
-                    }
-                } else {
-                        console.log(`Dao Error: ${error}`);
-                        res.json({
-                            message: 'error',
-                            table: `programs`,
-                            error: error
-                        });
-                    }
-                }
-            );
-        },
-        findLiveActionPrograms (res, table, sorter) {
-        connect.query(
-            `SELECT programs FROM programs WHERE animationType = 'Live Action'`,
-            (error, rows) => {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(rows[0]);
-                    } else {
-                        res.json(rows);
-                    }
-                } else {
-                    console.log(`Dao Error: ${error}`);
-                    res.json({
-                        message: 'error',
-                        table: `programs`,
-                        error: error
-                    });
-                }
-            }
-        );
-    },
-        
-    findGenreByPrograms(res, table, id) {
+    // 3 A unique1//
+    findProgramsWithActors(res, table, id) {
         let sql = `SELECT 
                 p.programs_id,
-                p.programs,
-                GROUP_CONCAT(CONCAT(g.genre, ')') ORDER BY g.genre SEPARATOR ', ') AS genre
+                p.title,
+                CONCAT(a.lName, ', ', a.fName) AS actors, a.character
             FROM programs p
-            LEFT JOIN programs_to_genre ptg ON p.programs_id = ptg.programs_id
-            LEFT JOIN genre g ON ptg.genre_id = g.genre_id
+            LEFT JOIN programs_to_actors pta ON p.programs_id = pta.programs_id
+            LEFT JOIN actors a ON pta.actors_id = a.actors_id
             WHERE p.programs_id = ?
-            GROUP BY p.programs_id, p.programs, g.genre`;
+            GROUP BY p.programs_id, p.title, a.fName, a.lName, a.character;`
         connect.execute(
             sql,
             [id],
@@ -123,6 +80,158 @@ const programsDao = {
             }
         );
     },
+    // 3B programWithDirectors
+     findProgramsWithDirectors(res, table, id) {
+        let sql = `SELECT 
+                p.programs_id,
+                p.title,
+                CONCAT(d.lName, ', ', d.fName) AS directors
+            FROM programs p
+            LEFT JOIN programs_to_directors ptd ON p.programs_id = ptd.programs_id
+            LEFT JOIN directors d ON ptd.directors_id = d.directors_id
+            WHERE p.programs_id = ?
+            GROUP BY p.programs_id, p.title, d.fName, d.lName;`
+        connect.execute(
+            sql,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: `programs`,
+                        error: error,
+                    });
+                }
+            }
+        );
+    }, 
+      // 3C findgenreByProgramId   
+    findProgramsWithGenre(res, table, id) {
+        let sql = `SELECT 
+                p.programs_id,
+                p.title,
+                g.genre_id,
+                g.genre
+            FROM programs p
+            LEFT JOIN programs_to_genre ptg ON p.programs_id = ptg.programs_id
+            LEFT JOIN genre g ON ptg.genre_id = g.genre_id
+            WHERE p.programs_id = ?
+            `;
+        connect.execute(
+            sql,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: `programs`,
+                        error: error,
+                    });
+                }
+            }
+        );
+    },
+      // 3C findproductionCoByProgramId   
+    findProgramsWithProductionCo(res, table, id) {
+        let sql = `SELECT 
+                p.programs_id,
+                p.title,
+                p.productionCo_id,
+                pc.productionCo
+                FROM programs p
+            JOIN productionCo pc ON pc.productionCo_id = p.productionCo_id
+            WHERE p.programs_id = ?
+            GROUP BY p.programs_id, p.title, pc.productionCo`;
+        connect.execute(
+            sql,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: `programs`,
+                        error: error,
+                    });
+                }
+            }
+        );
+    },
+    // 3E streaming
+    findProgramsWithStreaming(res, table, id) {
+        let sql = `SELECT 
+                p.programs_id,
+                p.title,
+                s.streaming
+                FROM programs p
+            LEFT JOIN programs_to_streaming pts ON p.programs_id = pts.programs_id
+            LEFT JOIN streaming s ON pts.streaming_id = s.streaming_id
+            WHERE p.programs_id = ?
+            GROUP BY p.programs_id, p.title, s.streaming;`
+        connect.execute(
+            sql,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: `programs`,
+                        error: error,
+                    });
+                }
+            }
+        );
+    }, 
+    //unique2
+        findLiveActionPrograms (res, table, sorter) {
+        connect.query(
+            `SELECT * FROM programs WHERE animationType = 'Live Action';`,
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(rows[0]);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`Dao Error: ${error}`);
+                    res.json({
+                        message: 'error',
+                        table: `programs`,
+                        error: error
+                    });
+                }
+            }
+        );
+    },
+   
     findById (res, table, id) {
         connect.query(
             `SELECT * FROM programs WHERE programs_id = ${id};`,

@@ -1,13 +1,13 @@
 
 <%- include('../partials/header') %> 
 
-<section class="section" id="movieSection">
+<section class="section" id="PSection">
             <div class="Pcontainer">
                 <div class="row row-cols-lg-3 row-cols-md-4 g-4" id="programRow">
                      <% data.forEach(programs=> { %>
                        <div class="col">
                         <div class="card">
-                          <a href="singleProgram/<%= programs.programs_id %>"><img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="imgPoster img-fluid"/></a>
+                          <a href="singleProgram/<%= programs.programs_id %>"><img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="image img-fluid"/></a>
 
                             <div class="card-body">
                                     <h2  class="ptitle"><%= programs.title %></h2>

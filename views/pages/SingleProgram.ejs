@@ -1,44 +1,45 @@
 <%- include('../partials/header') %> 
 
-<section class="section" id="movieSection">
+<section class="section" id="section">
             <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="programRow">
-                       <div class="col">
-                        <div class="singleCard">
-                            <img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="img-fluid"/>
+                <div class="row  id="programRow">
+                    <div class="col-4"></div>
+                    <div class="col-4 item-center">
+                        <div class="card">
+                            <img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="image img-fluid"/>
                             <div class="card-body">
                                 <h2 class="Title"><%= programs.title %></h2>
                                 <p class="card-text" id="yrReleased"><%= programs.yr_released %></p>
-                            </div>
-                            <div>
-                              <h5>Program Information:</h5>  
-                              <ul class="list-style:none">
-                                <li>Rating: <%= programs.rating %></li>
-                                <li>Runtime: <%= programs.runtime %></li>
-                                <li>Budget: <%= programs.budget %></li>
-                                <li>GrossProfit: <%= programs.grossProfit %></li>
-                                <li>Showing: <%= programs.showing %></li>
-                                <li>Five Point Rank: <%= programs.fivePointRating %></li>
-                              </ul> 
-                              <div class="information">
-                                <p>For Actors Click<a href="http:localhost:3000/api/programs/with_actors">HERE</a></p>
-                                <p>For Directors Click<a href="http:localhost:3000/api/programs/with_directors">HERE</a></p>
-                                <p>For Production Company Click<a href="http:localhost:3000/api/programs/with_productionCo">HERE</a></p>
-                                <p>For Streaming Platforms Click<a href="http:localhost:3000/api/programs/with_streaming">HERE</a></p>
-                                <p>For Genres Click<a href="http:localhost:3000/api/programs/with_genre">HERE</a></p>
-
-                                 
-                                <h4>OTHER INFORMATION</h4>
-                                <p>Find Movie by Director ID Click<a href='`http:localhost:3000/api/programs/get_programsDirector/?'>HERE</a></p>
-                                
                             </div> 
-                                
-                                  
-
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="programInfo col-12">
+                        <h5>Program Information:</h5>  
+                        <ul class="list-style:none">
+                            <li>Rating: <%= programs.rating %></li>
+                            <li>Runtime: <%= programs.runtime %></li>
+                            <li>Budget: <%= programs.budget %></li>
+                            <li>GrossProfit: <%= programs.grossProfit %></li>
+                            <li>Showing: <%= programs.showing %></li>
+                            <li>Five Point Rank: <%= programs.fivePointRating %></li>
+                        </ul> 
+                    </div>          
+                    <div class="p-actors col-4">
+                            <p>For Actors Click<a href="http:localhost:3000/api/programs/with_actors">HERE</a></p>
+                    </div>
+                    <div class="p-directors col-4">
+                            <p>For Directors Click<a href="http:localhost:3000/api/programs/with_directors">HERE</a></p>
+                        </div>
+                        <div class="p-actors col-12">
+                            <p>For Production Company Click<a href="http:localhost:3000/api/programs/with_productionCo">HERE</a></p>
+                        <div class="p-actors col-12">
+                            <p>For Streaming Platforms Click<a href="http:localhost:3000/api/programs/with_streaming">HERE</a></p>
+                        </div>
+                        <div class="p-actors col-12">
+                            <p>For Genres Click<a href="http:localhost:3000/api/programs/with_genre">HERE</a></p>
                         </div>
                     </div>
                 </div>
-           
             </div>
 </section>             
 <%- include('../partials/footer') %>             

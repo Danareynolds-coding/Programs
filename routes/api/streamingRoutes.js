@@ -17,17 +17,24 @@ router.get('/sort/:sorter', (req, res)=> {
 router.get('/get_programsForStreaming/:id', (req, res)=> {
   dao.findStreaming(res, dao.table, req.params.id)
 })
+//5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
+router.get('/get_RatingForStreaming', (req, res)=> {
+  dao.findRatingByStreaming(res, dao.table)
+})
 
 //4. id
 router.get('/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)
 })
+
+//6. unique2
+
 // 7. post
 router.post('/create', (req, res)=> {
   dao.create(req, res, dao.table)
 })
 
-//8 patch
+//8. patch
 router.patch('/update/:id', (req, res)=> {
   dao.update(req, res,dao.table)
 })

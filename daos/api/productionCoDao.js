@@ -4,7 +4,7 @@ const connect = require('../../config/dbconfig')
 const productionCoDao = {
     table: 'productionCo',
     // 1.findall
-    findAllGenres(res, table, id) {
+    findAllProductionCo(res, table, id) {
         let sql = `SELECT * FROM productionCo`;
         connect.execute(
             sql,
