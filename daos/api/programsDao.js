@@ -26,10 +26,10 @@ const programsDao = {
             }
         });
     },
-    //alphebetize
+  
     sort(res, table, sorter) {
         connect.query(
-            `SELECT * FROM programs ORDER BY programs;`,
+            `SELECT * FROM programs ORDER BY ${sorter};`,
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {

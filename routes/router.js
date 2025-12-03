@@ -45,7 +45,7 @@ router.get('/Programs', (req, res)=> {
   .then(resp => {
     res.render('pages/Programs', {
       title: 'Merry Christmas',
-      name:'Movies and TV Programs.',
+      name:'Christmas Movies and TV Programs.',
       data:resp.data
   })
   })
@@ -76,23 +76,30 @@ router.get('/Directors',(req, res)=> {
 })
 //********************SINGLEPages
 //http://localhost:3000/singleProgram
-router.get('/singleProgram', (req, res)=> {
+router.get('/singleProgram/:id', (req, res)=> {
+  const id = req.params.id;
   const url = `http://localhost:3000/api/programs/${id}`
   axios.get(url)
-    .then(resp.render('pages/singleProgram',{
+    .then(resp=> {
+      res.render('pages/singleProgram',{
       title:'Single Program',
-      name: 'Program'
-    }))
+      name: 'Program',
+      programs:resp.data
+      })
+    })
 })
 
 //http://localhost:3000/singleActor
 router.get('/singleActor', (req, res)=> {
   const url = `http://localhost:3000/api/programs/${id}`
   axios.get(url)
-    .then(resp.render('pages/singleProgram',{
-      title:'Single Program',
-      name: 'Program'
-    }))
+    .then(resp=> {
+      res.render('pages/singleActor',{
+      title:'Single Actor',
+      name: 'Actor',
+      programs:resp.data
+    })
+  })
 })
 
 //http://localhost:3000/singleDirector

@@ -1,6 +1,6 @@
-
+//need findAll, sort, findbyid, findprogram, create and update
 const connect = require('../../config/dbconfig')
-   //need findAll, sort, findbyid, findprogram, create and update
+    //1. findall
     const actorsDao = {
         table: 'actors',
         findAllActors(res, table, id) {
@@ -26,9 +26,10 @@ const connect = require('../../config/dbconfig')
                 }
             );
         },
+    // 2. sort    
     sort: (res, table, sorter) => {
         connect.query(
-        `SELECT * FROM actors ORDER BY lName;`,
+        `SELECT * FROM actors ORDER BY ${sorter};`,
         (error, rows) => {
             if (!error) {
             if (rows.length === 1) {
@@ -47,39 +48,45 @@ const connect = require('../../config/dbconfig')
         }
         )
     },
-        findProgramsByActors(res, table, id) {
-            let sql = `SELECT 
-                a.actors_id, 
-                a.fName, 
-                a.lName,
-                ImagePath,
-                GROUP_CONCAT(CONCAT(p.title,' (', p.yr_released, ')') ORDER BY p.title SEPARATOR ', ') AS programs
-            FROM actors a
-            LEFT JOIN programs_to_actors pta ON a.actors_id = pta.actors_id
-            LEFT JOIN programs p ON pta.programs_id = p.programs_id
-            WHERE a.actors_id = ?
-            GROUP BY a.actors_id, a.fName, a.lName, ImagePath`;
-            connect.execute(
-                sql,
-                [id],
-                (error, rows) => {
-                    if (!error) {
-                        if (rows.length === 1) {
-                            res.json(...rows);
-                        } else {
-                            res.json(rows);
+    // 3. findProgramBy
+    findProgramsByActors(res, table, id) {
+        let sql = `SELECT 
+          a.actors_id, 
+          a.fName, 
+          a.lName,
+          a.character
+          ImagePath,
+        GROUP_CONCAT(CONCAT(p.title,' (', p.yr_released, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+        FROM actors a
+        LEFT JOIN programs_to_actors pta ON a.actors_id = pta.actors_id
+        LEFT JOIN programs p ON pta.programs_id = p.programs_id
+        WHERE a.actors_id = ?
+        GROUP BY a.actors_id, a.fName, a.lName, ImagePath`;
+      connect.execute(
+          sql,
+          [id],
+          (error, rows) => {
+           if (!error) {
+                if (rows.length === 1) {
+                  res.json(...rows);
+                } else {
+                  res.json(rows);
                         }
-                    } else {
-                        console.log(`DAO Error: ${error}`);
-                        res.json({
-                            message: "error",
-                            table: `actors`,
-                            error: error,
-                        });
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                      res.json({
+                        message: "error",
+                        table: `actors`,
+                        error: error,
+                      });
                     }
                 }
             );
-        }, findById: (res, table, id) => {
+        }, 
+        //5. unique
+        //6. unique2
+        // 4. id
+        findById: (res, table, id) => {
         connect.query(
         `SELECT * FROM actors WHERE actors_id = ${id};`,
         (error, rows) => {
@@ -100,6 +107,7 @@ const connect = require('../../config/dbconfig')
         }
       )
     }, 
+    // 7. add 
     create: (req, res, table) => {
     //Object.key returns array of keys
     if (Object.keys(req.body).length === 0) {
@@ -125,7 +133,7 @@ const connect = require('../../config/dbconfig')
       )
     }
   },
-  
+  //8  change
   update: (req, res, table) => {
     if (isNaN(req.params.id)) {
       res.json({

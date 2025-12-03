@@ -21,7 +21,7 @@ header{
   /* flex-wrap: wrap; */
   margin: 1em;
   width: 18.75em;
-  height: 50em;
+  height: 52em;
   font-size:xx-small;
 }
 .imgActor{
@@ -40,6 +40,14 @@ header{
 }
 .description{
   font-size:8px;
+}
+.singleCard{
+  padding:3px;
+}
+button{
+  color:white;
+  background-color: navy;
+  border-radius:5px;
 }
 .imgDirector{
   width:12em;

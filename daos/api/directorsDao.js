@@ -3,6 +3,7 @@ const connect = require('../../config/dbconfig')
 
 const directorsDao = {
     table: 'directors',
+    //1. findall
     findAllDirectors(res, table, id) {
             let sql = `SELECT * FROM directors`;
             connect.execute(
@@ -26,9 +27,10 @@ const directorsDao = {
                 }
             );
         },
+        //2 sort
     sort: (res, table, sorter) => {
         connect.query(
-        `SELECT * FROM directors ORDER BY lName;`,
+        `SELECT * FROM directors ORDER BY ${sorter};`,
         (error, rows) => {
             if (!error) {
             if (rows.length === 1) {
@@ -47,14 +49,15 @@ const directorsDao = {
         }
         )
     },
-    findProgramsByDirectors(res, table, id) {        //unique#1
+    //3 Byprogram
+    findProgramsByDirectors(res, table, id) {       
         let sql = `SELECT 
             d.directors_id, 
             d.fName, 
             d.lName,
             GROUP_CONCAT(CONCAT(p.title,' (', p.fivePointRating, ')') ORDER BY p.title SEPARATOR ', ') AS programs
         FROM directors d
-        LEFT JOIN programs_to_director ptd ON d.directors_id = ptd.directors_id
+        LEFT JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
         LEFT JOIN programs p ON ptd.programs_id = p.programs_id
         WHERE d.directors_id = ?
         GROUP BY d.directors_id, d.fName, d.lName, p.fivePointRating ,p.title`;
@@ -80,6 +83,7 @@ const directorsDao = {
             }
         );
     },
+    //4 id
         findById: (res, table, id) => {
                 connect.query(
                 `SELECT * FROM directors WHERE directors_id = ${id};`,
@@ -101,6 +105,7 @@ const directorsDao = {
                 }
             )
             }, 
+            // 7 post
         create: (req, res, table) => {
             //Object.key returns array of keys
             if (Object.keys(req.body).length === 0) {
@@ -126,6 +131,7 @@ const directorsDao = {
             )
             }
         },
+        // 8 patch
         update: (req, res, table) => {
     if (isNaN(req.params.id)) {
       res.json({

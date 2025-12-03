@@ -4,7 +4,7 @@ const connect = require('../../config/dbconfig')
 
 const genreDao = {
     table: 'genre',
-
+    // 1.findall
     findAllGenres(res, table, id) {
         let sql = `SELECT * FROM genre`;
         connect.execute(
@@ -28,10 +28,10 @@ const genreDao = {
             }
         );
     },
-
+    // 2 sort
     sort(res, table, sorter) {
         connect.query(
-            `SELECT * FROM genre ORDER BY genre;`,
+            `SELECT * FROM genre ORDER BY ${sorter};`,
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
@@ -50,7 +50,7 @@ const genreDao = {
             }
         );
     },
-
+    // 3 Byprograms
     findProgramsByGenre(res, table, id) {
         //unique#1//
         let sql = `SELECT 
@@ -84,8 +84,8 @@ const genreDao = {
             }
         );
     },
-
-    findDiscriptionByGenre(res, table, id) {
+    //5. unique
+    findDescriptionByGenre(res, table, id) {
         //unique#2//
         let sql = `SELECT 
             g.genre_id,
@@ -96,7 +96,6 @@ const genreDao = {
         LEFT JOIN programs p ON ptg.programs_id = p.programs_id
         WHERE g.genre_id = ?
         GROUP BY g.genre_id, g.genre, p.description, p.title`;
-
         connect.execute(
             sql,
             [id],
@@ -118,7 +117,7 @@ const genreDao = {
             }
         );
     },
-
+    // 4 id
     findById(res, table, id) {
         connect.query(
             `SELECT * FROM genre WHERE genre_id = ${id};`,
@@ -140,7 +139,7 @@ const genreDao = {
             }
         );
     },
-
+    // 7. post
     create(req, res, table) {
         //Object.key returns array of keys
         if (Object.keys(req.body).length === 0) {
@@ -166,7 +165,7 @@ const genreDao = {
             );
         }
     },
-
+    //8 patch
     update(req, res, table) {
         if (isNaN(req.params.id)) {
             res.json({

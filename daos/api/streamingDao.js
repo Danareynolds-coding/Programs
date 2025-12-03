@@ -2,6 +2,7 @@ const connect = require('../../config/dbconfig')
 
 const streamingDao = {
   table:'streaming',
+  //1. findAll
       findAllStreaming(res, table, id) {
         let sql = `SELECT * FROM streaming`;
         connect.execute(
@@ -25,10 +26,10 @@ const streamingDao = {
             }
         );
     },
-
+    //2 Sort
     sort(res, table, sorter) {
         connect.query(
-            `SELECT * FROM streaming ORDER BY streaming;`,
+            `SELECT * FROM streaming ORDER BY ${sorter};`,
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
@@ -47,6 +48,7 @@ const streamingDao = {
             }
         );
     },
+    //3 programsBy
     findProgramsByStreaming(res, table, id) {
         let sql = `SELECT
             s.streaming_id, s.streaming,
@@ -79,7 +81,7 @@ const streamingDao = {
         );  
     },
     findRatingByStreaming(res, table, id) {
-        //unique#2//
+        //5  unique#1/
         let sql = `SELECT 
             g.genre_id,
             g.genre, 
@@ -111,6 +113,7 @@ const streamingDao = {
             }
         );
     },
+    //4. id
     findById(res, table, id) {
         connect.query(
             `SELECT * FROM streaming WHERE streaming_id = ${id};`,

@@ -3,7 +3,7 @@ const connect = require('../../config/dbconfig')
 
 const productionCoDao = {
     table: 'productionCo',
-
+    // 1.findall
     findAllGenres(res, table, id) {
         let sql = `SELECT * FROM productionCo`;
         connect.execute(
@@ -27,10 +27,10 @@ const productionCoDao = {
             }
         );
     },
-
+    //2. sort
     sort(res, table, sorter) {
         connect.query(
-            `SELECT * FROM productionCo ORDER BY productionCo;`,
+            `SELECT * FROM productionCo ORDER BY ${sorter};`,
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
@@ -49,7 +49,7 @@ const productionCoDao = {
             }
         );
     },
-
+    //3 byPrograms
     findProgramsByProductionCo(res, table, id) {
         let sql = `SELECT
             pc.productionCo_id,
@@ -57,13 +57,12 @@ const productionCoDao = {
             p.programs_id,
             p.title AS programs_title 
             FROM productionCo AS pc
-            JOIN programs AS p ON pc.productionCo_id = pc.productionCo_id
+            JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
             WHERE pc.productionCo_id = ?`;
-
         connect.query(sql, [id], (error, rows) => {
             if (!error) {
                 if (rows.length === 1) {
-                    res.json(rows[0]);
+                    res.json(...rows);
                 } else {
                     res.json(rows);
                 }
@@ -77,22 +76,18 @@ const productionCoDao = {
             }
         });
     },
-
-    findDiscriptionByProductionCo(res, table, id) {
-        //unique#2//
+    // 5. unique1
+    findfivePointRatingByProductionCo(res, table) {
         let sql = `SELECT 
-            c.productinCo_id,
-            c.productionCo, 
-            GROUP_CONCAT(CONCAT(p.title,' (', p.showing, ')') ORDER BY p.title SEPARATOR ', ') AS programs
-            FROM productinCo c
-            LEFT JOIN programs_to_productionCo ptc ON c.productionCo_id = ptc.productionCo_id
-            LEFT JOIN programs p ON ptc.programs_id = p.programs_id
-            WHERE c.productionCo_id = ?
-            GROUP BY c.productionCo_id, c.productionCo, p.showing, p.title`;
-
+            pc.productionCo_id,
+            pc.productionCo,
+            p.fivePointRating AS programs_fivePointRating,
+            p.title AS programs_title
+            FROM productionCo AS pc
+            INNER JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
+            ORDER BY fivePointRating DESC;`
         connect.execute(
             sql,
-            [id],
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
@@ -111,7 +106,7 @@ const productionCoDao = {
             }
         );
     },
-
+    // 7. Post
     create(req, res, table) {
         if (Object.keys(req.body).length === 0) {
             res.json({
@@ -136,7 +131,7 @@ const productionCoDao = {
             );
         }
     },
-
+    //8.patch
     update(req, res, table) {
         if (isNaN(req.params.id)) {
             res.json({

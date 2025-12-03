@@ -3,15 +3,17 @@
 
 <section class="section" id="movieSection">
             <div class="Pcontainer">
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="programRow">
+                <div class="row row-cols-lg-3 row-cols-md-4 g-4" id="programRow">
                      <% data.forEach(programs=> { %>
                        <div class="col">
                         <div class="card">
-                            <a href="http://localhost:3000/singleProgram"></a> <img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="imgPoster img-fluid"/></a>
+                          <a href="singleProgram/<%= programs.programs_id %>"><img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="imgPoster img-fluid"/></a>
+
                             <div class="card-body">
                                     <h2  class="ptitle"><%= programs.title %></h2>
                                 <p class="description"><%= programs.description %></p>
                                 <p class="card-text" id="yrReleased"><%= programs.yr_released %></p>
+                                
                             </div>
                         </div>
                     </div>
