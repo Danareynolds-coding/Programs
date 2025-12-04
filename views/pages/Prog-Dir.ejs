@@ -1,0 +1,10 @@
+<%- include('../partials/header') %> 
+<main class="main text-center" id="main">
+  <h1 class="P-D text-center">Directors for This Program</h1>
+  <p><%= programs[0].title %></p>
+  <% programs.forEach(program => {%>
+    <p><%= program.director %></p>
+ <% }) %>  
+</main>
+
+<%- include('../partials/header') %>

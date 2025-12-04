@@ -1,0 +1,11 @@
+<%- include('../partials/header') %> 
+<main class="main text-center" id="main">
+  <h1 class="text-center">Streaming Platforms for This Program</h1>
+  <p><%= programs[0].title %></p>
+  <% programs.forEach(program => {%>
+    <p><%= program.streaming %></p>
+  <% }) %>  
+  
+</main>
+
+<%- include('../partials/header') %>
