@@ -2,7 +2,7 @@ const connect = require('../../config/dbconfig');
 
 const programsDao = {
     table: 'programs',
-  // same as find all
+  //1. same as find all
     findMovieInfo (res, table) {
         const sql = `SELECT p.programs_id, p.title, p.rating, p.animationType, p.runtime, p.yr_released, p.productionCo, p.budget, p.grossProfit, p.showing, p.posterURL, p.description, p.fivePointRating,
             CASE WHEN p.budget IS NULL THEN NULL ELSE p.budget END budget,
@@ -26,7 +26,7 @@ const programsDao = {
             }
         });
     },
-  
+    //2. sort
     sort(res, table, sorter) {
         connect.query(
             `SELECT * FROM programs ORDER BY ${sorter};`,
@@ -48,7 +48,7 @@ const programsDao = {
             }
         );
     },
-    // 3 A unique1//
+    // 3 A 
     findProgramsWithActors(res, table, id) {
         let sql = `SELECT 
                 p.programs_id,
@@ -209,10 +209,10 @@ const programsDao = {
             }
         );
     }, 
-    //unique2
-        findLiveActionPrograms (res, table, sorter) {
+    // 5. unique1
+        findTheatrePrograms (res, table, sorter) {
         connect.query(
-            `SELECT * FROM programs WHERE animationType = 'Live Action';`,
+            `SELECT * FROM programs WHERE showing = ${sorter};`,
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
