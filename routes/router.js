@@ -128,12 +128,13 @@ router.get('/singleProgram/:id', (req, res)=> {
       })
     })
 })
-router.get('/infoPage/:id', (req, res) => {
+//**************Info page */
+router.get('/Prog-Act/:id', (req, res) => {
   const id = req.params.id;
-  const url = `http:localhost:3000/api/programs/with_actors/${id}`
+  const url = `http://localhost:3000/api/programs/with_actors/${id}`
   axios.get(url)
     .then(resp=> {
-      resp.render('pages/infoPage', {
+      res.render('pages/Prog-Act', {
         title:'Program with Actor',
         name:'Program With Actors',
         programs:resp.data

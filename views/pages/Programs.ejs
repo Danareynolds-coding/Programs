@@ -1,14 +1,17 @@
 <%- include('../partials/header') %>
 
-    <section class="section" id="PSection">
-        <div class="Pcontainer">
-            <div class="row d-flex">
+    <section class="section" >
+        <div class="container mt-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4 ">
                 <% data.forEach(programs=> { %>
-                    <div class="card col-3">
-                        <a href="singleProgram/<%= programs.programs_id %>"><img
+                    <div class="col">
+                        <div class="card h-100">
+                            <a href="/singleProgram/<%= programs.programs_id %>">
+                                <img
                                 src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img"
-                                class="image img-fluid" /></a>
-                        <div class="card-body">
+                                class="card-img-top img-fluid"/>
+                            </a>
+                        <div class="card-body d-flex flex-column">
                             <h2 class="ptitle">
                                 <%= programs.title %>
                             </h2>
@@ -20,6 +23,7 @@
                             </p>
                         </div>
                     </div>
+                  </div>  
                 <%})%>    
             </div>
                 
