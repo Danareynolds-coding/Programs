@@ -20,7 +20,7 @@ router.get('/api', (req, res)=> {
 
 const endpoints = [
   'programs',
-   'actors',
+  'actors',
    'directors',
    'genre',
    'productionCo',
@@ -128,6 +128,19 @@ router.get('/singleProgram/:id', (req, res)=> {
       })
     })
 })
+router.get('/infoPage/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http:localhost:3000/api/programs/with_actors/${id}`
+  axios.get(url)
+    .then(resp=> {
+      resp.render('pages/infoPage', {
+        title:'Program with Actor',
+        name:'Program With Actors',
+        programs:resp.data
+      })
+    })
+  })
+
 
 
 //********************FORMS
@@ -171,10 +184,10 @@ router.get('/streaming-form', (req, res)=> {
 
 // error handling
 router.use((req, res, next)=> {
-   res.status(404)
-   .render('pages/404', {
-    title:'error page',
-    name: '404 - Page Not Found'
+  res.status(404)
+  .render('pages/404', {
+  title:'error page',
+  name: '404 - Page Not Found'
   })
 })
 

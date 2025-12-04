@@ -1,24 +1,28 @@
+<%- include('../partials/header') %>
 
-<%- include('../partials/header') %> 
-
-<section class="section" id="PSection">
-            <div class="Pcontainer">
-                <div class="row row-cols-lg-3 row-cols-md-4 g-4" id="programRow">
-                     <% data.forEach(programs=> { %>
-                       <div class="col">
-                        <div class="card">
-                          <a href="singleProgram/<%= programs.programs_id %>"><img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="image img-fluid"/></a>
-
-                            <div class="card-body">
-                                    <h2  class="ptitle"><%= programs.title %></h2>
-                                <p class="description"><%= programs.description %></p>
-                                <p class="card-text" id="yrReleased"><%= programs.yr_released %></p>
-                                
-                            </div>
+    <section class="section" id="PSection">
+        <div class="Pcontainer">
+            <div class="row d-flex">
+                <% data.forEach(programs=> { %>
+                    <div class="card col-3">
+                        <a href="singleProgram/<%= programs.programs_id %>"><img
+                                src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img"
+                                class="image img-fluid" /></a>
+                        <div class="card-body">
+                            <h2 class="ptitle">
+                                <%= programs.title %>
+                            </h2>
+                            <p class="description">
+                                <%= programs.description %>
+                            </p>
+                            <p class="card-text" id="yrReleased">
+                                <%= programs.yr_released %>
+                            </p>
                         </div>
                     </div>
-                </div>
-            <%})%>
+                <%})%>    
             </div>
-</section>             
-<%- include('../partials/footer') %>             
+                
+        </div>
+    </section>
+    <%- include('../partials/footer') %>

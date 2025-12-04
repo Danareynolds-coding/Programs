@@ -22,7 +22,7 @@ router.get('/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)
 })
 
-//5
+//5 unique
 //6
 
 // 7. POST  http://localhost:3000/api/actor/create

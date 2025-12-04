@@ -42,7 +42,14 @@ router.get('/with_streaming/:id', (req, res)=> {
 // 4.id  http://localhost:3000/api/programs/:id
 router.get('/:id', (req, res)=> {               
     dao.findById(res, dao.table, req.params.id)          
-})  
+}) 
+
+// 5. unique1
+ router.get('/sort/showing/:sorter', (req, res) => {
+    dao.findTheatrePrograms(res, dao.table, req.params.sorter)
+ })
+
+
 // 7 POST
 router.post('/create',(req, res)=> {
   dao.create(req, res, dao.table)
