@@ -4,34 +4,20 @@
 body{
   margin:0;
   padding:0;
-  background-color: #00ffff;
+  background-color: lightblue;
   color:#07076C;
 }
-header{
-  background-color:#270721;
-  color:#00ffff;
-}
-.image{
- width: 100%; 
- height:auto;
- display:block;
-}
- 
-.card{
-  width:25em ;
-  height:50em;
- margin: 1em;
-}
-.cardbody{
-  width: 25em;
-  height: 50em;
-}
+.header{
+  background-image:url('/image/blue.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: red; 
+  font-weight: 800;
 
-.imgActor{
-  width:12em;
-  height:20em;
-  border-radius: 20px;
 }
+/* .image{
+  width: 100%; 
+} */
 
 .ptitle{
   font-size:medium
@@ -42,7 +28,7 @@ header{
 
 button{
   color:white;
-  background-color: navy;
+  background-color:#07076C;
   border-radius:5px;
 }
 .imgDirector{
@@ -63,25 +49,20 @@ ul{list-style-type: none;
 }
 ul li{
   margin:10px 10px 5px 10px;
-
   float:left;
-  color:00ffff;
+  color:red;
 }
 ul li a {
   display:block;
   text-align:center;
   padding: 10px 10px;
-  text-decoration:none;
+  list-style:none;
+  font-weight: 800;
+  color:green;
 }
 ul li a :hover{
-  background-color:ffffff;
-}
-.progExpand{
-  padding:20px;
-  background-color:green;
   
 }
-
 /* 00bfff,0080ff,0040ff,0000ff,4000ff,8000ff,bf00ff, indigo ff00ff */
 /* ff0000, yellow ffff00,  red ff0000 medbl 0080ff* /
 /* ffA6C9 */
