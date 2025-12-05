@@ -3,52 +3,6 @@ const connect = require('../../config/dbconfig')
 
 const directorsDao = {
     table: 'directors',
-    //1. findall
-    findAllDirectors(res, table, id) {
-            let sql = `SELECT * FROM directors`;
-            connect.execute(
-                sql,
-                [id],
-                (error, rows) => {
-                    if (!error) {
-                        if (rows.length === 1) {
-                            res.json(...rows);
-                        } else {
-                            res.json(rows);
-                        }
-                    } else {
-                        console.log(`DAO Error: ${error}`);
-                        res.json({
-                            message: "error",
-                            table: `directors`,
-                            error: error,
-                        });
-                    }
-                }
-            );
-        },
-        //2 sort
-    sort: (res, table, sorter) => {
-        connect.query(
-        `SELECT * FROM directors ORDER BY ${sorter};`,
-        (error, rows) => {
-            if (!error) {
-            if (rows.length === 1) {
-                res.json(rows[0])
-            } else {
-                res.json(rows)
-            }
-            } else {
-            console.log(`Dao Error: ${error}`)
-            res.json({
-                "message": 'error',
-                'table': `directors`,
-                'error': error
-            })
-            }
-        }
-        )
-    },
     //3 Byprogram
     findProgramsByDirectors(res, table, id) {       
         let sql = `SELECT 
@@ -83,29 +37,7 @@ const directorsDao = {
             }
         );
     },
-    //4 id
-        findById: (res, table, id) => {
-                connect.query(
-                `SELECT * FROM directors WHERE directors_id = ${id};`,
-                (error, rows) => {
-                    if (!error) {
-                    if (rows.length === 1) {
-                        res.json(rows[0])
-                    } else {
-                        res.json(rows)
-                    }
-                    } else {
-                    console.log(`Dao Error: ${error}`)
-                    res.json({
-                        "message": 'error',
-                        'table': `directors`,
-                        'error': error
-                    })
-                    }
-                }
-            )
-            }, 
-            // 7 post
+    
         create: (req, res, table) => {
             //Object.key returns array of keys
             if (Object.keys(req.body).length === 0) {

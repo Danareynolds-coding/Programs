@@ -5,7 +5,7 @@ body{
   margin:0;
   padding:0;
    background-image:url('/image/back/back.jpg');
-   background-repeat: no-repeat;
+   background-repeat:no-repeat;
    background-size: cover;
    background-color: rgb(138, 176, 246);
    background-blend-mode:overlay;
@@ -14,7 +14,7 @@ body{
 .header{
   background-image:url('/image/back/blue.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat:no-repeat;
   color: red; 
   font-weight: 800;
 }

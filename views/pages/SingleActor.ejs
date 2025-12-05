@@ -4,16 +4,18 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <div class="card >
-                        <a href="/Actor-Prog/<%= actors.actors_id %>">
-                          <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top  img-fluid"/>
-                        </a>
+                    <div class="card" >
+                          <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top img-fluid"/>
                         <div class="card-body">
                             <h2 class="Title">
                                 <%= actors.fName %>
                                 <%= actors.lName %>
                             </h2>
-                            Click on the Image to get the program and character.
+                            <p>For Programs:
+                            <a href="/Actor-Prog/<%= actors.actors_id %>">
+                                HERE
+                            </a>
+                            </p>
                         </div>
                     </div>
                 </div>

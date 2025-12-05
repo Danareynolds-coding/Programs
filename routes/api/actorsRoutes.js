@@ -17,7 +17,7 @@ router.get('/get_programsForActors/:id', (req, res)=> {
   dao.findProgramsByActors(res, dao.table, req.params.id)
 })
 
-// 4 http://api/actor/?
+// 4 http://api/actors/?
 router.get('/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)
 })

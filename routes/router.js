@@ -90,7 +90,7 @@ router.get('/singleProgram/:id', (req, res)=> {
 })
 
 //http://localhost:3000/singleActor/:id
-router.get('/singleActor/:id', (req, res)=> {
+router.get('/actors/:id', (req, res)=> {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/${id}`;
   axios.get(url)
@@ -104,9 +104,10 @@ router.get('/singleActor/:id', (req, res)=> {
 });
 
 //http://localhost:3000/singleDirector
-router.get('/singleDirector/:id', (req, res)=> {
+router.get('/directors/:id', (req, res)=> {
+  const id =req.params.id;
   const url = `http://localhost:3000/api/directors/${id}`
-  axios.get(url)
+  axios.get(url) 
     .then(resp=> {
       res.render('pages/singleDirector',{
       title:'Single Director',
@@ -133,7 +134,7 @@ router.get('/:id', (req, res)=>{
 })
 
 //****************Info page for director */
-router.get('/Director-Prog/:id', (req, res)=>{
+router.get('/directors/programs/:id', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/directors/get_ProgramsForDirectors/${id}`
   axios.get(url)
