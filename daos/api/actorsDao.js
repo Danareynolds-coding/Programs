@@ -3,51 +3,6 @@ const connect = require('../../config/dbconfig')
     //1. findall
     const actorsDao = {
         table: 'actors',
-        findAllActors(res, table, id) {
-            let sql = `SELECT * FROM actors`;
-            connect.execute(
-                sql,
-                [id],
-                (error, rows) => {
-                    if (!error) {
-                        if (rows.length === 1) {
-                            res.json(...rows);
-                        } else {
-                            res.json(rows);
-                        }
-                    } else {
-                        console.log(`DAO Error: ${error}`);
-                        res.json({
-                            message: "error",
-                            table: `${table}`,
-                            error: error,
-                        });
-                    }
-                }
-            );
-        },
-    // 2. sort    
-    sort: (res, table, sorter) => {
-        connect.query(
-        `SELECT * FROM actors ORDER BY ${sorter};`,
-        (error, rows) => {
-            if (!error) {
-            if (rows.length === 1) {
-                res.json(rows[0])
-            } else {
-                res.json(rows)
-            }
-            } else {
-            console.log(`Dao Error: ${error}`)
-            res.json({
-                "message": 'error',
-                'table': `actors`,
-                'error': error
-            })
-            }
-        }
-        )
-    },
     // 3. findProgramBy
     findProgramsByActors(res, table, id) {
         let sql = `SELECT 
@@ -84,29 +39,7 @@ const connect = require('../../config/dbconfig')
             );
         }, 
         //5. unique
-        //6. unique2
-        // 4. id
-        findById: (res, table, id) => {
-        connect.query(
-        `SELECT * FROM actors WHERE actors_id = ${id};`,
-        (error, rows) => {
-            if (!error) {
-            if (rows.length === 1) {
-                res.json(...rows)
-            } else {
-                res.json(rows)
-            }
-            } else {
-            console.log(`Dao Error: ${error}`)
-            res.json({
-                "message": 'error',
-                'table': `actors`,
-                'error': error
-            })
-          }
-        }
-      )
-    }, 
+        
     // 7. add 
     create: (req, res, table) => {
     //Object.key returns array of keys

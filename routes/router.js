@@ -90,13 +90,14 @@ router.get('/singleProgram/:id', (req, res)=> {
 })
 
 //http://localhost:3000/singleActor/:id
-router.get('singleActor/:id', (req, res)=> {
+router.get('/actors/:id', (req, res)=> {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/${id}`;
   axios.get(url)
     .then(resp=> {
+      
       res.render('pages/singleActor',{
-        title:'single Actor',
+        title:'Single Actor',
         name: 'Actor',
         actors:resp.data
       });

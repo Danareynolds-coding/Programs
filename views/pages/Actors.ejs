@@ -7,12 +7,12 @@
                     <% data.forEach(actors=> { %>
                         <div class="col">
                             <div class="card h-100">
-                                <a href="/singleActor/<%= actors.actors_id %>">  
+                                <a href="/actors/<%= actors.actors_id %>">  
                                     <img src="/image/imgActors/<%= actors.ImagePath %>" alt="actor img"
                                     class="card-img-top img-fluid"/>
                                 </a>
                                 <div class="card-body d-flex flex-column">
-                                    <h4 style="font-size:medium;">
+                                    <h4 style="font-size:1em;">
                                         <%= actors.fName%>
                                         <%= actors.lName%>
                                         Actor <%= ++counter %>: <%= actors.lName %>
