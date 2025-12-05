@@ -17,9 +17,12 @@ body{
 p{
   color:red;
 }
-/* .p-actors{
-  background-image:url('BG1') ;
-} */
+
+h2{
+  font-weight: 800;
+  margin-top: 2em;
+}
+
 a{
   color:green;
 }
@@ -30,10 +33,6 @@ a{
   font-size:8px;
 }
   
-/* .imgDirector{
-  width:12em;
-  height:20em;
-} */
 .addActors{
   border-width: 2px;
   border-color:#00ffff;
@@ -45,6 +44,7 @@ ul{list-style-type: none;
   margin:0;
   padding:0;
   overflow:hidden;
+  margin-bottom: 20px;
 }
 ul li{
   margin:10px 10px 5px 10px;

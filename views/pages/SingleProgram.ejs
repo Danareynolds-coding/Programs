@@ -2,7 +2,6 @@
 
     <section class="section" id="section">
         <div class="container">
-
             <div class="row item-center">
                 <div class="col-4">
                     <div class="card">
@@ -39,13 +38,22 @@
                 </div>
                 <div class="col-3">
                     <h5 class="text-center">More Information</h5>
-                    <p>For Actors :<a href="/Prog-Act/<%= programs.programs_id %>"> HERE </a></p>
-                    <p>For Directors :<a href="http:localhost:3000/api/programs/with_directors"> HERE </a></p>
-                    <p>For Production Company :<a href="http:localhost:3000/api/programs/with_productionCo">HERE</a> 
+                    <p>For Actors :
+                        <a href="/Prog-Act/<%= programs.programs_id %>">  HERE </a>
                     </p>
-                    <p>For Streaming Platforms :<a href="http:localhost:3000/api/programs/with_streaming"> HERE </a>
+                    <p>For Directors :
+                        <a href="/Prog-Dir/<%= programs.programs_id %>">  HERE </a>
                     </p>
-                    <p>For Genres :<a href="http:localhost:3000/api/programs/with_genre"> HERE </a></p>
+                    <p>For Production Company :
+                        <a href="/Prog-PCo/<%= programs.programs_id %>">  HERE </a>
+                    </p> 
+                    
+                    <p>For Streaming Platforms 
+                        :<a href="/Prog-Streaming/<%= programs.programs_id %>">  HERE </a>
+                    </p>
+                    <p>For Genres :
+                        <a href="/Prog-genre/<%= programs.programs_id %>"> HERE </a>
+                    </p>
                 </div>
             </div>
         </div>

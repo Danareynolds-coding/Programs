@@ -135,15 +135,38 @@ router.get('/Prog-Act/:id', (req, res) => {
   axios.get(url)
     .then(resp=> {
       res.render('pages/Prog-Act', {
-        title:'Program with Actor',
+        title:'Program with Actors',
         name:'Program With Actors',
         programs:resp.data
       })
     })
   })
 
+router.get('/Prog-Dir/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/with_directors/${id}`
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/Prog-Dir', {
+        title:'Program with Director',
+        name:'Program With Directors',
+        programs:resp.data
+      })
+    })
+  })
 
-
+  router.get('/Prog-PCo/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/with_productionCo/${id}`
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/Prog-PCo', {
+        title:'Program with Production Company',
+        name:'Program With Production Company',
+        programs:resp.data
+      })
+    })
+  })
 //********************FORMS
 // http://localhost:3000/actors-form
 router.get('/actors-form', (req, res)=> {
