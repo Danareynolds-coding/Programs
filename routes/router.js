@@ -90,12 +90,11 @@ router.get('/singleProgram/:id', (req, res)=> {
 })
 
 //http://localhost:3000/singleActor/:id
-router.get('/actors/:id', (req, res)=> {
+router.get('/singleActor/:id', (req, res)=> {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/${id}`;
   axios.get(url)
     .then(resp=> {
-      
       res.render('pages/singleActor',{
         title:'Single Actor',
         name: 'Actor',
@@ -121,7 +120,7 @@ router.get('/singleDirector/:id', (req, res)=> {
 
 //***************Info page for Actor */
 
-router.get('/Actor-Prog/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/get_ProgramsForActors/${id}`
   axios.get(url)
