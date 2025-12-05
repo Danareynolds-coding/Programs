@@ -3,7 +3,9 @@
     <section class="section" >
         <div class="container mt-4">
             <div class="row row-cols-1 row-cols-md-3 g-4 ">
+                <% let counter=0; %>
                 <% data.forEach(programs=> { %>
+                    
                     <div class="col">
                         <div class="card h-100">
                             <a href="/singleProgram/<%= programs.programs_id %>">
@@ -13,7 +15,7 @@
                             </a>
                             <div class="card-body d-flex flex-column">
                             <h2 class="ptitle">
-                                <%= programs.title %>
+                               Program <%= ++counter %>: <%= programs.title %>
                             </h2>
                             <p class="description">
                                 <%= programs.description %>

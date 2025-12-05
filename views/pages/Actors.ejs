@@ -6,7 +6,7 @@
                     <% data.forEach(actors=> { %>
                         <div class="col">
                             <div class="card h-100">
-                                <a href="<a href="/infoPage/<%= actors.actors_id%>">
+                                <a href="/singleActor/<%= actors.actors_id %>">  
                                     <img src="/image/imgActors/<%= actors.ImagePath %>" alt="actor img"
                                     class="card-img-top img-fluid"/>
                                 </a>
@@ -15,9 +15,6 @@
                                         <%= actors.fName%>
                                         <%= actors.lName%>
                                     </h4>
-                                    <p>
-                                        <%= actors.character %>
-                                    </p>
                                 </div>
                             </div>
                         </div>

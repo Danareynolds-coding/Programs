@@ -5,7 +5,7 @@ body{
   margin:0;
   padding:0;
   background-color: lightblue;
-  color:#07076C;
+  color:navy;
 }
 .header{
   background-image:url('/image/backgrounds/blue.jpg');
@@ -17,7 +17,14 @@ body{
 p{
   color:red;
 }
-
+.infoPage{
+  padding:5px;
+  border-radius: 4px;
+  border-color: navy;
+  background-color: lightblue;
+  color:red;
+  font-size:x-small
+}
 h2{
   font-weight: 800;
   margin-top: 2em;

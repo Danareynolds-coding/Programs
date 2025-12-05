@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+    <section class="section" id="section">
+        <div class="container">
+            <div class="row item-center">
+                <div class="col-4">
+                    <div class="card">
+                        <a class="infoPage" href="<a href="/Actor-Prog/<%= actors.actors_id%>">
+                          <img src="/image/imgPosters/<%= programs.PosterURL %>" alt="poster for the Program img" class="image img-fluid"/>
+                        </a>
+                        <div class="card-body">
+                            <h2 class="Title">
+                                <%= actors.fName %><%= actors.lName %>
+                            </h2>
+                            Click on the Image to get the program and character.
+                        </div>
+                    </div>
+                </div>
+                
+    </section>
+    <%- include('../partials/footer') %> 

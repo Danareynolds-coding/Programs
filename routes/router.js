@@ -89,18 +89,19 @@ router.get('/singleProgram/:id', (req, res)=> {
     })
 })
 
-//http://localhost:3000/singleActor
-router.get('/singleActor', (req, res)=> {
-  const url = `http://localhost:3000/api/programs/${id}`
+//http://localhost:3000/singleActor/:id
+router.get('singleActor/:id', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/actors/${id}`;
   axios.get(url)
     .then(resp=> {
       res.render('pages/singleActor',{
-      title:'Single Actor',
-      name: 'Actor',
-      programs:resp.data
-    })
-  })
-})
+        title:'Single Actor',
+        name: 'Actor',
+        actors:resp.data
+      });
+    });
+});
 
 //http://localhost:3000/singleDirector
 router.get('/singleDirector', (req, res)=> {
@@ -110,25 +111,30 @@ router.get('/singleDirector', (req, res)=> {
       res.render('pages/singleDirector',{
       title:'Single Director',
       name: 'Director',
-      programs:resp.data
+      directors:resp.data
     })
   })
 })
 
-//http://localhost:3000/
-router.get('/singleProgram/:id', (req, res)=> {
+
+
+//***************Info page for Actor */
+
+router.get('/Actor-Prog/:id', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/programs/${id}`
+  const url = `http://localhost:3000/api/actors/get_ProgramsForActors/${id}`
   axios.get(url)
     .then(resp=> {
-      res.render('pages/singleProgram',{
-      title:'Single Program',
-      name: 'Christmas Program',
-      programs:resp.data
+      res.render('pages/Actor-Prog', {
+        title:'Movie By Actor',
+        name:'Movie By Actor'
       })
     })
 })
-//**************Info page */
+
+
+
+//**************Info page  for Programs*/
 router.get('/Prog-Act/:id', (req, res) => {
   const id = req.params.id;
   const url = `http://localhost:3000/api/programs/with_actors/${id}`
@@ -167,6 +173,35 @@ router.get('/Prog-Dir/:id', (req, res) => {
       })
     })
   })
+
+ router.get('/Prog-Streaming/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/with_streaming/${id}`
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/Prog-Streaming', {
+        title:'Program with Streaming Platforms',
+        name:'Program With  Streaming Platforms',
+        programs:resp.data
+      })
+    })
+  })
+
+  router.get('/Prog-genre/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/with_genre/${id}`
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/Prog-genre', {
+        title:'Program with Genres',
+        name:'Program With Genres',
+        programs:resp.data
+      })
+    })
+  })
+
+
+
 //********************FORMS
 // http://localhost:3000/actors-form
 router.get('/actors-form', (req, res)=> {
