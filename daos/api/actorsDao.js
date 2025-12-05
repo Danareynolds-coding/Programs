@@ -1,9 +1,8 @@
 //need findAll, sort, findbyid, findprogram, create and update
 const connect = require('../../config/dbconfig')
-    //1. findall
-    const actorsDao = {
+       const actorsDao = {
         table: 'actors',
-    // 3. findProgramBy
+    // 1. findProgramBy
     findProgramsByActors(res, table, id) {
         let sql = `SELECT 
           a.actors_id, 
@@ -38,9 +37,9 @@ const connect = require('../../config/dbconfig')
                 }
             );
         }, 
-        //5. unique
+        //4. unique
         
-    // 7. add 
+    // 5 add 
     create: (req, res, table) => {
     //Object.key returns array of keys
     if (Object.keys(req.body).length === 0) {
@@ -66,7 +65,7 @@ const connect = require('../../config/dbconfig')
       )
     }
   },
-  //8  change
+  //6 change
   update: (req, res, table) => {
     if (isNaN(req.params.id)) {
       res.json({

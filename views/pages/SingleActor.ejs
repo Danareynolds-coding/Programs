@@ -1,22 +1,22 @@
 <%- include('../partials/header') %>
-
+<main class="main">
     <section class="section" id="section">
         <div class="container">
-            <div class="row ">
+            <div class="row justify-content-center">
                 <div class="col-4">
-                    
-                    <div class="card">
-                        <!-- <a class="infoPage" href="<a href="/Actor-Prog/<%= actors.actors_id%>"> -->
-                          <img src="/image/ImagePath/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top  img-fluid"/>
-                        <!-- </a> -->
+                    <div class="card >
+                        <a href="/Actor-Prog/<%= actors.actors_id %>">
+                          <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top  img-fluid"/>
+                        </a>
                         <div class="card-body">
                             <h2 class="Title">
-                                <%= actors.fName %><%= actors.lName %>
+                                <%= actors.fName %>
+                                <%= actors.lName %>
                             </h2>
                             Click on the Image to get the program and character.
                         </div>
                     </div>
                 </div>
-                
     </section>
+</main>
     <%- include('../partials/footer') %> 
