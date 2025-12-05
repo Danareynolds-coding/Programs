@@ -4,11 +4,15 @@
 body{
   margin:0;
   padding:0;
-  background-color: lightblue;
+   background-image:url('/image/back/back.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-color: rgb(138, 176, 246);
+   background-blend-mode:overlay;
   color:navy;
 }
 .header{
-  background-image:url('/image/backgrounds/blue.jpg');
+  background-image:url('/image/back/blue.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   color: red; 
@@ -29,7 +33,9 @@ h2{
   font-weight: 800;
   margin-top: 2em;
 }
-
+.main{
+   background-image: url(image/back/back.jpg);
+}
 a{
   color:green;
 }

@@ -16,7 +16,7 @@ router.get('/get_programsForDirectors/:id', (req, res)=> {
   dao.findProgramsByDirectors(res, dao.table, req.params.id)
 })
 //4 id
-router.get('/:id', (req, res)=> {
+router.get('directors/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)
 })
 
