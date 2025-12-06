@@ -18,17 +18,22 @@ body{
   color: red; 
   font-weight: 800;
 }
+.MyInfo{
+  background-color: white;
+  font-size: small;
+  margin-top:1em;
+}
 p{
   color:red;
 }
-.infoPage{
+/* .infoPage{
   padding:5px;
   border-radius: 4px;
   border-color: navy;
   background-color: lightblue;
   color:red;
   font-size:x-small
-}
+} */
 h2{
   font-weight: 800;
   margin-top: 2em;

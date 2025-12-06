@@ -1,19 +1,22 @@
 <%- include('../partials/header') %>
 <main class="main">
     <section class="section" id="section">
+        
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <div class="card >
-                        <a href="/directors/programs/<%= directors.directors_id %>">
+                    <div class="card" >
+                       
                           <img src="/image/imgDirectors/<%= directors.ImagePath %>" alt="image of director" class=" card-img-top  img-fluid"/>
-                        </a>
+                        
                         <div class="card-body">
                             <h2 class="Title">
                                 <%= directors.fName %>
                                 <%= directors.lName %>
                             </h2>
-                            Click on the Image to get the program.
+                            <p>Programs By This Director:
+                                <a href="/directors/programs/<%= directors.directors_id %>">  HERE</a>
+                            </p>
                         </div>
                     </div>
                 </div>
