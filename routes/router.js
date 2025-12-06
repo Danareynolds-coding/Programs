@@ -121,17 +121,18 @@ router.get('/directors/:id', (req, res)=> {
 
 //***************Info page for Actor */
 
-router.get('/:id', (req, res)=>{
+router.get('/actor/:id', (req, res) => {
   const id = req.params.id;
-  const url = `http://localhost:3000/api/actors/get_ProgramsForActors/${id}`
+  const url = `http://localhost:3000/api/actors/get_programsForActors/${id}`;
   axios.get(url)
-    .then(resp=> {
+    .then(resp => {
       res.render('pages/Actor-Prog', {
-        title:'Movie By Actor',
-        name:'Movie By Actor'
-      })
-    })
-})
+        title: 'Movie By Actor',
+        name: 'Movie By Actor',
+        programs: resp.data // Use 'programs' and single object
+      });
+    });
+});
 
 //****************Info page for director */
 router.get('/directors/programs/:id', (req, res)=>{
@@ -141,7 +142,8 @@ router.get('/directors/programs/:id', (req, res)=>{
     .then(resp=> {
       res.render('pages/Director-Prog', {
         title:'Movie By Director',
-        name:'Movie By Director'
+        name:'Movie By Director',
+        actors:resp.data
       })
     })
 })
