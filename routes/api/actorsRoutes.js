@@ -1,6 +1,6 @@
 
 const router = require('express').Router()
-const{actorsDao: dao} = require('../../daos/dao')
+const { actorsDao: dao } = require('../../daos/dao')
 
 //1    http://localhost:3000/api/actors
 router.get('/',(req, res)=> {
@@ -26,7 +26,9 @@ router.get('/:id', (req, res)=> {
 //6
 
 // 7. POST  http://localhost:3000/api/actor/create
-router.post('/create',(req, res)=> {
+// Handle actor creation with text fields only
+router.post('/create', (req, res) => {
+  console.log('ACTOR FORM SUBMIT req.body:', req.body);
   dao.create(req, res, dao.table)
 })
 

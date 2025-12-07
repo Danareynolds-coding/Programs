@@ -1,4 +1,5 @@
-//need findAll, sort, findbyid, findprogram, create and update
+
+
 const connect = require('../../config/dbconfig')
        const actorsDao = {
         table: 'actors',
@@ -42,12 +43,13 @@ const connect = require('../../config/dbconfig')
     // 5 add 
     create: (req, res, table) => {
     //Object.key returns array of keys
-    if (Object.keys(req.body).length === 0) {
+    if (!req.body || Object.keys(req.body).length === 0) {
       res.json({
         "error": true,
         "message": "no fields to create"
       })
     } else {
+      // Only use text fields, no file upload
       const fields = Object.keys(req.body)
       const values = Object.values(req.body)
       connect.execute(

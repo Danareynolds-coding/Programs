@@ -6,39 +6,38 @@
     <div class="container">
       <h2 class="text-center">ADD AN ACTOR</h2>
         <form 
-          action="http://localhost:3000/api/actors/create" 
+          action="/api/actors/create" 
           method="POST"
           class="form"
           id="actorsForm"
-          enctype="multipart/form-data"
         >
       <div class="row mb-3">
         <div class="col">
-          <label for="first_name" class="form-label">
+          <label for="fName" class="form-label">
             first name
           </label>
           <input 
             type="text"
-            id="first_name"
-            name="first_name"
+            id="fName"
+            name="fName"
             class="form-control">
         </div>
         <div class="col">
-          <label for="last_name" class="form-label">
+          <label for="lName" class="form-label">
             last name
           </label>
           <input 
             type="text"
-            id="last_name"
-            name="last_name"
+            id="lName"
+            name="lName"
             class="form-control">
         </div>
         <div class="col">
           <label for="ImagePath" class="form-label">
-            ImagePath
+            Image filename (e.g., mMyer.jpg)
           </label>
           <input 
-            type="file"
+            type="text"
             id="ImagePath"
             name="ImagePath"
             class="form-control">
