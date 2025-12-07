@@ -3,12 +3,21 @@ const connect = require('../../config/dbconfig');
 const programsDao = {
     table: 'programs',
   //1. same as find all
-    findMovieInfo (res, table) {
+    findProgramsInfo (res, table) {
         const sql = `SELECT p.programs_id, p.title, p.rating, p.animationType, p.runtime, p.yr_released, p.productionCo, p.budget, p.grossProfit, p.showing, p.posterURL, p.description, p.fivePointRating,
             CASE WHEN p.budget IS NULL THEN NULL ELSE p.budget END budget,
             CASE WHEN p.gross IS NULL THEN '' ELSE p.gross END gross
             FROM programs p
-            ORDER BY p.programs_id, p.title;`;
+             JOIN productionCo c using productionCo_id
+            JOIN program_to_actors pa ON p.programs_id = pa.programs_id
+            JOIN actors a ON pa.actors_id = a.actors_id
+            JOIN program_to_directors pd ON p.programs_id = pd.programs_id
+            JOIN directors d ON pd.directors_id = d.directors_id
+            JOIN program_to_genre pg ON p.programs_id = pg.programs_id
+            JOIN genre g ON pg.genre_id = g.genre_id
+            JOIN program_to_streaming ps ON p.programs_id = ps.programs_id
+            ORDER BY p.title ASC;`;
+           
         connect.query(sql, (error, rows) => {
             if (!error) {
                 if (rows.length === 1) {
@@ -26,29 +35,7 @@ const programsDao = {
             }
         });
     },
-    //2. sort
-    sort(res, table, sorter) {
-        connect.query(
-            `SELECT * FROM programs ORDER BY ${sorter};`,
-            (error, rows) => {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(rows[0]);
-                    } else {
-                        res.json(rows);
-                    }
-                } else {
-                    console.log(`Dao Error: ${error}`);
-                    res.json({
-                        message: 'error',
-                        table: `programs`,
-                        error: error
-                    });
-                }
-            }
-        );
-    },
-    // 3 A 
+    
     findProgramsWithActors(res, table, id) {
         let sql = `SELECT 
                 p.programs_id,
@@ -233,89 +220,9 @@ const programsDao = {
         );
     },
    
-    findById (res, table, id) {
-        connect.query(
-            `SELECT * FROM programs WHERE programs_id = ${id};`,
-            (error, rows) => {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(rows[0]);
-                    } else {
-                        res.json(rows);
-                    }
-                } else {
-                    console.log(`Dao Error: ${error}`);
-                    res.json({
-                        message: 'error',
-                        table: `programs`,
-                        error: error
-                    });
-                }
-            }
-        );
-    },
+   
 
-    create (req, res, table) {
-        if (Object.keys(req.body).length === 0) {
-            res.json({
-                error: true,
-                message: "no fields to create"
-            });
-        } else {
-            const fields = Object.keys(req.body);
-            const values = Object.values(req.body);
-            connect.execute(
-                `INSERT INTO programs SET ${fields.join(' = ?,')} = ?`,
-                values,
-                (error, dbres) => {
-                    if (!error) {
-                        res.json({
-                            last_id: dbres.insertId
-                        });
-                    } else {
-                        console.log(`programsDao error: `, error);
-                    }
-                }
-            );
-        }
-    },
-        update(req, res, table) {
-        if (isNaN(req.params.id)) {
-            res.json({
-                error: true,
-                message: "id must be a number"
-            });
-        } else if (Object.keys(req.body).length == 0) {
-            res.json({
-                error: true,
-                message: "No fields to update"
-            });
-        } else {
-            const fields = Object.keys(req.body);
-            const values = Object.values(req.body);
-            connect.execute(
-                `UPDATE programs
-                SET ${fields.join(' = ?,')} = ?
-                WHERE genre_id = ?;`,
-                [...values, req.params.id],
-                (error, dbres) => {
-                    if (!error) {
-                        res.json({
-                            status: "updated",
-                            changedRows: dbres.changedRows
-                        });
-                    } else {
-                        res.json({
-                            error: true,
-                            message: error
-                        });
-                    }
-                }
-            );
-        }
-    }
-};
-
+       
 module.exports = programsDao;
 
 
