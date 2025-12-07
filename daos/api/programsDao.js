@@ -210,9 +210,10 @@ const programsDao = {
         );
     }, 
     // 5. unique1
-        findTheatrePrograms (res, table, sorter) {
+        findShowingTypePrograms (res, table, sorter) {
         connect.query(
-            `SELECT * FROM programs WHERE showing = ${sorter};`,
+            `SELECT * FROM programs WHERE showing = ?;`,
+            [sorter]
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
