@@ -18,6 +18,11 @@ body{
   color: rgb(64, 11, 94); 
   font-weight: 800;
 }
+.atag{
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1em;
+}
 .MyInfo{
   background-color: white;
   font-size: small;
