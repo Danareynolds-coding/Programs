@@ -1,6 +1,13 @@
 
 const router = require('express').Router()
 const{directorsDao: dao} = require('../../daos/dao')
+
+//3. ByPrograms  http://localhost:3000/api/directors/get_programsForDirector/?
+router.get('/get_programsForDirectors/:id', (req, res)=> {
+  dao.findProgramsByDirectors(res, dao.table, req.params.id)
+})
+
+//**********************do i keep these */
 // 1. http://localhost:3000/api/directors
 router.get('/',(req, res)=> {
   dao.findAll(res, dao.table)
@@ -11,10 +18,7 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
-// 3. ByPrograms  http://localhost:3000/api/directors/get_programsForDirector/?
-router.get('/get_programsForDirectors/:id', (req, res)=> {
-  dao.findProgramsByDirectors(res, dao.table, req.params.id)
-})
+/
 //4 id
 router.get('/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)

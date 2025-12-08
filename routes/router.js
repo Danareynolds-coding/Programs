@@ -74,49 +74,6 @@ router.get('/Directors',(req, res)=> {
     })
   })
 })
-//********************SINGLEPages
-//http://localhost:3000/singleProgram
-router.get('/singleProgram/:id', (req, res)=> {
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/programs/${id}`
-  axios.get(url)
-    .then(resp=> {
-      res.render('pages/singleProgram',{
-      title:'Single Program',
-      name: 'Christmas Program',
-      programs:resp.data
-      })
-    })
-})
-
-//http://localhost:3000/singleActor/:id
-router.get('/actors/:id', (req, res)=> {
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/actors/${id}`;
-  axios.get(url)
-    .then(resp=> {
-      res.render('pages/singleActor',{
-        title:'Single Actor',
-        name: 'Actor',
-        actors:resp.data
-      });
-    });
-});
-
-//http://localhost:3000/singleDirector
-router.get('/directors/:id', (req, res)=> {
-  const id =req.params.id;
-  const url = `http://localhost:3000/api/directors/${id}`
-  axios.get(url) 
-    .then(resp=> {
-      res.render('pages/singleDirector',{
-      title:'Single Director',
-      name: 'Director',
-      directors:resp.data
-    })
-  })
-})
-
 
 
 //***************Info page for Actor */
@@ -214,6 +171,49 @@ router.get('/Prog-Dir/:id', (req, res) => {
       })
     })
   })
+
+//********************SINGLEPages
+//http://localhost:3000/singleProgram
+router.get('/singleProgram/:id', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/${id}`
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/singleProgram',{
+      title:'Single Program',
+      name: 'Christmas Program',
+      programs:resp.data
+      })
+    })
+})
+
+//http://localhost:3000/singleActor/:id
+router.get('/actors/:id', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/actors/${id}`;
+  axios.get(url)
+    .then(resp=> {
+      res.render('pages/singleActor',{
+        title:'Single Actor',
+        name: 'Actor',
+        actors:resp.data
+      });
+    });
+});
+
+//http://localhost:3000/singleDirector
+router.get('/directors/:id', (req, res)=> {
+  const id =req.params.id;
+  const url = `http://localhost:3000/api/directors/${id}`
+  axios.get(url) 
+    .then(resp=> {
+      res.render('pages/singleDirector',{
+      title:'Single Director',
+      name: 'Director',
+      directors:resp.data
+    })
+  })
+})
 
 
 

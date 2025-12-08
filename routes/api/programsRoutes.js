@@ -5,15 +5,6 @@ const router = express.Router()
 const {programsDao: dao} = require('../../daos/dao') 
 const { table } = require('../../daos/api/programsDao')
 
-//1. findall   http://localhost:3000/api/programs
-router.get('/', (req, res)=> {                  
-    dao.findAll(res, dao.table)            
-}) 
-
-//2. sort http://localhost:3000/programs/sort/:sorter                                     
-router.get('/sort/:sorter', (req, res)=> {    
-    dao.sort(res, dao.table, req.params.sorter)
-})      
 
 // 3A actors http://localhost:3000/api/programs/with_actors/:id
 router.get('/with_actors/:id', (req, res)=> {
@@ -38,6 +29,18 @@ router.get('/with_productionCo/:id',(req, res)=> {
 router.get('/with_streaming/:id', (req, res)=> {
     dao.findProgramsWithStreaming(res, dao.table, req.params.id)
 })
+
+//***********can i delete **** */
+
+//1. findall   http://localhost:3000/api/programs
+router.get('/', (req, res)=> {                  
+    dao.findAll(res, dao.table)            
+}) 
+
+//2. sort http://localhost:3000/programs/sort/:sorter                                     
+router.get('/sort/:sorter', (req, res)=> {    
+    dao.sort(res, dao.table, req.params.sorter)
+})      
 
 // 4.id  http://localhost:3000/api/programs/:id
 router.get('/:id', (req, res)=> {               
