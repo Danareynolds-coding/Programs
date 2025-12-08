@@ -3,7 +3,12 @@
     <section class="section" id="section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-4">
+                <div class="col-4 text-center">
+                    <p class="atag">For Programs By This Actor:
+                            <a href="/actors_program/<%= actors.actors_id %>">
+                                HERE
+                            </a>
+                            </p>
                     <div class="card" >
                           <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top img-fluid"/>
                         <div class="card-body">
@@ -11,11 +16,7 @@
                                 <%= actors.fName %>
                                 <%= actors.lName %>
                             </h2>
-                            <p>For Programs:
-                            <a href="/actors_program/<%= actors.actors_id %>">
-                                HERE
-                            </a>
-                            </p>
+                            
                         </div>
                     </div>
                 </div>

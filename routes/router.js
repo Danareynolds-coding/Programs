@@ -103,8 +103,7 @@ router.get('/directors_program/:id', (req, res)=>{
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
     .then(resp=> {
-      console.log(resp.data);
-
+      // console.log(resp.data);
       res.render('pages/Director-Prog', {
         title:'Movie By Director',
         name:'Movie By Director',
