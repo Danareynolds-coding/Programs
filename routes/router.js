@@ -84,7 +84,7 @@ router.get('/Directors',(req, res)=> {
 
 //***************Info page for Actor */
 
-router.get('/Actor-Prog/:id', (req, res) => {
+router.get('/CategoryInfo/Actor-Prog/:id', (req, res) => {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/get_programsByActors/${id}`;
   axios.get(url)
@@ -111,7 +111,9 @@ router.get('/directors/programs/:id', (req, res)=>{
       })
     })
 })
-
+//***************Info for Genre */
+//**************info page for Production co 
+//***************Info for Streaming */
 
 //**************Info page  for Programs*/
 router.get('/Prog-Act/:id', (req, res) => {

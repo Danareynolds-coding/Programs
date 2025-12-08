@@ -10,7 +10,7 @@ const productionCoDao = {
             pc.productionCo_id,
             pc.productionCo,
             p.programs_id,
-            p.title AS programs_title 
+            GROUP_CONCAT(CONCAT(p.title,'',p.program_id AS programs 
             FROM productionCo AS pc
             JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
             WHERE pc.productionCo_id = ?`;

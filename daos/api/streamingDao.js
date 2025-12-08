@@ -6,8 +6,9 @@ const streamingDao = {
     //3 programsBy
     findProgramsByStreaming(res, table, id) {
         let sql = `SELECT
-            s.streaming_id, s.streaming,
-        GROUP_CONCAT(CONCAT(p.title,' (', p.productionCo, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+            s.streaming_id, 
+            s.streaming,
+        GROUP_CONCAT(CONCAT(p.title,' (', p.rating, ')') ORDER BY p.title SEPARATOR ', ') AS programs
         FROM streaming s
         LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
         LEFT JOIN 

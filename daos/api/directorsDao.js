@@ -14,7 +14,7 @@ const directorsDao = {
         LEFT JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
         LEFT JOIN programs p ON ptd.programs_id = p.programs_id
         WHERE d.directors_id = ?
-        GROUP BY d.directors_id, d.fName, d.lName, p.fivePointRating ,p.title`;
+        GROUP BY d.directors_id, d.fName, d.lName`;
         
         connect.execute(
             sql,

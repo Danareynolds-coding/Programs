@@ -5,8 +5,8 @@ const{streamingDao: dao} = require('../../daos/dao')
 
 
 // 3. ByPrograms  http://localhost:3000/api/streaming/get_programsForStreaming/?
-router.get('/get_programsForStreaming/:id', (req, res)=> {
-  dao.findStreaming(res, dao.table, req.params.id)
+router.get('/get_programsByStreaming/:id', (req, res)=> {
+  dao.findProgramsByStreaming(res, dao.table, req.params.id)
 })
 //5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
 router.get('/get_RatingForStreaming', (req, res)=> {

@@ -17,7 +17,6 @@ const genreDao = {
         LEFT JOIN programs p ON ptg.programs_id = p.programs_id
         WHERE g.genre_id = ?
         GROUP BY g.genre_id, g.genre`;
-
         connect.execute(
             sql,
             [id],
