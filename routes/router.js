@@ -92,22 +92,23 @@ router.get('/actors_program/:id', (req, res) => {
       res.render('pages/Actor-Prog', {
         title: 'Movie By Actor',
         name: 'Movie By Actor',
-        actors:resp.data,
-        programs: resp.data // Use 'programs' and single object
+        data:resp.data
       });
     });
 });
 
 //****************Info page for director */
-router.get('/directors/programs/:id', (req, res)=>{
+router.get('/directors_program/:id', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_ProgramsForDirectors/${id}`
+  const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
     .then(resp=> {
-      res.render('pages/Directors/Director-Prog', {
+      console.log(resp.data);
+
+      res.render('pages/Director-Prog', {
         title:'Movie By Director',
         name:'Movie By Director',
-        actors:resp.data
+        data:resp.data
       })
     })
 })
