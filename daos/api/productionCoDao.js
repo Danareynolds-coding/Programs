@@ -55,7 +55,6 @@ const productionCoDao = {
             }
         );
     },
-        // ...existing code...
         // 5. unique1
         findfivePointRatingByProductionCo(res, table) {
             let sql = `SELECT 

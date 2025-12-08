@@ -126,6 +126,21 @@ router.get('/genre_program/:id', (req, res)=>{
     })
 })
 //**************info page for Production co 
+router.get('/production_abc', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_productionCoAbc`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/GenrePg', {
+        title:'Alphabetized List Production Company',
+        name:'Production Companies',
+        data:resp.data
+      })
+    })
+})
+
+
 //***************Info for Streaming */
 
 //**************Info page  for Programs*/
