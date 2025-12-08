@@ -9,6 +9,9 @@
                 <div class="card-body">
                     <p><%= data.fName %> <%= data.lName %></p>
                     <p><%= data.programs %></p>
+                    <% if (data.fivePointRating){ %>
+                    <p><%= data.fivePointRating %> </p>
+                    <% } %>
                 </div>
             </div>
         </div>
