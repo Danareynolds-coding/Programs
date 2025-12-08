@@ -3,7 +3,7 @@ const router = require('express').Router()
 const{genreDao: dao} = require('../../daos/dao')
 
 // 3. ByPrograms  http://localhost:3000/api/genre/get_programsForGenre/?
-router.get('/get_programsForGenre/:id', (req, res)=> {
+router.get('/get_programsByGenre/:id', (req, res)=> {
   dao.findProgramsByGenre(res, dao.table, req.params.id)
 })
 

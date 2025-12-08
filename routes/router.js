@@ -37,6 +37,12 @@ router.get('/', (req, res)=> {
       name:"Christmas Programs"
     })
 });
+router.get('/CategoryInfo', (req, res)=> {
+  res.render('pages/CategoryInfo',{
+    title:'Category Information',
+    name:'Category Information'
+  })
+})
 //******************PAGES 
 //htps://localhost:3000/Programs
 router.get('/Programs', (req, res)=> {
@@ -78,14 +84,15 @@ router.get('/Directors',(req, res)=> {
 
 //***************Info page for Actor */
 
-router.get('/actor/:id', (req, res) => {
+router.get('/Actor-Prog/:id', (req, res) => {
   const id = req.params.id;
-  const url = `http://localhost:3000/api/actors/get_programsForActors/${id}`;
+  const url = `http://localhost:3000/api/actors/get_programsByActors/${id}`;
   axios.get(url)
     .then(resp => {
       res.render('pages/Actor-Prog', {
         title: 'Movie By Actor',
         name: 'Movie By Actor',
+        actors:resp.data,
         programs: resp.data // Use 'programs' and single object
       });
     });
@@ -97,7 +104,7 @@ router.get('/directors/programs/:id', (req, res)=>{
   const url = `http://localhost:3000/api/directors/get_ProgramsForDirectors/${id}`
   axios.get(url)
     .then(resp=> {
-      res.render('pages/Director-Prog', {
+      res.render('pages/Directors/Director-Prog', {
         title:'Movie By Director',
         name:'Movie By Director',
         actors:resp.data

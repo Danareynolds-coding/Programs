@@ -4,17 +4,17 @@ const actorsDao = {
     // 1. findProgramBy
     findProgramsByActors(res, table, id) {
         let sql = `SELECT 
-          a.actors_id, 
+          a.actors_id,
           a.fName, 
           a.lName,
-          a.character,
           a.ImagePath,
-        GROUP_CONCAT(CONCAT(p.title,' (', p.yr_released, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+          a.character,
+          GROUP_CONCAT(CONCAT(p.title,' (', p.yr_released, ')') ORDER BY p.title SEPARATOR ', ') AS programs
         FROM actors a
         LEFT JOIN programs_to_actors pta ON a.actors_id = pta.actors_id
         LEFT JOIN programs p ON pta.programs_id = p.programs_id
         WHERE a.actors_id = ?
-        GROUP BY a.actors_id, a.fName, a.lName, ImagePath`;
+        GROUP BY a.actors_id, a.fName, a.lName`;
       connect.execute(
           sql,
           [id],

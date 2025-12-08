@@ -15,7 +15,7 @@ body{
   background-image:url('/image/back/blue.jpg');
   background-size: cover;
   background-repeat:no-repeat;
-  color: red; 
+  color: rgb(64, 11, 94); 
   font-weight: 800;
 }
 .MyInfo{
