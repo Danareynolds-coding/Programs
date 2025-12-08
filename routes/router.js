@@ -218,6 +218,14 @@ router.get('/directors/:id', (req, res)=> {
 
 
 //********************FORMS
+// 1. form http://localhost:3000/programs-form 
+router.get('/programs-form', (req, res)=> {
+    res.render('pages/programs-form', {
+      title: 'Programs Form',
+      name: 'Add an Program'
+    })
+})
+
 // http://localhost:3000/actors-form
 router.get('/actors-form', (req, res)=> {
     res.render('pages/actors-form', {
