@@ -10,7 +10,6 @@ router.get('/get_programsByGenre/:id', (req, res)=> {
 //5.unique 1 http://localhost:3000/api/genre/get_descriptionByGenre/?
 router.get('/get_DescriptionByGenre/:id', (req, res)=> {
   dao.findDescriptionByGenre(res, dao.table, req.params.id)
-  
 })
 //*******************DO I Keep these here */
 // 1. findall http://localhost:3000/api/genre

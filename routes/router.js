@@ -112,6 +112,19 @@ router.get('/directors_program/:id', (req, res)=>{
     })
 })
 //***************Info for Genre */
+router.get('/genre_program/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_programsByGenre/${id}`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/Genre-Prog', {
+        title:'Movie By Genres',
+        name:'Movie By Genres',
+        data:resp.data
+      })
+    })
+})
 //**************info page for Production co 
 //***************Info for Streaming */
 

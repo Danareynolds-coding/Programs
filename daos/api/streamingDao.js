@@ -8,13 +8,12 @@ const streamingDao = {
         let sql = `SELECT
             s.streaming_id, 
             s.streaming,
-        GROUP_CONCAT(CONCAT(p.title,' (', p.rating, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+            p.title AS programs,
+            p. rating
         FROM streaming s
-        LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
-        LEFT JOIN 
-        programs p ON pts.programs_id = p.programs_id
-        WHERE s.streaming_id = ?
-        GROUP BY s.streaming_id, s.streaming`;
+        JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
+        JOIN programs p ON pts.programs_id = p.programs_id
+        WHERE s.streaming_id = ?;`
         connect.execute(
             sql,
             [id],
