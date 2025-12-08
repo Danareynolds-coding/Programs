@@ -11,12 +11,13 @@ const genreDao = {
         let sql = `SELECT 
             g.genre_id,
             g.genre, 
-            GROUP_CONCAT(CONCAT(p.title,' (', p.rating, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+            p.title AS programs,
+            p.rating
         FROM genre g
         LEFT JOIN programs_to_genre ptg ON g.genre_id = ptg.genre_id
         LEFT JOIN programs p ON ptg.programs_id = p.programs_id
         WHERE g.genre_id = ?
-        GROUP BY g.genre_id, g.genre`;
+        ;`
         connect.execute(
             sql,
             [id],
