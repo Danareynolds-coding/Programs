@@ -84,7 +84,7 @@ router.get('/Directors',(req, res)=> {
 
 //***************Info page for Actor */
 
-router.get('/CategoryInfo/Actor-Prog/:id', (req, res) => {
+router.get('/actors_program/:id', (req, res) => {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/get_programsByActors/${id}`;
   axios.get(url)
