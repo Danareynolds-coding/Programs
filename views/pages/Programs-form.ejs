@@ -10,7 +10,7 @@
           id="programsForm"
       >
         <div class="row mb-3">
-            <div class="col">
+          <div class="col">
             <label for="title" class="form-label">
               Title
             </label>
@@ -20,8 +20,9 @@
               name="title"
               class="form-control">
           </div>
+        </div>
         <div class="row mb-3">
-            <div class="col">
+          <div class="col">
             <label for="rating" class="form-label">
               Rating
             </label>
@@ -40,128 +41,133 @@
               <option value = 'TV-PG'>TV-PG</option>
               <option value = 'TV-14'>TV-14</option>
               <option value = 'TV-MA'>TV-MA</option>
-            </div>
-            <div class="col">
+              </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
             <label for="animationType" class="form-label">
-              Animation
+              Animation Type
             </label>
             <select 
               id="animationType"
-              name="Animation"
-              class="form-control">>
-              <option value = 'Live Action'>Live Action</option>
-              <option value = '2D Handrawn'>2D Handrawn</option>
-              <option value = 'CGI-3D'>CGI-3D</option>
-              <option value = 'CGI-2D'>CGI-2D</option>
-              <option value = 'Motion Capture'>Motion Capture</option>
-              <option value = 'Puppets & Animatronics'>Puppets & Animatronics</option>
-              <option value = 'Stop Motion'>Stop Motion</option>
-              <option value = 'Mixed Media'>Mixed Media</option>
-              <option value = 'RotoScope'>RotoScope</option>
-              <option value = 'Cel-shading'>Cel-shading</option>
-            
+              name="animationType"
+              class="form-control">
+              <option value="Live Action">Live Action</option>
+              <option value="2D Handrawn">2D Handrawn</option>
+              <option value="CGI-3D">CGI-3D</option>
+              <option value="CGI-2D">CGI-2D</option>
+              <option value="Motion Capture">Motion Capture</option>
+              <option value="Puppets & Animatronics">Puppets & Animatronics</option>
+              <option value="Stop Motion">Stop Motion</option>
+              <option value="Mixed Media">Mixed Media</option>
+              <option value="RotoScope">RotoScope</option>
+              <option value="Cel-shading">Cel-shading</option>
+            </select>
           </div>
-          <div class="row mb-3">
+        </div>
+
+        <div class="row mb-3">
             <div class="col">
             <label for="runtime" class="form-label">
               Runtime
             </label>
             <input 
-              type= number  
+                type="number"
               id="runtime"
               name="runtime"
               class="form-control">
               </div>
-            <div class="col">
-            <label for="yr_released" class="form-label">
-              Year Released
-            </label>
-            <input 
-              type= YEAR 
-              id="yr_released"
-              name="yr_released"
-              class="form-control">
+              <div class="col">
+                <label for="yr_released" class="form-label">
+                  Year Released
+                </label>
+                <input 
+                  type="number"
+                  id="yr_released"
+                  name="yr_released"
+                  class="form-control">
+              </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-            <label for="productionCo" class="form-label">
-              Production Company
-            </label>
-            <input 
-              type= number 
-              id="productionCo"
-              name="productionCo"
-              class="form-control">
+              <label for="productionCo" class="form-label">
+                Production Company
+              </label>
+              <input 
+                type="text"
+                id="productionCo"
+                name="productionCo"
+                class="form-control">
             </div>
           </div>
-          <div class="row mb-3">
-            <div class="col">
+        <div class="row mb-3">
+          <div class="col">
             <label for="budget" class="form-label">
               Budget
             </label>
             <input 
-              type= number
+              type="number"
               id="budget"
               name="budget"
               class="form-control">
-            </div>
-            <div class="col">
+          </div>
+          <div class="col">
             <label for="grossProfit" class="form-label">
               Gross Profit
             </label>
             <input 
-              type= number
+              type="number"
               id="grossProfit"
               name="grossProfit"
               class="form-control">
-            </div>
-            <div class="col">
+          </div>
+          <div class="col">
             <label for="showing" class="form-label">
               Showing
             </label>
             <select
-              type="text"
               id="showing"
               name="showing"
               class="form-control">
               <option value = 'theatre'>theatre</option>
               <option value = 'direct-to-TV'>direct-to-TV</option>
               <option value = 'VideoOnly'>Video Only</option>
-            </div>
-          <div class="row mb-3">
-            <div class="col">
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
             <label for="PosterURL" class="form-label">
               Poster
             </label>
             <input 
-              type= img 
+              type="text"
               id="PosterURL"
               name="PosterURL"
               class="form-control">
-            </div>
           </div>
-          <div class="row mb-3">
-            <div class="col">
+        </div>
+        <div class="row mb-3">
+          <div class="col">
             <label for="description" class="form-label">
               Description
             </label>
             <textarea
               id="description"
               name="description"
-              rows=" 10"
+              rows="10"
               cols="50"
               class="form-control">
             </textarea>
-            <input type="submit" value="Submit">
-            </div>
           </div>
-          <div class="row mb-3">
-            <div class="col">
+        </div>
+        <div class="row mb-3">
+          <div class="col">
             <label for="fivePointRating" class="form-label">
               Choose rating 0.0 to 5.0 Points
             </label>
             <select id="fivePointRating"
-              type= decimal(2,1)   
               name="fivePointRating"
               class="form-control">
               <option value = 0.5>0.5</option>
@@ -174,8 +180,9 @@
               <option value = 4.0>4.0</option>
               <option value = 4.5>4.5</option>
               <option value = 5.0>5.0</option>
-            </div>
+            </select>
           </div>
+        </div>
         <div class="row">
           <div class="col">
             <button 
