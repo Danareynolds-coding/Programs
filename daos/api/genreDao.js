@@ -71,7 +71,6 @@ const genreDao = {
                 }
             }
         );
-    },
-    
- 
+    }
+};
 module.exports = genreDao;

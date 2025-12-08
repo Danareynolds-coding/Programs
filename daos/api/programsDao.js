@@ -8,7 +8,7 @@ const programsDao = {
             CASE WHEN p.budget IS NULL THEN NULL ELSE p.budget END budget,
             CASE WHEN p.gross IS NULL THEN '' ELSE p.gross END gross
             FROM programs p
-             JOIN productionCo c using productionCo_id
+            JOIN productionCo c using productionCo_id
             JOIN program_to_actors pa ON p.programs_id = pa.programs_id
             JOIN actors a ON pa.actors_id = a.actors_id
             JOIN program_to_directors pd ON p.programs_id = pd.programs_id
@@ -218,11 +218,8 @@ const programsDao = {
                 }
             }
         );
-    },
-   
-   
-
-       
+    }
+};
 module.exports = programsDao;
 
 

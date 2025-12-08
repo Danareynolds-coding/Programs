@@ -1,7 +1,5 @@
-
-
 const connect = require('../../config/dbconfig')
-       const actorsDao = {
+const actorsDao = {
         table: 'actors',
     // 1. findProgramBy
     findProgramsByActors(res, table, id) {
@@ -37,9 +35,6 @@ const connect = require('../../config/dbconfig')
                     }
                 }
             );
-        }, 
-        //4. unique
-      }          
-   
-
-    module.exports = actorsDao;
+        }
+    };
+module.exports = actorsDao;

@@ -36,8 +36,6 @@ const directorsDao = {
                 }
             }
         );
-    },
-    
-        
-
-module.exports = directorsDao
+    }
+};
+module.exports = directorsDao;

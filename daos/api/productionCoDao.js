@@ -60,7 +60,6 @@ const productionCoDao = {
                 }
             }
         );
-    },
- 
-
+    }
+};
 module.exports = productionCoDao;
