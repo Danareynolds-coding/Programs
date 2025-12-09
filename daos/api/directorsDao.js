@@ -37,11 +37,12 @@ const directorsDao = {
         );
     },
 findProductionCoByDirector(req, res, table) {
-    let sql = `SELECT d.fName, d.lName, pc.productionCo 
+    let sql = `SELECT d.directors_id, d.fName, d.lName, pc.productionCo, pc.productionCo 
     FROM directors d
     INNER JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
     INNER JOIN programs p ON ptd.programs_id = p.programs_id
-    INNER JOIN productionCo pc ON p.productionCo_id = pc.productionCo_id;`
+    INNER JOIN productionCo pc ON p.productionCo_id = pc.productionCo_id;
+    ORDER BY d.lName`
         connect.execute(
         sql,
             (error, rows) => {

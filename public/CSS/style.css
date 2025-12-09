@@ -15,8 +15,12 @@ body{
   background-image:url('/image/back/blue.jpg');
   background-size: cover;
   background-repeat:no-repeat;
-  color: rgb(64, 11, 94); 
   font-weight: 800;
+}
+.outlined-text{
+  color:white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: navy;
 }
 .atag{
   background-color: white;
@@ -27,6 +31,7 @@ body{
   background-color: white;
   font-size: small;
   margin-top:1em;
+  width:100%;
 }
 .box{
   background-color: white;
