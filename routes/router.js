@@ -146,7 +146,7 @@ router.get('/pcPage', (req, res)=>{
   const url = `http://localhost:3000/api/productionCo/sort/productionCo`
   axios.get(url)
     .then(resp=> {
-      // console.log(resp.data);
+       console.log(resp.data);
       res.render('pages/pcPage', {
         title:'Production Companies',
         name:'Production Companies',
@@ -160,20 +160,20 @@ router.get('/profit/:id', (req, res)=>{
   axios.get(url)
     .then(resp=> {
       // console.log(resp.data);
-      res.render('pages/GenrePg', {
+      res.render('pages/pcPage', {
         title:'Production Company Profits',
         name:'Production Company Profit',
-,        data:resp.data
-      })
+       data:resp.data
+      }) 
     })
 })
 router.get('/fivestarPC', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/productionCo/get_fiveStarRating`
+  const url = `http://localhost:3000/api/productionCo/get_fiveStarRating/${id}`
   axios.get(url)
     .then(resp=> {get
       // console.log(resp.data);
-      res.render('pages/GenrePg', {
+      res.render('pages/pcPage', {
         title:'Program Rating by Production Company',
         name:'Program Rating by Production Companies',
         data:resp.data
