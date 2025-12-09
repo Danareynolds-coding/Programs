@@ -33,18 +33,12 @@ body{
   align-items: center;
   padding:2px;
   border-radius: 4px;
+  font-size:.5em;
 }
 p{
   color:red;
 }
-/* .infoPage{
-  padding:5px;
-  border-radius: 4px;
-  border-color: navy;
-  background-color: lightblue;
-  color:red;
-  font-size:x-small
-} */
+
 h2{
   font-weight: 800;
   margin-top: 2em;

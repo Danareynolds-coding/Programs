@@ -1,10 +1,11 @@
+
 <%- include('../partials/header') %> 
 
 <main class="main text-center" id="main">
-  <h1 class="text-center">ACTORS WHO DIRECT OWN PROGRAMS</h1>
+  <h1 class="text-center">ACTORS WITH FIVE STARS</h1>
   <% data.forEach(item => {%>
-    <p><%= item.title %></p>
     <p><%= item.fName %> <%= item.lName %></p>
+    <p><%= item.title %></p>
   <% }) %>  
 </main>
 

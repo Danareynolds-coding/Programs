@@ -10,8 +10,12 @@ router.get('/get_programsByActors/:id', (req, res)=> {
 router.get('/get_actorsWhoDirect', (req, res)=>{
   dao.findActorWhoDirect(res, dao.table)
 })
+//3 http://localhost:3000/api/actors/get_actorWithfiveStarRating
+router.get('/get_actorsWithFiveStars', (req, res)=> {
+  dao.findActorsWithFiveStarProgram(res, dao.table)
+})
 
-//3 http://localhost:3000/api/actors/get_Actor
+//********************DELETE ? */
 //1    http://localhost:3000/api/actors
 router.get('/',(req, res)=> {
   dao.findAll(res, dao.table)

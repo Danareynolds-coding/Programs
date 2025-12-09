@@ -36,7 +36,7 @@ const streamingDao = {
         );  
     },
     findRatingByStreaming(res, table) {
-        //5  unique#1/
+        //2  unique#1/
         let sql = `SELECT 
             s.streaming_id,
             s.streaming, 

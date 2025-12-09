@@ -21,7 +21,7 @@ const directorsDao = {
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
-                        res.json(...rows);
+                        res.json(row[0]);
                     } else {
                         res.json(rows);
                     }
@@ -35,6 +35,32 @@ const directorsDao = {
                 }
             }
         );
+    },
+findProductionCoByDirector(req, res, table) {
+    let sql = `SELECT d.fName, d.lName, pc.productionCo 
+    FROM directors d
+    INNER JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
+    INNER JOIN programs p ON ptd.programs_id = p.programs_id
+    INNER JOIN productionCo pc ON p.productionCo_id = pc.productionCo_id;`
+        connect.execute(
+        sql,
+            (error, rows) => {
+                if (!error) {
+                if (rows.length === 1) {
+                    res.json(rows[0]);
+                } else {
+                    res.json(rows);
+                }
+                } else {
+                console.log(`DAO Error: ${error}`);
+                res.json({
+                    message: "error",
+                    table: `directors`,
+                    error: error,
+                });
+            }
+            }
+        )
     }
 };
 module.exports = directorsDao;

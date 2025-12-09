@@ -99,6 +99,19 @@ router.get('/actorsWhoDirect', (req, res)=> {
     })
   })
 });
+//3
+router.get('/actorsWithFiveStars', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/actors/get_actorsWithfiveStars`
+  axios.get(url)
+  .then(resp =>{
+    res.render('pages/actorsWithFiveStars',{
+      title:'Actors With Five Star Programs',
+      name:'Actors With Five Star Programs',
+      data:resp.data
+    })
+  })
+});
 
 //1 get_programsByActors
 router.get('/actors_program/:id', (req, res) => {
