@@ -112,6 +112,21 @@ router.get('/directors_program/:id', (req, res)=>{
     })
 })
 //***************Info for Genre */
+router.get('/genrePage', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/genre/sort/genre`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/genrePage', {
+        title:'Genre',
+        name:'Genre',
+        data:resp.data
+      })
+    })
+})
+
+
 router.get('/genre_program/:id', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/directors/get_programsByGenre/${id}`
@@ -126,15 +141,41 @@ router.get('/genre_program/:id', (req, res)=>{
     })
 })
 //**************info page for Production co 
-router.get('/production_abc', (req, res)=>{
+router.get('/pcPage', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_productionCoAbc`
+  const url = `http://localhost:3000/api/productionCo/sort/productionCo`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/pcPage', {
+        title:'Production Companies',
+        name:'Production Companies',
+        data:resp.data
+      })
+    })
+})
+router.get('/profit/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/productionCo/get_profitByProductionCo/:id`
   axios.get(url)
     .then(resp=> {
       // console.log(resp.data);
       res.render('pages/GenrePg', {
-        title:'Alphabetized List Production Company',
-        name:'Production Companies',
+        title:'Production Company Profits',
+        name:'Production Company Profit',
+,        data:resp.data
+      })
+    })
+})
+router.get('/fivestarPC', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/productionCo/get_fiveStarRating`
+  axios.get(url)
+    .then(resp=> {get
+      // console.log(resp.data);
+      res.render('pages/GenrePg', {
+        title:'Program Rating by Production Company',
+        name:'Program Rating by Production Companies',
         data:resp.data
       })
     })
@@ -142,7 +183,19 @@ router.get('/production_abc', (req, res)=>{
 
 
 //***************Info for Streaming */
-
+router.get('/streamingPage', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/streaming/sort/streaming`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/streamingPage', {
+        title:'Streaming Platforms',
+        name:'Streaming Platforms',
+        data:resp.data
+      })
+    })
+})
 //**************Info page  for Programs*/
 router.get('/Prog-Act/:id', (req, res) => {
   const id = req.params.id;

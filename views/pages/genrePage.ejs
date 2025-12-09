@@ -1,0 +1,15 @@
+
+<%- include('../partials/header') %> 
+
+<main class="main" id="main">
+    <h2 class="text-center" style="font-size:1.5em;">GENRE</h2>
+
+    <ul>
+      <% data.forEach(item=> { %>
+    <li><%= item.genre %></li>  
+    <% }) %>
+    </ul>
+</main>
+
+
+<%- include('../partials/footer') %> 

@@ -12,11 +12,11 @@ const productionCoDao = {
             CONCAT(p.title,'',p.programs_id) AS programs 
             FROM productionCo AS pc
             JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
-            WHERE pc.productionCo_id = ?`;
+            WHERE pc.productionCo_id = ?;`
         connect.query(sql, [id], (error, rows) => {
             if (!error) {
                 if (rows.length === 1) {
-                    res.json(...rows);
+                    res.json(rows[0]);
                 } else {
                     res.json(rows);
                 }
@@ -31,10 +31,16 @@ const productionCoDao = {
         });
     },
     //alhabetized
-    productionCoAbc(res, table) {
-        let sql = `SELECT genre, genre_id
-            FROM genre 
-            ORDER BY genre ASC;`;
+    findprofitByProductionCo(res, table) {
+        let sql = `SELECT 
+                pc.productionCo,
+                pc.productionCo_id
+                p.programs_id,
+                CONCAT(p.profit, ' ',p.budget, p.programs_id) AS programs
+                FROM productionCo AS pc
+                JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
+                WHERE pc.productionCo_id =?
+                ORDER BY Profits DESC;`
         connect.query(
             sql,
             (error, rows) => {
