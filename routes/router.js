@@ -129,7 +129,6 @@ router.get('/actors_program/:id', (req, res) => {
 
 //****************Info page for director */
 router.get('/directors_program/:id', (req, res)=>{
-  
   const id = req.params.id;
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
@@ -142,6 +141,22 @@ router.get('/directors_program/:id', (req, res)=>{
       })
     })
 })
+
+router.get('/directorsWithProductionCo', (req, res)=>{
+  const url = `http://localhost:3000/api/directors/get_DirectorsWithProductionCo`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/directorsWithProductionCo', {
+        title:'Production Companies By Directors',
+        name:'Production Companies By Directors',
+        data:resp.data
+      })
+    })
+})
+
+
+
 //***************Info for Genre */
 router.get('/genrePage', (req, res)=>{
   const id = req.params.id;
