@@ -35,6 +35,66 @@ const actorsDao = {
                     }
                 }
             );
+        },
+      findActorWhoDirect(res, table) {
+    let sql = `SELECT a.actors_id, a.fName, a.lName, a.character, d.directors_id, d.fName, d.lName, p.title, p.programs_id
+    FROM actors a
+    
+    JOIN programs_to_actors pta ON a.actors_id = pta.actors_id
+    JOIN programs p ON pta.programs_id = p.programs_id
+    JOIN programs_to_directors ptd ON p.programs_id = ptd.programs_id
+    JOIN directors d ON ptd.directors_id = d.directors_id
+    WHERE a.fName = d.fName
+    AND a.lName = d.lName` 
+      connect.execute(
+          sql,
+          (error, rows) => {
+          if (!error) {
+                if (rows.length === 1) {
+                  res.json(...rows);
+                } else {
+                  res.json(rows);
+                        }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                      res.json({
+                        message: "error",
+                        table: `actors`,
+                        error: error,
+                      });
+                    }
+                }
+            );
         }
-    };
+      ,
+      findActorWithDirandfiveStarRating(res, table, id) {
+      let sql = `SELECT a.actors_id, a.fName, a.lName, a.character, d.directors_id, d.fName, d.lName, p.title AS programs, p.fiveStarRating, p.programs_id
+      FROM actors a
+      JOIN programs_to_actors pta ON a.actors_id = pta.actors_id
+      JOIN programs p ON pta.programs_id = p.programs_id
+      JOIN programs_to_directors ptd ON pta.programs_id = ptd.programs_id
+      JOIN directors d ON ptd.directors_id = d.directors_id
+      WHERE a.actors_id = ?;`
+        connect.execute(
+          sql,
+          [id],
+          (error, rows) => {
+              if (!error) {
+                if (rows.length === 1) {
+                  res.json(...rows);
+                } else {
+                  res.json(rows);
+                }
+              } else {
+                console.log(`DAO Error: ${error}`);
+                res.json({
+                  message: "error",
+                  table: `actors`,
+                  error: error,
+                });
+              }
+            }
+          );
+        }
+}
 module.exports = actorsDao;

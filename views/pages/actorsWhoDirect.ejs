@@ -1,0 +1,12 @@
+<%- include('../partials/header') %> 
+
+<main class="main text-center" id="main">
+  <h1 class="text-center">ACTORS WHO DiRECT THEIR MOVIES</h1>
+ 
+  <% data.forEach(item => {%>
+    <p><%= item.title %></p>
+    <p><%= item.fName %> <%= item.lName %></p>
+  <% }) %>  
+</main>
+
+<%- include('../partials/footer') %>

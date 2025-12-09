@@ -5,11 +5,18 @@
             <div class="row justify-content-center">
                 <div class="col-4 text-center">
                     <p class="atag">For Programs By This Actor:
-                            <a href="/actors_program/<%= actors.actors_id %>">
-                                HERE
-                            </a>
-                            </p>
-                    <div class="card" >
+                        <a href="/actors_program/<%= actors.actors_id %>">
+                        HERE
+                        </a>
+                    </p>
+                    <p class="atag">For Programs By This Actor:
+                        <a href="/actors_info/<%= actors.actors_id %>">
+                        HERE
+                        </a>
+                    </p>
+                </div>
+                <div class="col-4 text-center">            
+                    <div class="card mt-4" >
                           <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top img-fluid"/>
                         <div class="card-body">
                             <h2 class="Title">
@@ -20,6 +27,7 @@
                         </div>
                     </div>
                 </div>
+            </div>    
     </section>
 </main>
     <%- include('../partials/footer') %> 

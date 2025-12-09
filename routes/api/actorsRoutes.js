@@ -2,14 +2,16 @@
 const router = require('express').Router()
 const { actorsDao: dao } = require('../../daos/dao')
 
-// 3  http://localhost:3000/api/actors/get_ProgramsForActors/?By
+// 1  http://localhost:3000/api/actors/get_ProgramsForActors/?By
 router.get('/get_programsByActors/:id', (req, res)=> {
   dao.findProgramsByActors(res, dao.table, req.params.id)
 })
+//2 http://localhost:3000/api/actors/get_actorsWhoDirect
+router.get('/get_actorsWhoDirect', (req, res)=>{
+  dao.findActorWhoDirect(res, dao.table)
+})
 
-
-
-//**************ASK IF kept here */
+//3 http://localhost:3000/api/actors/get_Actor
 //1    http://localhost:3000/api/actors
 router.get('/',(req, res)=> {
   dao.findAll(res, dao.table)

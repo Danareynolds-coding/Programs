@@ -44,7 +44,7 @@ router.get('/CategoryInfo', (req, res)=> {
   })
 })
 //******************PAGES 
-//htps://localhost:3000/Programs
+htps://localhost:3000/Programs
 router.get('/Programs', (req, res)=> {
   const url = "http://localhost:3000/api/programs"
   axios.get(url)
@@ -56,6 +56,8 @@ router.get('/Programs', (req, res)=> {
   })
   })
 });
+
+
 //http:localhost:3000/Actors
 router.get('/Actors',(req, res)=> {
   const url = "http://localhost:3000/api/actors"
@@ -79,11 +81,26 @@ router.get('/Directors',(req, res)=> {
       data:resp.data
     })
   })
-})
+});
 
 
 //***************Info page for Actor */
 
+//2
+router.get('/actorsWhoDirect', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/actors/get_actorsWhoDirect`
+  axios.get(url)
+  .then(resp =>{
+    res.render('pages/actorsWhoDirect',{
+      title:'Actors Who Direct',
+      name:'Actors Who Direct Their Own Program',
+      data:resp.data
+    })
+  })
+});
+
+//1 get_programsByActors
 router.get('/actors_program/:id', (req, res) => {
   const id = req.params.id;
   const url = `http://localhost:3000/api/actors/get_programsByActors/${id}`;
@@ -93,12 +110,13 @@ router.get('/actors_program/:id', (req, res) => {
         title: 'Movie By Actor',
         name: 'Movie By Actor',
         data:resp.data
-      });
-    });
+      })
+    })
 });
 
 //****************Info page for director */
 router.get('/directors_program/:id', (req, res)=>{
+  
   const id = req.params.id;
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
@@ -305,6 +323,17 @@ router.get('/directors/:id', (req, res)=> {
   })
 })
 
+// router.get('/get_programsInfo', (req, res)=> {
+//   const url = "http://localhost:3000/api/programs/get_programsInfo"
+//   axios.get(url)
+//   .then(resp => {
+//     res.render('pages/', {
+//       title: 'All Programs Info in One Place',
+//       name:'Christmas Movies and TV Programs.',
+//       data:resp.data
+//   })
+//   })
+// });
 
 
 //********************FORMS
