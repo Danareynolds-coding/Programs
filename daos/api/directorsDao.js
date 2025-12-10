@@ -17,7 +17,7 @@ const directorsDao = {
                     if (rows.length === 1) {
                         res.json(rows[0]);
                     } else {
-                        console.log(`row count: ${rows.length}`)
+                       
                         res.json(rows);
                     }
                 } else {
@@ -31,16 +31,20 @@ const directorsDao = {
             }
         )
     },
-    findAnimationTypeByDirectors: (res, table, id) => {  
-        let sql = `SELECT d.directors_id, d.fName, d.lName, p.title AS programs, p.animationType FROM directors d JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id JOIN programs p ON ptd.programs_id = p.programs_id WHERE d.directors_id = ?;`
+    findAnimationByDirectors: ( req, res, table) => {  
+        let sql = `SELECT d.directors_id, d.fName, d.lName, p.title AS programs, p.animationType
+        FROM directors d 
+        JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id 
+        JOIN programs p ON ptd.programs_id = p.programs_id 
+        ORDER BY d.lName`
         connect.execute(
             sql,
-            [id],
             (error, rows) => {
                 if (!error) {
                     if (rows.length === 1) {
                         res.json(rows[0]);
                     } else {
+                        console.log(`row count: ${rows.length}`)
                         res.json(rows);
                     }
                 } else {

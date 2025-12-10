@@ -182,14 +182,29 @@ router.get('/directors_program/:id', (req, res)=>{
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
     .then(resp=> {
-       console.log(resp.data);
+      //  console.log(resp.data);
       res.render('pages/Director-Prog', {
-        title:'Movie By Director',
-        name:'Movie By Director',
+        title:'Program By Director',
+        name:'Program By Director',
         data:resp.data
       })
     })
-})
+});
+router.get('/directors_animation', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_animationByDirectors`
+   axios.get(url)
+    .then(resp=> {
+      
+   res.render('pages/directors_animation', {
+   title:'Animation By Director',
+   name:'Animation By Director',
+  data:resp.data
+   })
+  })
+  // res.send('hello')
+
+});
 
 
 //***************Info for Genre */
@@ -199,8 +214,7 @@ router.get('/genre_animation', (req, res)=>{
   const url = `http://localhost:3000/api/genre/get_animationByGenre`
   axios.get(url)
     .then(resp=> {
-      console.log(resp.data);
-      res.render('pages/genre_animation', {
+        res.render('pages/genre_animation', {
         title:'Animation Type By Genre',
         name:'Animation Type By Genre',
         data:resp.data

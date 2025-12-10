@@ -1,16 +1,23 @@
 
+
 <%- include('../partials/header') %> 
 
 <main class="main" id="main">
-  <div class="box">
-    <p >Streaming Platforms By Rating<a href="/streaming_rating">  Here</a></p>
-   </div>  
-    <h2 class="text-center" style="font-size:1.5em;">STREAMING PLATFORM LIST</h2>
-      <% data.forEach(item=> { %>
-      <% ++counter = item.streaming %>   
-      <p class="box"><%= item.streaming %></p>  
-    <% }) %>
-    
+  <!-- <div class="box text-center">
+    <p> By Streaming<a href="http://localhost:3000/api/streaming/get_">  HERE</a></p>
+    <p> By Streaming<a href="http://localhost:3000/api/streaming/get_">  HERE</a></p>
+  </div> -->
+  <h2 class="text-center"><%= name %></h2>
+  <div class="container">
+    <div class="row">
+      <% data.forEach(item => { %>
+        <div class="col-md-2">
+          <a href="/singleStreaming/<%= item.streaming_id %>"><%= item.streaming %></a></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
 </main>
+
 
 <%- include('../partials/footer') %> 

@@ -2,17 +2,18 @@
 const router = require('express').Router()
 const{directorsDao: dao} = require('../../daos/dao')
 
+router.get('/get_productionCoByDirectors', (req, res) => {
+  dao.findProductionCoByDirectors(req, res, dao.table)
+})
+router.get('/get_animationByDirectors', (req, res) => {
+  dao.findAnimationByDirectors(req, res, dao.table)
+})
+
 //3. ByPrograms  http://localhost:3000/api/directors/get_programsForDirector/?
 router.get('/get_programsByDirectors/:id', (req, res)=> {
   dao.findProgramsByDirectors(res, dao.table, req.params.id)
 })
 
-router.get('/get_productionCoByDirectors', (req, res) => {
-  dao.findProductionCoByDirectors(req, res, dao.table)
-})
-router.get('/get_animationTypeByDirectors', (req, res) => {
-  dao.findAnimationTypeByDirectors(req, res, dao.table)
-})
 //**********************do i keep these */
 // 1. http://localhost:3000/api/directors
 router.get('/',(req, res)=> {

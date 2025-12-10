@@ -1,0 +1,11 @@
+<%- include('../partials/header') %> 
+
+<main class="main text-center" id="main">
+  <h1 class="text-center">ANIMATION TYPES BY DIRECTORS</h1>
+  <% data.forEach(item => {%>
+    <p><%= item.animationType %></p>
+    <p><%= item.fName %> <%= item.lName %></p>
+  <% }) %>  
+</main>
+
+<%- include('../partials/footer') %>
