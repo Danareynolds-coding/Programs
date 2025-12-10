@@ -133,7 +133,7 @@ router.get('/directors_program/:id', (req, res)=>{
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
   axios.get(url)
     .then(resp=> {
-      // console.log(resp.data);
+       console.log(resp.data);
       res.render('pages/Director-Prog', {
         title:'Movie By Director',
         name:'Movie By Director',
@@ -143,7 +143,8 @@ router.get('/directors_program/:id', (req, res)=>{
 })
 
 router.get('/directorsWithProductionCo', (req, res)=>{
-  const url = `http://localhost:3000/api/directors/get_DirectorsWithProductionCo`
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_productionCoByDirectors`
   axios.get(url)
     .then(resp=> {
       // console.log(resp.data);
@@ -206,7 +207,7 @@ router.get('/profit/:id', (req, res)=>{
   axios.get(url)
     .then(resp=> {
       // console.log(resp.data);
-      res.render('pages/pcPage', {
+      res.render('pages/profitPage', {
         title:'Production Company Profits',
         name:'Production Company Profit',
        data:resp.data
@@ -219,7 +220,7 @@ router.get('/fivestarPC', (req, res)=>{
   axios.get(url)
     .then(resp=> {get
       // console.log(resp.data);
-      res.render('pages/pcPage', {
+      res.render('pages/ratingPage', {
         title:'Program Rating by Production Company',
         name:'Program Rating by Production Companies',
         data:resp.data
@@ -229,6 +230,8 @@ router.get('/fivestarPC', (req, res)=>{
 
 
 //***************Info for Streaming */
+
+
 router.get('/streamingPage', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/streaming/sort/streaming`

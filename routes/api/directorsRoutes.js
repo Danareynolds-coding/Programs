@@ -6,8 +6,12 @@ const{directorsDao: dao} = require('../../daos/dao')
 router.get('/get_programsByDirectors/:id', (req, res)=> {
   dao.findProgramsByDirectors(res, dao.table, req.params.id)
 })
-router.get('/get_DirectorsWithProductionCo', (req, res) => {
-  dao.findDirectorsWithProductionCo(res, dao.table)
+
+router.get('/get_productionCoByDirectors', (req, res) => {
+  dao.findProductionCoByDirectors(res, dao.table)
+})
+router.get('/get_animationTypeByDirectors', (req, res) => {
+  dao.findAnimationTypeByDirectors(res, dao.table)
 })
 //**********************do i keep these */
 // 1. http://localhost:3000/api/directors
