@@ -193,15 +193,16 @@ router.get('/directors_program/:id', (req, res)=>{
 
 
 //***************Info for Genre */
-router.get('/genrePage', (req, res)=>{
+
+router.get('/genre_animation', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/genre/sort/genre`
+  const url = `http://localhost:3000/api/genre/get_animationByGenre`
   axios.get(url)
     .then(resp=> {
       console.log(resp.data);
-      res.render('pages/genrePage', {
-        title:'Genre',
-        name:'Genre',
+      res.render('pages/genre_animation', {
+        title:'Animation Type By Genre',
+        name:'Animation Type By Genre',
         data:resp.data
       })
     })

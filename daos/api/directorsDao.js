@@ -4,7 +4,7 @@ const connect = require('../../config/dbconfig')
 const directorsDao = {
     table: 'directors',
     findProductionCoByDirectors: (req, res, table) => {
-        let sql = `SELECT d.directors_id, d.fName, d.lName, pc.productionCo, pc.productionCo 
+        let sql = `SELECT d.directors_id, d.fName, d.lName, pc.productionCo 
             FROM directors d
             INNER JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
             INNER JOIN programs p ON ptd.programs_id = p.programs_id
@@ -12,10 +12,12 @@ const directorsDao = {
         connect.execute(
             sql,
             (error, rows) => {
+               
                 if (!error) {
                     if (rows.length === 1) {
                         res.json(rows[0]);
                     } else {
+                        console.log(`row count: ${rows.length}`)
                         res.json(rows);
                     }
                 } else {
@@ -27,7 +29,7 @@ const directorsDao = {
                     });
                 }
             }
-        );
+        )
     },
     findAnimationTypeByDirectors: (res, table, id) => {  
         let sql = `SELECT d.directors_id, d.fName, d.lName, p.title AS programs, p.animationType FROM directors d JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id JOIN programs p ON ptd.programs_id = p.programs_id WHERE d.directors_id = ?;`

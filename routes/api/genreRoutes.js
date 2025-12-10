@@ -11,7 +11,9 @@ router.get('/get_programsByGenre/:id', (req, res)=> {
 router.get('/get_DescriptionByGenre/:id', (req, res)=> {
   dao.findDescriptionByGenreId(res, dao.table, req.params.id)
 })
-
+router.get('get_animationByGenre',(req, res)=>{
+  dao.findAnimationByGenre(res, dao.table)
+})
 //*************FROM DAO COMMON */
 //1. findall http://localhost:3000/api/streaming
 router.get('/',(req, res)=> {

@@ -8,10 +8,10 @@ router.get('/get_programsByDirectors/:id', (req, res)=> {
 })
 
 router.get('/get_productionCoByDirectors', (req, res) => {
-  dao.findProductionCoByDirectors(res, dao.table)
+  dao.findProductionCoByDirectors(req, res, dao.table)
 })
 router.get('/get_animationTypeByDirectors', (req, res) => {
-  dao.findAnimationTypeByDirectors(res, dao.table)
+  dao.findAnimationTypeByDirectors(req, res, dao.table)
 })
 //**********************do i keep these */
 // 1. http://localhost:3000/api/directors
