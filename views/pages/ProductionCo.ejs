@@ -3,9 +3,11 @@
 
 <main class="main" id="main">
     <h2 class="text-center" style="font-size:1.5em;">PRODUCTION COMPANIES</h2>
-
-    <ul>
+    <% let counter = 0 %>
+    <ul class="box">
       <% data.forEach(item=> { %>
+      <% ++counter = item.productionCo %> 
+
     <li><%= item.productionCo %></li>  
     <% }) %>
     </ul>

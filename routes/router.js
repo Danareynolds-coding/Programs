@@ -29,7 +29,7 @@ const endpoints = [
 endpoints.forEach(endpoint => {
   router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
 })
-
+//*********Home */
 //http://localhost:3000
 router.get('/', (req, res)=> {
     res.render('pages/home', {
@@ -37,12 +37,7 @@ router.get('/', (req, res)=> {
       name:"Christmas Programs"
     })
 });
-router.get('/CategoryInfo', (req, res)=> {
-  res.render('pages/CategoryInfo',{
-    title:'Category Information',
-    name:'Category Information'
-  })
-})
+
 //******************PAGES 
 htps://localhost:3000/Programs
 router.get('/Programs', (req, res)=> {
@@ -57,7 +52,6 @@ router.get('/Programs', (req, res)=> {
   })
 });
 
-
 //http:localhost:3000/Actors
 router.get('/Actors',(req, res)=> {
   const url = "http://localhost:3000/api/actors"
@@ -70,6 +64,7 @@ router.get('/Actors',(req, res)=> {
     })
   })
 })
+
 //http://localhost:3000/Directors
 router.get('/Directors',(req, res)=> {
   const url = "http://localhost:3000/api/directors"
@@ -82,6 +77,45 @@ router.get('/Directors',(req, res)=> {
     })
   })
 });
+//http:localhost:3000/genre
+router.get('/Genre',(req, res)=> {
+  const url = "http://localhost:3000/api/genre"
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/Genre', {
+          title:'Genres',
+          name:'GENRE LIST',
+          data:resp.data
+    })
+  })
+  // res.send('genre')
+})
+
+//http:localhost:3000/Actors
+router.get('/ProductionCo',(req, res)=> {
+  const url = "http://localhost:3000/api/productionCo"
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/ProductionCo', {
+          title:'Producion Companies',
+          name:'PRODUCTION COMPANIES LIST',
+          data:resp.data
+    })
+  })
+})
+
+//http:localhost:3000/Actors
+router.get('/Streaming',(req, res)=> {
+  const url = "http://localhost:3000/api/streaming"
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/Streaming', {
+          title:'Streaming Platforms',
+          name:'STREAMING PLATFORMS LIST',
+          data:resp.data
+    })
+  })
+})
 
 
 //***************Info page for Actor */
@@ -128,19 +162,7 @@ router.get('/actors_program/:id', (req, res) => {
 });
 
 //****************Info page for director */
-router.get('/directors_program/:id', (req, res)=>{
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
-  axios.get(url)
-    .then(resp=> {
-       console.log(resp.data);
-      res.render('pages/Director-Prog', {
-        title:'Movie By Director',
-        name:'Movie By Director',
-        data:resp.data
-      })
-    })
-})
+
 
 router.get('/directorsWithProductionCo', (req, res)=>{
   const id = req.params.id;
@@ -155,7 +177,19 @@ router.get('/directorsWithProductionCo', (req, res)=>{
       })
     })
 })
-
+router.get('/directors_program/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
+  axios.get(url)
+    .then(resp=> {
+       console.log(resp.data);
+      res.render('pages/Director-Prog', {
+        title:'Movie By Director',
+        name:'Movie By Director',
+        data:resp.data
+      })
+    })
+})
 
 
 //***************Info for Genre */
@@ -164,7 +198,7 @@ router.get('/genrePage', (req, res)=>{
   const url = `http://localhost:3000/api/genre/sort/genre`
   axios.get(url)
     .then(resp=> {
-      // console.log(resp.data);
+      console.log(resp.data);
       res.render('pages/genrePage', {
         title:'Genre',
         name:'Genre',
@@ -228,7 +262,6 @@ router.get('/fivestarPC', (req, res)=>{
     })
 })
 
-
 //***************Info for Streaming */
 
 
@@ -241,6 +274,25 @@ router.get('/streamingPage', (req, res)=>{
       res.render('pages/streamingPage', {
         title:'Streaming Platforms',
         name:'Streaming Platforms',
+        data:resp.data
+      })
+    })
+})
+router.get('/streaming_rating', (req, res)=>{
+  const url =`http://localhost:3000/api/streamng/get_RatingByStreaming`
+  axios.get(url)
+  res.render('pages/ra')
+})
+
+router.get('/directors_program/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
+  axios.get(url)
+    .then(resp=> {
+       console.log(resp.data);
+      res.render('pages/Director-Prog', {
+        title:'Movie By Director',
+        name:'Movie By Director',
         data:resp.data
       })
     })
@@ -354,18 +406,40 @@ router.get('/directors/:id', (req, res)=> {
   })
 })
 
-// router.get('/get_programsInfo', (req, res)=> {
-//   const url = "http://localhost:3000/api/programs/get_programsInfo"
-//   axios.get(url)
-//   .then(resp => {
-//     res.render('pages/', {
-//       title: 'All Programs Info in One Place',
-//       name:'Christmas Movies and TV Programs.',
-//       data:resp.data
-//   })
-//   })
-// });
+router.get('/singleGenre', (req, res)=> {
+  const url = `http://localhost:3000/api/genre/${id};`
+  axios.get(url)
+  .then(resp => {
+    res.render('pages/singleGenre', {
+      title: 'Genre',
+      name:'Genre',
+      data:resp.data
+  })
+  })
+});
 
+router.get('/singleProdctionCo', (req, res)=> {
+  const url = `http://localhost:3000/api/ProductionCo/${id};`
+  axios.get(url)
+  .then(resp => {
+    res.render('pages/singleProductionCo', {
+      title: 'Production Company',
+      name:'Production Company',
+      data:resp.data
+  })
+  })
+});
+router.get('/singleStreaming', (req, res)=> {
+  const url = `http://localhost:3000/api/streaming/${id};`
+  axios.get(url)
+  .then(resp => {
+    res.render('pages/singleStreaming', {
+      title: 'Streaming Platform',
+      name:'Streaming Platform',
+      data:resp.data
+  })
+  })
+});
 
 //********************FORMS
 // 1. form http://localhost:3000/programs-form 

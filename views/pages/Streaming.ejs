@@ -2,14 +2,15 @@
 <%- include('../partials/header') %> 
 
 <main class="main" id="main">
+  <div class="box">
+    <p >Streaming Platforms By Rating<a href="/streaming_rating">  Here</a></p>
+   </div>  
     <h2 class="text-center" style="font-size:1.5em;">STREAMING PLATFORM LIST</h2>
-
-    <ul>
       <% data.forEach(item=> { %>
-    <li><%= item.genre %></li>  
+      <% ++counter = item.streaming %>   
+      <p class="box"><%= item.streaming %></p>  
     <% }) %>
-    </ul>
+    
 </main>
-
 
 <%- include('../partials/footer') %> 

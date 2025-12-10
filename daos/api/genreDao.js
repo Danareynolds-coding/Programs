@@ -6,7 +6,7 @@ const genreDao = {
     table: 'genre',
     
     // 1 Byprograms
-    findProgramsByGenre(res, table, id) {
+    findProgramsByGenre:(res, table, id)=> {
         //unique#1//
         let sql = `SELECT 
             g.genre_id,
@@ -40,18 +40,18 @@ const genreDao = {
         );
     },
     //5. unique
-    findDescriptionByGenre(res, table, id) {
+    findDescriptionByGenreId:(res, table, id)=> {
         //unique#2//
         let sql = `SELECT 
             g.genre_id,
             g.genre, 
-            GROUP_CONCAT(CONCAT(p.title,' (', p.description, ')') ORDER BY p.title SEPARATOR ', ') AS programs
+            p.title AS programs,
+            p.description
         FROM genre g
         LEFT JOIN programs_to_genre ptg ON g.genre_id = ptg.genre_id
         LEFT JOIN programs p ON ptg.programs_id = p.programs_id
-        WHERE g.genre_id = ?
-        GROUP BY g.genre_id, g.genre, p.description, p.title`;
-        connect.execute(
+        WHERE g.genre_id = ?`
+            connect.execute(
             sql,
             [id],
             (error, rows) => {

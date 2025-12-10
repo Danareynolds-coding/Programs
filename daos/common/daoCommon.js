@@ -24,6 +24,27 @@ const daoCommon = {
       }
     )
   },
+    sort: (res, table, sorter) => {
+    connect.query(
+      `SELECT * FROM ${table} ORDER BY ${sorter};`,
+      (error, rows) => {
+        if (!error) {
+          if (rows.length === 1) {
+            res.json(...rows)
+          } else {
+            res.json(rows)
+          }
+        } else {
+          console.log(`Dao Error: ${error}`)
+          res.json({
+            "message": 'error',
+            'table': `${table}`,
+            'error': error
+          })
+        }
+      }
+    )
+  },
   findById: (res, table, id) => {
     connect.query(
       `SELECT * FROM ${table} WHERE ${table}_id = ${id};`,
@@ -46,27 +67,7 @@ const daoCommon = {
     )
   },                                                      
 
-  sort: (res, table, sorter) => {
-    connect.query(
-      `SELECT * FROM ${table} ORDER BY ${sorter};`,
-      (error, rows) => {
-        if (!error) {
-          if (rows.length === 1) {
-            res.json(rows[0])
-          } else {
-            res.json(rows)
-          }
-        } else {
-          console.log(`Dao Error: ${error}`)
-          res.json({
-            "message": 'error',
-            'table': `${table}`,
-            'error': error
-          })
-        }
-      }
-    )
-  },
+
   create: (req, res, table) => {
     //Object.key returns array of keys
     if (Object.keys(req.body).length === 0) {

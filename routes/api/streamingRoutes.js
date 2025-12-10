@@ -9,7 +9,7 @@ router.get('/get_programsByStreaming/:id', (req, res)=> {
   dao.findProgramsByStreaming(res, dao.table, req.params.id)
 })
 //5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
-router.get('/get_RatingForStreaming', (req, res)=> {
+router.get('/get_RatingByStreaming', (req, res)=> {
   dao.findRatingByStreaming(res, dao.table)
 })
 
