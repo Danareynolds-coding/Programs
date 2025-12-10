@@ -1,26 +1,20 @@
+<%- include('../partials/header') %>
 
-<%- include('../partials/header') %> 
-
-<main class="main" id="main">
-    <h2 class="text-center">PRODUCTION COMPANIES</h2>
-    <!-- <% let counter = 0 %> -->
-  <div class="container">
-    <div class='row'>
-      <% data.forEach(item=> { %>
-        <div class="box col-md-2"> 
-      <!-- <% ++counter = item.productionCo %>  -->
-        <div class="box"> 
-        col-md-2>
-        <p class="box">&#10003<a href="/singleStreaming/<%= item.streaming_id %>"><%= item.ProductionCo %></a></p>
-        </div>
+  <main class="main" id="main">
+    <h2 class="text-center">
+      <%= name %>
+    </h2>
+    <% let counter = 0 %>
+    <div class="container">
+      <div class='row'>
+        <% data.forEach(item=> { %>
+          <div class="box col-md-2">
+            <p><a href="/singleProductionCo/<%= item.productionCo_id %>">&#10003 <%= ++counter %> <%= item.productionCo %>
+            </a></p>
+          </div>
         <% }) %>
-        <p><%= item.productionCo_id %></p>  
-      <% }) %>
       </div>
     </div>
-  </div>
-    
-</main>
+  </main>
 
-
-<%- include('../partials/footer') %> 
+  <%- include('../partials/footer') %>

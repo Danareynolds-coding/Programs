@@ -15,7 +15,7 @@ body{
   background-image:url('/image/back/blue.jpg');
   background-size: cover;
   background-repeat:no-repeat;
-  font-weight: 800;
+  font-weight: 900;
 }
 .outlined-text{
   color:white;
@@ -88,7 +88,7 @@ ul li a {
   text-align:center;
   padding: 10px 10px;
   list-style:none;
-  font-weight: 800;
+  font-weight: 900;
   color:rgb(150, 234, 150);-webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: forestgreen;
 
