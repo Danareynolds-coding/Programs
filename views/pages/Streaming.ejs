@@ -11,8 +11,8 @@
   <div class="container">
     <div class="row">
       <% data.forEach(item => { %>
-        <div class="col-md-2">
-          <a href="/singleStreaming/<%= item.streaming_id %>"><%= item.streaming %></a></p>
+        <div class="box col-md-2">
+        <p class="box">&#10003<a href="/singleStreaming/<%= item.streaming_id %>"><%= item.streaming %></a></p>
         </div>
       <% }) %>
     </div>

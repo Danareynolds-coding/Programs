@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<main class="main">
+    <section class="section" id="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-2 text-center">
+                    <p class="atag">For Programs By Genre:
+                        <a href="/genre_programs/<%= genre.genre_id %>">
+                        HERE
+                        </a>
+                    </p>
+                </div>
+                <div class="col-4 text-center">            
+                    <div class="card mt-4" >
+                          <img src="/image/imgActors/<%= actors.ImagePath %>" alt="image of actor" class=" card-img-top img-fluid"/>
+                        <div class="card-body">
+                            <h2 class="Title">
+                                <%= actors.fName %>
+                                <%= actors.lName %>
+                            </h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>    
+    </section>
+</main>
+    <%- include('../partials/footer') %> 

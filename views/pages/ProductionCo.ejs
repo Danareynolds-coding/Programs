@@ -2,15 +2,24 @@
 <%- include('../partials/header') %> 
 
 <main class="main" id="main">
-    <h2 class="text-center" style="font-size:1.5em;">PRODUCTION COMPANIES</h2>
-    <% let counter = 0 %>
-    <ul class="box">
+    <h2 class="text-center">PRODUCTION COMPANIES</h2>
+    <!-- <% let counter = 0 %> -->
+  <div class="container">
+    <div class='row'>
       <% data.forEach(item=> { %>
-      <% ++counter = item.productionCo %> 
-
-    <li><%= item.productionCo %></li>  
-    <% }) %>
-    </ul>
+        <div class="box col-md-2"> 
+      <!-- <% ++counter = item.productionCo %>  -->
+        <div class="box"> 
+        col-md-2>
+        <p class="box">&#10003<a href="/singleStreaming/<%= item.streaming_id %>"><%= item.ProductionCo %></a></p>
+        </div>
+        <% }) %>
+        <p><%= item.productionCo_id %></p>  
+      <% }) %>
+      </div>
+    </div>
+  </div>
+    
 </main>
 
 

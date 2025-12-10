@@ -3,20 +3,21 @@
 
 <main class="main" id="main">
   <div class="box text-center">
-    <p>Description By Genre<a href="http://localhost:3000/api/genre/get_DescriptionByGenreId">  HERE</a></p>
+    <!-- <p>Description By Genre<a href="http://localhost:3000/api/genre/get_DescriptionByGenreId">  HERE</a></p> -->
     <!-- <p>Animaion By Genre<a href="http://localhost:3000/api/genre/get_AnimationByGenre">  HERE</a></p> -->
   </div>
   <h2 class="text-center"><%= name %></h2>
   <div class="container">
     <div class="row">
+      <!-- <% counter = 0; %> -->
       <% data.forEach(item => { %>
         <div class="col-md-2">
-          <p class="box"><%= item.genre %></p>
+          <!-- <% ++counter %> -->
+          <p class="box">&#10003<a href="/singleGenre/<%= item.genre_id %>"><%= item. %></a></p>
         </div>
       <% }) %>
     </div>
   </div>
 </main>
-
 
 <%- include('../partials/footer') %> 
