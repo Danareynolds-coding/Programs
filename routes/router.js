@@ -38,6 +38,13 @@ router.get('/', (req, res)=> {
     })
 });
 
+//http://localhost:3000
+router.get('/genrecategories', (req, res)=> {
+    res.render('pages/genrecategories', {
+      title: 'Genre Categories',
+      name:"Genre Categories"
+    })
+});
 //******************PAGES 
 htps://localhost:3000/Programs
 router.get('/Programs', (req, res)=> {
@@ -238,6 +245,7 @@ router.get('/genre_animation', (req, res)=>{
   const url = `http://localhost:3000/api/genre/get_animationByGenre`
   axios.get(url)
     .then(resp=> {
+      console.log(resp.data)
         res.render('pages/genre_animation', {
         title:'Animation Type By Genre',
         name:'Animation Type By Genre',
@@ -245,7 +253,19 @@ router.get('/genre_animation', (req, res)=>{
       })
     })
 })
-
+ 
+router.get('/genre_directors', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/genre/get_directorByGenre`
+  axios.get(url)
+    .then(resp=> {
+        res.render('pages/genre_directors', {
+        title:'Directors By Genre',
+        name:'Directors By Genre',
+        data:resp.data
+      })
+    })
+})
 
 router.get('/genre_program/:id', (req, res)=>{
   const id = req.params.id;
@@ -254,13 +274,26 @@ router.get('/genre_program/:id', (req, res)=>{
     .then(resp=> {
       // console.log(resp.data);
       res.render('pages/Genre-Prog', {
-        title:'Movie By Genres',
-        name:'Movie By Genres',
+        title:'Programs By Genres',
+        name:'Programs By Genres',
         data:resp.data
       })
     })
 })
 
+router.get('/genre_description/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_descriptionByGenre/${id}`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/genre_description', {
+        title:'Program Descriptions By Genres',
+        name:'Program Descriptions By Genres',
+        data:resp.data
+      })
+    })
+})
 //**************info page for Production co 
 router.get('/pcPage', (req, res)=>{
   const id = req.params.id;
@@ -481,7 +514,7 @@ router.get('/singleProdctionCo/:id', (req, res)=> {
   })
 });
 router.get('/singleStreaming/:id', (req, res)=> {
-   const id =req.params.id;
+  const id =req.params.id;
   const url = `http://localhost:3000/api/streaming/${id};`
   axios.get(url)
   .then(resp => {

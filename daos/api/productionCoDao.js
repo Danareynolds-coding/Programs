@@ -13,7 +13,9 @@ const productionCoDao = {
             FROM productionCo AS pc
             JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
             WHERE pc.productionCo_id = ?;`
-        connect.query(sql, [id], (error, rows) => {
+        connect.query(sql,
+             [id], 
+             (error, rows) => {
             if (!error) {
                 if (rows.length === 1) {
                     res.json(rows[0]);
@@ -73,6 +75,7 @@ const productionCoDao = {
                 ORDER BY fivePointRating DESC;`
             connect.execute(
                 sql,
+                
                 (error, rows) => {
                     if (!error) {
                         if (rows.length === 1) {
