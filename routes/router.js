@@ -280,34 +280,43 @@ router.get('/fivestarPC', (req, res)=>{
 //***************Info for Streaming */
 
 
-router.get('/streamingPage', (req, res)=>{
+
+
+router.get('/streaming_rating', (req, res)=> {
   const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/sort/streaming`
+  const url =`http://localhost:3000/api/streaming/get_RatingByStreaming`
+    axios.get(url)
+    .then(resp=> {
+        res.render('pages/streaming_rating', {
+        title:'Streaming with Rating',
+        name:'Streaming With Rating',
+        data:resp.data
+        })
+    })   
+});
+
+router.get('/streaming_program/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/streaming/get_ProgramsByStreaming/${id}`
   axios.get(url)
     .then(resp=> {
-      // console.log(resp.data);
-      res.render('pages/streamingPage', {
-        title:'Streaming Platforms',
-        name:'Streaming Platforms',
+       console.log(resp.data);
+      res.render('pages/streaming_program', {
+        title:'Programs By Streaming',
+        name:'Programs By Streaming ',
         data:resp.data
       })
     })
 })
-router.get('/streaming_rating', (req, res)=>{
-  const url =`http://localhost:3000/api/streamng/get_RatingByStreaming`
-  axios.get(url)
-  res.render('pages/ra')
-})
-
-router.get('/directors_program/:id', (req, res)=>{
+router.get('/streamingPage', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
+  const url = `http://localhost:3000/api/streaming/get_infoByStreaming/:id`
   axios.get(url)
     .then(resp=> {
-       console.log(resp.data);
-      res.render('pages/Director-Prog', {
-        title:'Movie By Director',
-        name:'Movie By Director',
+      // console.log(resp.data);
+      res.render('pages/streamingPage', {
+        title:'Streaming Platforms Program Information',
+        name:'Streaming Platforms Program Information',
         data:resp.data
       })
     })
@@ -421,7 +430,8 @@ router.get('/directors/:id', (req, res)=> {
   })
 })
 
-router.get('/singleGenre', (req, res)=> {
+router.get('/singleGenre/:id', (req, res)=> {
+  const id =req.params.id;
   const url = `http://localhost:3000/api/genre/${id};`
   axios.get(url)
   .then(resp => {
@@ -433,7 +443,8 @@ router.get('/singleGenre', (req, res)=> {
   })
 });
 
-router.get('/singleProdctionCo', (req, res)=> {
+router.get('/singleProdctionCo/:id', (req, res)=> {
+   const id =req.params.id;
   const url = `http://localhost:3000/api/ProductionCo/${id};`
   axios.get(url)
   .then(resp => {
@@ -444,7 +455,8 @@ router.get('/singleProdctionCo', (req, res)=> {
   })
   })
 });
-router.get('/singleStreaming', (req, res)=> {
+router.get('/singleStreaming/:id', (req, res)=> {
+   const id =req.params.id;
   const url = `http://localhost:3000/api/streaming/${id};`
   axios.get(url)
   .then(resp => {
