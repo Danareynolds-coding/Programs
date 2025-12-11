@@ -1,0 +1,21 @@
+<%- include('../partials/header') %> 
+
+<main class="main" id="main">
+
+<section class="section">
+    <div class="container mt-4">
+        <div class="row text-center">
+           
+            <% data.forEach(item => { %>
+                <div class="box col-md-2">
+                    <p><%= item.genre %></p>
+                    <p><%= item.director %>  </p> 
+                </div>     
+            <% }) %> 
+                 
+        </div>   
+        
+    </div>
+</section>             
+</main>
+<%- include('../partials/footer') %> 

@@ -14,7 +14,7 @@ router.get('/sort/:sorter', (req, res)=> {
 router.get('/get_animationByGenre',(req, res)=>{
   dao.findAnimationByGenre(res, dao.table)
 })
-router.get('/get_diretorByGenre', (req, res)=> {
+router.get('/get_directorByGenre', (req, res)=> {
   dao.findDirectorByGenre(res, dao.table)
 })
 

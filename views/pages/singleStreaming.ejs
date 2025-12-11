@@ -1,14 +1,11 @@
 <%- include('../partials/header') %>
     <section class="section" id="section">
-        <div class="container">
-            <div class="row item-center">
-                <div class="col-4">
-                    <h2 class="text-center" style="font-size:2em;">Streaming Platform</h2>
-                    <!-- <% data.forEach(items => { %> -->
-                    <p class="box"><a href="/singleStreaming"><%= item.streaming %></a> 
-                    <!-- <% }) %> -->
-                </div>
+        <div class="container text-center">
+            <h1><%= name %></h1>
+            <p class="sp"><%= data.streaming %></p>
+            <div>       
+                
             </div>
         </div>
     </section>
-%- include('../partials/footer') %> 
+<%- include('../partials/footer') %> 

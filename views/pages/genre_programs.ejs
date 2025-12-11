@@ -4,12 +4,14 @@
         <div class="row text-center">
             <div class="col">
                 <div class="card">
+                    <% data.forEach(item => { %>
                     <div class="card-body">
-                        <p><%= data.genre %> 
-                        <p><%= data.title %></p>
-                        <p><%= data.yr_released %></p>
-                        <p><%= data.rating %></p>
+                        <p><%= item.genre %> 
+                        <p><%= item.title %></p>
+                        <p><%= item.yr_released %></p>
+                        <p><%= item.rating %></p>
                     </div>
+                    <% }) %>
                 </div>
             </div>
         </div>

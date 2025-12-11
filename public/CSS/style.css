@@ -11,6 +11,9 @@ body{
    background-blend-mode:overlay;
   color:navy;
 }
+.sp{
+  font-size: 2em;
+}
 .header{
   background-image:url('/image/back/blue.jpg');
   background-size: cover;

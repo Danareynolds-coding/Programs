@@ -254,12 +254,12 @@ router.get('/genre_animation', (req, res)=>{
     })
 })
  
-router.get('/genre_directors', (req, res)=>{
+router.get('/genre_director', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/genre/get_directorByGenre`
   axios.get(url)
     .then(resp=> {
-        res.render('pages/genre_directors', {
+        res.render('pages/genre_director', {
         title:'Directors By Genre',
         name:'Directors By Genre',
         data:resp.data
@@ -267,13 +267,13 @@ router.get('/genre_directors', (req, res)=>{
     })
 })
 
-router.get('/genre_program/:id', (req, res)=>{
+router.get('/genre_programs/:id', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_programsByGenre/${id}`
+  const url = `http://localhost:3000/api/genre/get_programsByGenre/${id}`
   axios.get(url)
     .then(resp=> {
-      // console.log(resp.data);
-      res.render('pages/Genre-Prog', {
+      //  console.log(resp.data);
+      res.render('pages/genre_programs', {
         title:'Programs By Genres',
         name:'Programs By Genres',
         data:resp.data
@@ -501,7 +501,7 @@ router.get('/singleGenre/:id', (req, res)=> {
   })
 });
 
-router.get('/singleProdctionCo/:id', (req, res)=> {
+router.get('/singleProductionCo/:id', (req, res)=> {
    const id =req.params.id;
   const url = `http://localhost:3000/api/ProductionCo/${id};`
   axios.get(url)
