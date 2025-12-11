@@ -490,7 +490,7 @@ router.get('/directors/:id', (req, res)=> {
 
 router.get('/singleGenre/:id', (req, res)=> {
   const id =req.params.id;
-  const url = `http://localhost:3000/api/genre/${id};`
+  const url = `http://localhost:3000/api/genre/${id}`
   axios.get(url)
   .then(resp => {
     res.render('pages/singleGenre', {
