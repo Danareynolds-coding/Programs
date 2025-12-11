@@ -154,8 +154,20 @@ router.get('/actors_program/:id', (req, res) => {
   axios.get(url)
     .then(resp => {
       res.render('pages/Actor-Prog', {
-        title: 'Movie By Actor',
-        name: 'Movie By Actor',
+        title: 'Program By Actor',
+        name: 'Program By Actor',
+        data:resp.data
+      })
+    })
+});
+router.get('/actor_generalInfo/:id', (req, res) => {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/actors/get_generalInfoByActors/${id}`;
+  axios.get(url)
+    .then(resp => {
+      res.render('pages/ator_generalInfo', {
+        title: 'Information about Program by This Actor',
+        name: 'Information about Program by This Actor',
         data:resp.data
       })
     })
@@ -236,6 +248,7 @@ router.get('/genre_program/:id', (req, res)=>{
       })
     })
 })
+
 //**************info page for Production co 
 router.get('/pcPage', (req, res)=>{
   const id = req.params.id;

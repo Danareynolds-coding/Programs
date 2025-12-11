@@ -1,5 +1,10 @@
 <%- include('../partials/header') %>
     <section class="section" id="section">
+        <h1><%= name %></h1>
+        <div class="box">
+            <p><a href="/genre_program">Programs for this Genre</a> </P>
+            <p><a href=""></a> </p>
+        </div>
         <div class="container">
             <div class="row item-center">
                 <div class="col-6">
@@ -11,11 +16,6 @@
                             <%= item.streaming %>
                         </p>
                     <% }) %>
-                        <div class="box">
-                            <p><a href="http://localhost:3000/genrecategories">Categories of Genres</a></p>
-                            <P><a href="/Prog-genre">Programs for this Genre</a> </P>
-                            <P><a href=""></a> </P>
-                        </div>
                         
                 </div>
             </div>

@@ -14,6 +14,9 @@ router.get('/get_actorsWhoDirect', (req, res)=>{
 router.get('/get_actorsWithFiveStars', (req, res)=> {
   dao.findActorsWithFiveStarProgram(res, dao.table)
 })
+router.get('/get_generalInfoByActor/:id', (req, res)=> {
+  dao.findGeneralInfoByActor(res,dao.table, req.params.id)
+})
 
 //********************DELETE ? */
 //1    http://localhost:3000/api/actors
