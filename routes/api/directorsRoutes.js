@@ -14,6 +14,9 @@ router.get('/get_programsByDirectors/:id', (req, res)=> {
   dao.findProgramsByDirectors(res, dao.table, req.params.id)
 })
 
+router.get('/get_actorsByDirectors/:id', (req, res)=> {
+  dao.findActorsByDirectors(res, dao.table, req.params.id)
+})
 //**********************do i keep these */
 // 1. http://localhost:3000/api/directors
 router.get('/',(req, res)=> {

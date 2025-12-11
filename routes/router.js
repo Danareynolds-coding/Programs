@@ -162,10 +162,10 @@ router.get('/actors_program/:id', (req, res) => {
 });
 router.get('/actor_generalInfo/:id', (req, res) => {
   const id = req.params.id;
-  const url = `http://localhost:3000/api/actors/get_generalInfoByActors/${id}`;
+  const url = `http://localhost:3000/api/actors/get_generalInfoByActor/${id}`;
   axios.get(url)
     .then(resp => {
-      res.render('pages/ator_generalInfo', {
+      res.render('pages/actor_generalInfo', {
         title: 'Information about Program by This Actor',
         name: 'Information about Program by This Actor',
         data:resp.data
@@ -189,6 +189,21 @@ router.get('/directorsWithProductionCo', (req, res)=>{
       })
     })
 })
+
+router.get('/directors_animation', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/directors/get_animationByDirectors`
+   axios.get(url)
+    .then(resp=> {
+      
+   res.render('pages/directors_animation', {
+   title:'Animation By Director',
+   name:'Animation By Director',
+  data:resp.data
+   })
+  })
+});
+
 router.get('/directors_program/:id', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/directors/get_ProgramsByDirectors/${id}`
@@ -202,23 +217,20 @@ router.get('/directors_program/:id', (req, res)=>{
       })
     })
 });
-router.get('/directors_animation', (req, res)=> {
+
+router.get('/directors_actors/:id', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_animationByDirectors`
-   axios.get(url)
+  const url = `http://localhost:3000/api/directors/get_actorsByDirectors/${id}`
+  axios.get(url)
     .then(resp=> {
-      
-   res.render('pages/directors_animation', {
-   title:'Animation By Director',
-   name:'Animation By Director',
-  data:resp.data
-   })
-  })
-  // res.send('hello')
-
+      //  console.log(resp.data);
+      res.render('pages/directors_actors', {
+        title:'Actors By Directors',
+        name:'Actors By Directors',
+        data:resp.data
+      })
+    })
 });
-
-
 //***************Info for Genre */
 
 router.get('/genre_animation', (req, res)=>{

@@ -84,6 +84,41 @@ const directorsDao = {
                 }
             }
         );
-    }
-};
+    },
+    findActorsByDirectors:(res, table, id)=> {
+        let sql = `
+            SELECT
+                d.directors_id,
+                CONCAT(d.fName, ' ', d.lName) AS director,
+                CONCAT(a.fName, ' ', a.lName) AS actor,
+                p.title AS program
+            FROM directors d
+            JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
+            JOIN programs p ON ptd.programs_id = p.programs_id
+            JOIN programs_to_actors pta ON p.programs_id = pta.programs_id
+            JOIN actors a ON pta.actors_id = a.actors_id
+            WHERE d.directors_id = ?;`;
+            connect.execute(
+            sql,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(rows[0]);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: "directors",
+                        error: error,
+                    }); 
+                }
+            }
+        );
+    },
+    };
+
 module.exports = directorsDao;
