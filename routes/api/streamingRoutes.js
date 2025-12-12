@@ -12,10 +12,6 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
-router.get('/get_streamingWithTimeOverHour', (req, res)=> {
-  dao.findStreamingWithTimeOverHour(res, dao.table)
-})
-
 router.get('/get_averageRatingByStreaming', (req, res)=> {
   dao.findAverageRatingByStreaming(res, dao.table)
 })

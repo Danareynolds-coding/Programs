@@ -2,13 +2,16 @@ const connect = require('../../config/dbconfig')
 
 const streamingDao = {
   table:'streaming',
-     
+    findStreamingWithTimeOverHour:(res, table)=> {
+        let sql = `SELECT s.streamings
+            p.titles.streaming,
+                `
+    } )
     findRatingByStreaming(res, table) {
         //2  unique#1/
         let sql = `SELECT 
             s.streaming, 
-            p.title,
-            p.rating
+            AVG(p.fivePointRating) AS average_rating
         FROM streaming s
         LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
         LEFT JOIN programs p ON pts.programs_id = p.programs_id
@@ -33,7 +36,7 @@ const streamingDao = {
             }
         );
     },
-    findDescriptionByStreaming(res, table, id) {
+    findDescriptionByStreaming:(res, table, id)=> {
         let sql = `SELECT 
             s.streaming, 
             p.title,
@@ -63,7 +66,7 @@ const streamingDao = {
             }
         );
     },
-     findProgramsByStreaming(res, table, id) {
+     findProgramsByStreaming:(res, table, id)=> {
         let sql = `SELECT
             s.streaming,
             p.title,
