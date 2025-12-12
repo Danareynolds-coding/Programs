@@ -95,7 +95,8 @@ const streamingDao = {
         let sql = `SELECT
             s.streaming,
             p.title,
-            p.rating
+            p.rating,
+            p.fivePointRating
         FROM streaming s
         JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
         JOIN programs p ON pts.programs_id = p.programs_id
