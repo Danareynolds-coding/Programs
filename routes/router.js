@@ -398,18 +398,34 @@ router.get('/streaming_programs/:id', (req, res)=>{
 
 
 //**************Info page  for Programs*/
-router.get('/streaming_average', (req, res)=>{
+
+router.get('/programs_average', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/get_averageRatingByStreaming`
+  const url = `http://localhost:3000/api/programs/get_averageRating`
   axios.get(url)
     .then(resp=> {
        console.log(resp.data);
-      // res.render('pages/streamingPage', {
-      //   title:'Streaming Platforms Program Information',
-      //   name:'Streaming Platforms Program Information',
-      //   data:resp.data
-      // })
-      resp.send('hello')
+      res.render('pages/programs_average', {
+        title:'Average Rating for All Programs',
+        name:'Average Rating for All Programs',
+        data:resp.data
+      })
+      // resp.send('hello')
+    })
+})
+
+router.get('/programs_drWho', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/programs/get_drWho`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/programs_drWho', {
+        title:'Dr Who Programs',
+        name:'Dr Who Programs',
+        data:resp.data
+      })
+      // resp.send('hello')
     })
 })
 
