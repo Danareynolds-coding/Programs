@@ -1,17 +1,22 @@
-<%- include('../partials/header') %> 
-<main class="main" id="main">
-    <div class="container mt-4">
-    <h1 class="text-center"><%=  name %></h1>
-        <div class="row text-center">
-                <% data.forEach(item => { %>
+<%- include('../partials/header') %>
+    <main class="main" id="main">
+        <div class="container mt-4">
+            <h1 class="text-center">
+                <%= name %>
+            </h1>
+            <div class="row text-center">
+                <% data.forEach(item=> { %>
                     <div class="box col-3">
-                        <p><%= item.productionCo %></p>
-                        <p><%= item.title %></p>
+                        <p>
+                            <%= item.productionCo %>
+                        </p>
+                        <p>
+                            <%= item.title %>
+                        </p>
                     </div>
-                <% }) %>
+                    <% }) %>
+            </div>
         </div>
-    </div>
+    </main>
 
-</main>
-
-<%- include('../partials/footer') %> 
+    <%- include('../partials/footer') %>

@@ -314,7 +314,7 @@ router.get('/production_oldies', (req, res)=>{
   const url = `http://localhost:3000/api/productionCo/get_productionCoBefore1960`
   axios.get(url)
     .then(resp=> {
-       console.log(resp.data);
+      //  console.log(resp.data);
       res.render('pages/production_oldies', {
         title:'Oldies By Production Companies',
         name:'Oldies By Production Companies',
@@ -359,11 +359,12 @@ router.get('/streaming_rating', (req, res)=> {
   const url =`http://localhost:3000/api/streaming/get_RatingByStreaming`
     axios.get(url)
     .then(resp=> {
-        res.render('pages/streaming_rating', {
-        title:'Streaming with Rating',
-        name:'Streaming With Rating',
-        data:resp.data
-        })
+      console.log(resp.data)
+        // res.render('pages/streaming_rating', {
+        // title:'Streaming with Rating',
+        // name:'Streaming With Rating',
+        // data:resp.data
+        // })
     })   
 });
 
@@ -372,7 +373,7 @@ router.get('/streaming_program/:id', (req, res)=>{
   const url = `http://localhost:3000/api/streaming/get_ProgramsByStreaming/${id}`
   axios.get(url)
     .then(resp=> {
-       console.log(resp.data);
+      // console.log(resp.data);
       res.render('pages/streaming_program', {
         title:'Programs By Streaming',
         name:'Programs By Streaming ',
