@@ -12,19 +12,20 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
-//1. ByPrograms http://localhost:3000/api/productionCo/get_programsForProductionCo/?
-router.get('/get_programsByProductionCo/:id', (req, res)=> {
-  dao.findProgramsByProductionCo(res, dao.table, req.params.id)
+router.get('get_profitByProductionCo', (req, res)=> {
+  dao.findProfitByProductionCo(res, dao.table)
 })
-router.get('get_profitByProductionCo:id', (req, res)=> {
-  dao.findProfitByProductionCo(res, dao.table, req.params.id)
+router.get('get_productionCoBefore1960',(req, res)=> {
+  dao.findProductionCoByProgramsBefore1960(res, dao.table)
 })
-//3. fivePointRatingByPCo 
 // http://localhost:3000/api/productionCo/get_fivePointRatingByPCo
 router.get('/get_fivePointRatingByPCo/:id', (req, res)=> {
   dao.findfivePointRatingByProductionCo(res, dao.table, req.params.id)
 })
-
+//1. ByPrograms http://localhost:3000/api/productionCo/get_programsForProductionCo/?
+router.get('/get_programsByProductionCo/:id', (req, res)=> {
+  dao.findProgramsByProductionCo(res, dao.table, req.params.id)
+})
 //4. id
 router.get('/:id', (req, res)=> {
   dao.findById(res, dao.table, req.params.id)
