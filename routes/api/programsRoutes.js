@@ -14,15 +14,15 @@ router.get('/', (req, res)=> {
 router.get('/sort/:sorter', (req, res)=> {    
     dao.sort(res, dao.table, req.params.sorter)
 })      
-router.get('/DrWhoPrograms', (req, res)=> {
+router.get('/get_drWho', (req, res)=> {
     dao.findDrWho(res, dao.table)
     })
-//1 
+
 router.get('/get_programsInfo', (req, res)=> {
     dao.findProgramsInfo(res, dao.table)
 })
-router.get('/get_streamingWithTimeOverHour', (req, res)=> {
-  dao.findStreamingWithTimeOverHour(res, dao.table)
+router.get('/get_averageRating', (req, res)=> {
+  dao.findAverageRating(res, dao.table)
 })
 // 2A actors http://localhost:3000/api/programs/with_actors/:id
 router.get('/with_actors/:id', (req, res)=> {

@@ -17,7 +17,6 @@ const programsDao = {
             JOIN genre g ON pg.genre_id = g.genre_id
             JOIN program_to_streaming ps ON p.programs_id = ps.programs_id
             ORDER BY p.title ASC;`;
-           
         connect.query(sql, (error, rows) => {
             if (!error) {
                 if (rows.length === 1) {
@@ -35,7 +34,50 @@ const programsDao = {
             }
         });
     },
-    
+    findDrWho:(res, table)=> {
+        `SELECT p.title,
+        p.yr_released
+        FROM programs p
+        WHERE title LIKE '%Dr Who';`
+        connect.query(sql, (error, rows) => {
+            if (!error) {
+                if (rows.length === 1) {
+                    res.json(...rows);
+                } else {
+                    res.json(rows);
+                }
+            } else {
+                console.log(`DAO Error: ${error}`);
+                res.json({
+                    message: "error",
+                    table: `programs`,
+                    error: error,
+                });
+            }
+        });
+    },
+    findAverageRating:(res, table)=> {
+        `SELECT
+        AVG(p.fivePointRating) AS average_rating
+        FROM programs p;`
+        connect.query(sql, (error, rows) => {
+            if (!error) {
+                if (rows.length === 1) {
+                    res.json(...rows);
+                } else {
+                    res.json(rows);
+                }
+            } else {
+                console.log(`DAO Error: ${error}`);
+                res.json({
+                    message: "error",
+                    table: `programs`,
+                    error: error,
+                });
+            }
+        });
+    },
+
     findProgramsWithActors(res, table, id) {
         let sql = `SELECT 
                 p.programs_id,
