@@ -380,7 +380,7 @@ router.get('/streaming_fivePointRating', (req, res)=>{
       
     })
 })
-router.get('/streaming_rating', (req, res)=> {
+router.get('/streaming_rating/:id', (req, res)=> {
   const id = req.params.id;
   const url =`http://localhost:3000/api/streaming/get_descriptionAndRatingByStreaming/${id}`
     axios.get(url)

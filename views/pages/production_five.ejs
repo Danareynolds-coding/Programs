@@ -3,13 +3,13 @@
     <div class="container mt-4">
     <h1 class="text-center"><%=  name %></h1>
         <div class="row text-center">
-                <% data.forEach(item => { %>
+                
                     <div class="box col-3">
-                        <p><%= item.productionCo %></p>
-                        <p><%= item.title %></p>
-                        <p><%= item.fivePointRating %></p>
+                        <p><%= data.productionCo %></p>
+                        <p><%= data.title %></p>
+                        <p><%= data.fivePointRating %></p>
                     </div>
-                <% }) %>
+                
         </div>
     </div>
 
