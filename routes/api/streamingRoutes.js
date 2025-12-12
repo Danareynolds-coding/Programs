@@ -12,6 +12,14 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
+router.get('/get_streamingWithTimeOverHour', (req, res)=> {
+  dao.findStreamingWithTimeOverHour(res, dao.table)
+})
+
+router.get('/get_averageRatingByStreaming', (req, res)=> {
+  dao.findAverageRatingByStreaming(res, dao.table)
+})
+
 // 3. ByPrograms  http://localhost:3000/api/streaming/get_programsForStreaming/?
 router.get('/get_programsByStreaming/:id', (req, res)=> {
   dao.findProgramsByStreaming(res, dao.table, req.params.id)
