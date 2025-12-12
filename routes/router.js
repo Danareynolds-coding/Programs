@@ -21,10 +21,10 @@ router.get('/api', (req, res)=> {
 const endpoints = [
   'programs',
   'actors',
-   'directors',
-   'genre',
-   'productionCo',
-   'streaming'
+  'directors',
+  'genre',
+  'productionCo',
+  'streaming'
 ]
 endpoints.forEach(endpoint => {
   router.use(`/api/${endpoint}`, require(`./api/${endpoint}Routes`))
@@ -295,46 +295,59 @@ router.get('/genre_description/:id', (req, res)=>{
     })
 })
 //**************info page for Production co 
-router.get('/pcPage', (req, res)=>{
+
+router.get('/production_profit', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/productionCo/sort/productionCo`
+  const url = `http://localhost:3000/api/productionCo/get_profitByProductionCo`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/production_profit', {
+        title:'Production Company Profits',
+        name:'Production Company Profits',
+       data:resp.data
+      }) 
+    })
+})
+router.get('/production_oldies', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/productionCo/get_productionCoBefore1960`
   axios.get(url)
     .then(resp=> {
        console.log(resp.data);
-      res.render('pages/pcPage', {
+      res.render('pages/production_oldies', {
+        title:'Oldies By Production Companies',
+        name:'Oldies By Production Companies',
+        data:resp.data
+      })
+    })
+})
+router.get('/production_five', (req, res)=> {
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/productionCo/get_fivePointRatingByPCo/${id}`
+  axios.get(url)
+    .then(resp=> {get
+      // console.log(resp.data);
+      res.render('pages/production_five', {
+        title:'Program Rating by Production Company',
+        name:'Program Rating by Production Company',
+        data:resp.data
+      })
+    })
+})
+router.get('/production_program', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/productionCo/get_programsByProductionCo/${id}`
+  axios.get(url)
+    .then(resp=> {
+       console.log(resp.data);
+      res.render('pages/production_programs', {
         title:'Production Companies',
         name:'Production Companies',
         data:resp.data
       })
     })
 })
-router.get('/profit/:id', (req, res)=>{
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/productionCo/get_profitByProductionCo/:id`
-  axios.get(url)
-    .then(resp=> {
-      // console.log(resp.data);
-      res.render('pages/profitPage', {
-        title:'Production Company Profits',
-        name:'Production Company Profit',
-       data:resp.data
-      }) 
-    })
-})
-router.get('/fivestarPC', (req, res)=>{
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/productionCo/get_fiveStarRating/${id}`
-  axios.get(url)
-    .then(resp=> {get
-      // console.log(resp.data);
-      res.render('pages/ratingPage', {
-        title:'Program Rating by Production Company',
-        name:'Program Rating by Production Companies',
-        data:resp.data
-      })
-    })
-})
-
 //***************Info for Streaming */
 
 

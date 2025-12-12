@@ -12,10 +12,11 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
-router.get('get_profitByProductionCo', (req, res)=> {
-  dao.findProfitByProductionCo(res, dao.table)
+// Fixed: add slash, use correct function name, and accept id param
+router.get('/get_profitByProductionCo', (req, res)=> {
+  dao.findprofitByProductionCo(res, dao.table)
 })
-router.get('get_productionCoBefore1960',(req, res)=> {
+router.get('/get_productionCoBefore1960',(req, res)=> {
   dao.findProductionCoByProgramsBefore1960(res, dao.table)
 })
 // http://localhost:3000/api/productionCo/get_fivePointRatingByPCo
