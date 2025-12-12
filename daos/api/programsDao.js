@@ -35,6 +35,7 @@ const programsDao = {
         });
     },
     findDrWho:(res, table)=> {
+        let sql =
         `SELECT p.title,
         p.yr_released
         FROM programs p
@@ -57,16 +58,13 @@ const programsDao = {
         });
     },
     findAverageRating:(res, table)=> {
+        let sql =
         `SELECT
         AVG(p.fivePointRating) AS average_rating
         FROM programs p;`
         connect.query(sql, (error, rows) => {
             if (!error) {
-                if (rows.length === 1) {
-                    res.json(...rows);
-                } else {
-                    res.json(rows);
-                }
+                res.json(rows);
             } else {
                 console.log(`DAO Error: ${error}`);
                 res.json({
