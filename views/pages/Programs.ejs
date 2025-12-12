@@ -2,14 +2,16 @@
 <main class="main">
     <section class="section" >
         <div class="MyInfo d-flex justify-content-center">
-            <p style="margin:2em 2em;">IMDb: <a href="https://www.imdb.com/">  HERE</a></p>
-            <p style="margin:2em 2em;">Metacritic: <a href="https://www.metacritic.com/">  HERE</p>
-            <p style="margin:2em 2em;">RottenTomatoes: <a href= "https://www.rottentomatoes.com/">  HERE</a></p>
-            <p style="margin:2em 2em;">TV Tropes: <a href= "https://tvtropes.org/">  HERE</a></p>
+            <p class="m-3">IMDb: <a href="https://www.imdb.com/">  HERE</a></p>
+            <p class="m-3">Metacritic: <a href="https://www.metacritic.com/">  HERE</p>
+            <p class="m-3">RottenTomatoes: <a href= "https://www.rottentomatoes.com/">  HERE</a></p>
+            <p class="m-3">TV Tropes: <a href= "https://tvtropes.org/">  HERE</a></p>
         </div>
-        <div class="container mt-4">
-            <p>Average Rating By programs<a href="http://localhost:3000/api/streaming/get_averageRatingByPrograms">  HERE</a></p>
-            <p>DrWho Programs<a href="http://localhost:3000/api/streaming/get_DrWhoPrograms">  HERE</a></p>
+        <div class="container  mt-4">
+            <div class="text-center">
+                <p>Average Rating By programs<a href="programs_average">  HERE</a></p>
+                <p>DrWho Programs<a href="http://programs_drWho">  HERE</a></p>
+            </div>
             <div class="row row-cols-1 row-cols-md-3 g-4 ">
                 <% let counter=0; %>
                 <% data.forEach(programs=> { %>
