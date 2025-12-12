@@ -354,33 +354,7 @@ router.get('/production_program', (req, res)=>{
 
 
 
-router.get('/streaming_rating', (req, res)=> {
-  const id = req.params.id;
-  const url =`http://localhost:3000/api/streaming/get_RatingByStreaming`
-    axios.get(url)
-    .then(resp=> {
-      console.log(resp.data)
-        // res.render('pages/streaming_rating', {
-        // title:'Streaming with Rating',
-        // name:'Streaming With Rating',
-        // data:resp.data
-        // })
-    })   
-});
 
-router.get('/streaming_program/:id', (req, res)=>{
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/get_ProgramsByStreaming/${id}`
-  axios.get(url)
-    .then(resp=> {
-      // console.log(resp.data);
-      res.render('pages/streaming_program', {
-        title:'Programs By Streaming',
-        name:'Programs By Streaming ',
-        data:resp.data
-      })
-    })
-})
 router.get('/streamingPage', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/streaming/get_infoByStreaming/:id`
@@ -394,6 +368,50 @@ router.get('/streamingPage', (req, res)=>{
       })
     })
 })
+
+router.get('steaming_time', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/streaming/get_streamingWithTimeOverHour/${id}`
+     axios.get(url)
+    .then(resp=> {
+       console.log(resp.data);
+      // res.render('pages/streaming_time', {
+      //   title:'Programs With Runtime Over an Hour By Streaming Platform',
+      //   name:'Programs With Runtime Over an Hour By Streaming Platform',
+      //   data:resp.data
+      // })
+    })
+})
+
+router.get('/streaming_rating', (req, res)=> {
+  const id = req.params.id;
+  const url =`http://localhost:3000/api/streaming/get_RatingByStreaming/${id}`
+    axios.get(url)
+    .then(resp=> {
+      console.log(resp.data)
+        // res.render('pages/streaming_rating', {
+        // title:'Streaming with Rating',
+        // name:'Streaming With Rating',
+        // data:resp.data
+        // })
+    })   
+});
+
+router.get('/streaming_programs/:id', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/streaming/get_programsByStreaming/${id}`
+  axios.get(url)
+    .then(resp=> {
+      // console.log(resp.data);
+      res.render('pages/streaming_programs', {
+        title:'Programs By Streaming',
+        name:'Programs By Streaming ',
+        data:resp.data
+      })
+    })
+})
+
+
 //**************Info page  for Programs*/
 router.get('/Prog-Act/:id', (req, res) => {
   const id = req.params.id;

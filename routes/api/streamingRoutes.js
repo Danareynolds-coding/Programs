@@ -2,18 +2,6 @@
 
 const router = require('express').Router()
 const{streamingDao: dao} = require('../../daos/dao')
-
-
-// 3. ByPrograms  http://localhost:3000/api/streaming/get_programsForStreaming/?
-router.get('/get_programsByStreaming/:id', (req, res)=> {
-  dao.findProgramsByStreaming(res, dao.table, req.params.id)
-})
-//5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
-router.get('/get_RatingByStreaming', (req, res)=> {
-  dao.findRatingByStreaming(res, dao.table)
-})
-
-//************DELETE?******* */
 //1. findall http://localhost:3000/api/streaming
 router.get('/',(req, res)=> {
   dao.findAll(res, dao.table)
@@ -23,6 +11,18 @@ router.get('/',(req, res)=> {
 router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
+
+// 3. ByPrograms  http://localhost:3000/api/streaming/get_programsForStreaming/?
+router.get('/get_programsByStreaming/:id', (req, res)=> {
+  dao.findProgramsByStreaming(res, dao.table, req.params.id)
+})
+//5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
+router.get('/get_RatingByStreaming/:id', (req, res)=> {
+  dao.findRatingByStreaming(res, dao.table, req.params.id)
+})
+
+//******************* */
+
 
 //4. id
 router.get('/:id', (req, res)=> {
