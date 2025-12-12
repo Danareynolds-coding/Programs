@@ -12,6 +12,10 @@ router.get('/sort/:sorter', (req, res)=> {
   dao.sort(res, dao.table, req.params.sorter)
 })
 
+router.get('/get_streamingWithTimeOverHour', (req, res)=> {
+dao.findStreamingWithTimeOverHour(res, table)
+})
+
 router.get('/get_averageRatingByStreaming', (req, res)=> {
   dao.findAverageRatingByStreaming(res, dao.table)
 })
@@ -21,8 +25,8 @@ router.get('/get_programsByStreaming/:id', (req, res)=> {
   dao.findProgramsByStreaming(res, dao.table, req.params.id)
 })
 //5 unique 1 http://localhost:3000/api/streaming/get_RatingForStreaming
-router.get('/get_RatingByStreaming/:id', (req, res)=> {
-  dao.findRatingByStreaming(res, dao.table, req.params.id)
+router.get('/get_descriptionAndRatingByStreaming/:id', (req, res)=> {
+  dao.findDescriptionAndRatingByStreaming(res, dao.table, req.params.id)
 })
 
 //******************* */

@@ -351,13 +351,12 @@ router.get('/production_program', (req, res)=>{
 })
 //***************Info for Streaming */
 
-
-router.get('steaming_time', (req, res)=>{
+router.get('streaming_time', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/get_streamingWithTimeOverHour/${id}`
+  const url = `http://localhost:3000/api/streaming/get_streamingWithTimeOverHour`
      axios.get(url)
     .then(resp=> {
-       console.log(resp.data);
+      
       // res.render('pages/streaming_time', {
       //   title:'Programs With Runtime Over an Hour By Streaming Platform',
       //   name:'Programs With Runtime Over an Hour By Streaming Platform',
