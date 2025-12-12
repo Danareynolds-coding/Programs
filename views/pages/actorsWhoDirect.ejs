@@ -1,11 +1,18 @@
 <%- include('../partials/header') %> 
 
 <main class="main text-center" id="main">
-  <h1 class="text-center">ACTORS WHO DIRECT OWN PROGRAMS</h1>
-  <% data.forEach(item => {%>
-    <p><%= item.title %></p>
-    <p><%= item.fName %> <%= item.lName %></p>
-  <% }) %>  
+  <div class="container mt-3">
+    <div class="row text-center">
+      <h1 class="text-center"><%= name %></h1>
+      <% data.forEach(item => {%>
+        <div class="box col-4">
+        <p><%= item.title %></p>
+        <p><%= item.fName %> <%= item.lName %></p>  
+        </div>
+      <% }) %> 
+
+    </div>    
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

@@ -2,11 +2,17 @@
 <%- include('../partials/header') %> 
 
 <main class="main text-center" id="main">
-  <h1 class="text-center">ACTORS WITH FIVE STARS</h1>
-  <% data.forEach(item => {%>
-    <p><%= item.fName %> <%= item.lName %></p>
-    <p><%= item.title %></p>
-  <% }) %>  
+  <div class="container mt-3">
+    <div class="row text-center">
+      <h1 class="text-center">ACTORS WITH FIVE STARS</h1>
+      <% data.forEach(item => {%>
+        <div class="box col-3">
+          <p><%= item.fName %> <%= item.lName %></p>
+          <p><%= item.title %></p>
+        </div>
+      <% }) %>
+    </div>  
+  </div>  
 </main>
 
 <%- include('../partials/footer') %>

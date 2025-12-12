@@ -135,7 +135,7 @@ router.get('/actorsWhoDirect', (req, res)=> {
   .then(resp =>{
     res.render('pages/actorsWhoDirect',{
       title:'Actors Who Direct',
-      name:'Actors Who Direct Their Own Program',
+      name:'Actors Who Directed Their Own Program',
       data:resp.data
     })
   })
