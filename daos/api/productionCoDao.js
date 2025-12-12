@@ -39,11 +39,7 @@ const productionCoDao = {
             ORDER BY p.grossProfit DESC;`;
     connect.execute(sql, (error, rows) => {
       if (!error) {
-        if (rows.length === 1) {
-          res.json(...rows);
-        } else {
           res.json(rows);
-        }
       } else {
         console.log(`DAO Error: ${error}`);
         res.json({
