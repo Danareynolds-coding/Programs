@@ -2,16 +2,41 @@ const connect = require('../../config/dbconfig')
 
 const streamingDao = {
   table:'streaming',
-    findStreamingWithTimeOverHour:(res, table)=> {
-        let sql = `SELECT s.streamings
-            p.titles.streaming,
-                `
-    } )
+    findStreamingWithTimeOverHour: (res, table) => {
+        let sql = `SELECT 
+            s.streaming,
+            p.runtime,
+            p.title
+        FROM streaming s
+        LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
+        LEFT JOIN programs p ON pts.programs_id = p.programs_id
+        WHERE p.runtime > '01:00:00'
+        ORDER BY p.runtime;`;
+        connect.execute(
+            sql,
+            (error, rows) => {
+                if (!error) {
+                    if (rows.length === 1) {
+                        res.json(...rows);
+                    } else {
+                        res.json(rows);
+                    }
+                } else {
+                    console.log(`DAO Error: ${error}`);
+                    res.json({
+                        message: "error",
+                        table: `streaming`,
+                        error: error,
+                    });
+                }
+            }
+        );
+    },
     findRatingByStreaming(res, table) {
-        //2  unique#1/
         let sql = `SELECT 
             s.streaming, 
-            AVG(p.fivePointRating) AS average_rating
+            p.title,
+            p.rating
         FROM streaming s
         LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
         LEFT JOIN programs p ON pts.programs_id = p.programs_id
