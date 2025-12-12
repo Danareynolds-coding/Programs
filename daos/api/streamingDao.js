@@ -32,11 +32,11 @@ const streamingDao = {
             }
         );
     },
-    findRatingByStreaming(res, table) {
+    findAveragRatingByStreaming(res, table) {
         let sql = `SELECT 
             s.streaming, 
             p.title,
-            p.rating
+            AVG(p.fivePointRating) AS streaming_average
         FROM streaming s
         LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
         LEFT JOIN programs p ON pts.programs_id = p.programs_id
@@ -61,10 +61,11 @@ const streamingDao = {
             }
         );
     },
-    findDescriptionByStreaming:(res, table, id)=> {
+    findDescriptionAndRatingByStreaming:(res, table, id)=> {
         let sql = `SELECT 
             s.streaming, 
             p.title,
+            p.rating,
             p.description
         FROM streaming s
         LEFT JOIN programs_to_streaming pts ON s.streaming_id = pts.streaming_id
