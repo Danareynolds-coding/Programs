@@ -351,20 +351,6 @@ router.get('/production_program', (req, res)=>{
 })
 //***************Info for Streaming */
 
-router.get('/streaming_average', (req, res)=>{
-  const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/get_averageRatingByStreaming`
-  axios.get(url)
-    .then(resp=> {
-       console.log(resp.data);
-      // res.render('pages/streamingPage', {
-      //   title:'Streaming Platforms Program Information',
-      //   name:'Streaming Platforms Program Information',
-      //   data:resp.data
-      // })
-      resp.send('hello')
-    })
-})
 
 router.get('steaming_time', (req, res)=>{
   const id = req.params.id;
@@ -412,6 +398,22 @@ router.get('/streaming_programs/:id', (req, res)=>{
 
 
 //**************Info page  for Programs*/
+router.get('/streaming_average', (req, res)=>{
+  const id = req.params.id;
+  const url = `http://localhost:3000/api/streaming/get_averageRatingByStreaming`
+  axios.get(url)
+    .then(resp=> {
+       console.log(resp.data);
+      // res.render('pages/streamingPage', {
+      //   title:'Streaming Platforms Program Information',
+      //   name:'Streaming Platforms Program Information',
+      //   data:resp.data
+      // })
+      resp.send('hello')
+    })
+})
+
+
 router.get('/Prog-Act/:id', (req, res) => {
   const id = req.params.id;
   const url = `http://localhost:3000/api/programs/with_actors/${id}`
