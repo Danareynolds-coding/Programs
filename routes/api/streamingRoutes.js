@@ -16,8 +16,8 @@ router.get('/OneHour', (req, res)=> {
 dao.findStreamingWithTimeOverHour(res, dao.table)
 })
 
-router.get('/get_averageRatingByStreaming', (req, res)=> {
-  dao.findAverageRatingByStreaming(res, dao.table)
+router.get('/get_RatingByStreaming', (req, res)=> {
+  dao.findRatingByStreaming(res, dao.table)
 })
 
 // 3. ByPrograms  http://localhost:3000/api/streaming/get_programsForStreaming/?

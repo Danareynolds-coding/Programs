@@ -367,14 +367,14 @@ router.get('/streaming_time', (req, res)=>{
     })
 })
 
-router.get('/streaming_average', (req, res)=>{
+router.get('/streaming_fivePointRating', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/streaming/get_averageRatingByStreaming`
     axios.get(url)
     .then(resp=> {
-      res.render('pages/streaming_average', {
-      title:'Average Rating By Streaming Platform',
-      name:'Average Rating By Streaming Platform',
+      res.render('pages/streaming_fivePointRating', {
+      title:'Rating By Streaming Platform',
+      name:'Rating By Streaming Platform',
       data:resp.data
       })
       
