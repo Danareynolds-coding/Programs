@@ -16,7 +16,7 @@ router.get('/OneHour', (req, res)=> {
 dao.findStreamingWithTimeOverHour(res, dao.table)
 })
 
-router.get('/get_RatingByStreaming', (req, res)=> {
+router.get('/get_fivePointRatingByStreaming', (req, res)=> {
   dao.findRatingByStreaming(res, dao.table)
 })
 

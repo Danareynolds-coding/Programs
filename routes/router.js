@@ -369,7 +369,7 @@ router.get('/streaming_time', (req, res)=>{
 
 router.get('/streaming_fivePointRating', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/streaming/get_averageRatingByStreaming`
+  const url = `http://localhost:3000/api/streaming/get_fivePointRatingByStreaming`
     axios.get(url)
     .then(resp=> {
       res.render('pages/streaming_fivePointRating', {
@@ -385,7 +385,7 @@ router.get('/streaming_rating', (req, res)=> {
   const url =`http://localhost:3000/api/streaming/get_descriptionAndRatingByStreaming/${id}`
     axios.get(url)
     .then(resp=> {
-      //console.log(resp.data)
+      
         res.render('pages/streaming_rating', {
         title:'Streaming with Rating',
         name:'Streaming With Rating',
