@@ -16,7 +16,7 @@
             
             <div class="container mt-4">
                 <div class="row row-cols-1 row-cols-md-6  g-4">
-                    <%= counter = 0; %>
+                    <% counter = 0; %>
                     <% data.forEach(directors=> { %>
                         <div class="col"> 
                             <div class="card h-100">
@@ -25,10 +25,9 @@
                                     class="card-img-top img-fluid"/>
                                 </a>
                                 <div class="card-body d-flex flex-column">
-                                    <h4 style="font-size:1em;">
-                                        <%= directors.fName%>
-                                        <%= directors.lName%>
-                                        Director <%= ++counter %>: <%= directors.lName %>
+                                    <h4">
+                                    <%= directors.fName%> <%= directors.lName%>
+                                    Director:<%= ++counter %>: <%= directors.lName %>
                                     </h4>
                                 </div>
                             </div>

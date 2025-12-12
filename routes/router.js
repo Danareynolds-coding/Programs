@@ -283,7 +283,7 @@ router.get('/genre_programs/:id', (req, res)=>{
 
 router.get('/genre_description/:id', (req, res)=>{
   const id = req.params.id;
-  const url = `http://localhost:3000/api/directors/get_descriptionByGenre/${id}`
+  const url = `http://localhost:3000/api/genre/get_descriptionByGenre/${id}`
   axios.get(url)
     .then(resp=> {
       // console.log(resp.data);

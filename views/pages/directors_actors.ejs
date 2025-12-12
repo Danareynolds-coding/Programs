@@ -1,0 +1,19 @@
+
+<%- include('../partials/header') %> 
+
+<main class="main text-center" id="main">
+  <div class="container">
+    <div class="row justify-content-center"></div>
+      <h1 class="text-center">ACTORS WHO WORKED WITH THIS DIRECTOR</h1>
+      <div class="row row-cols-1 row-cols-md-6  g-4"></div>
+        <% data.forEach(item => {%>
+          <div class="box" col-4>
+            <p ><%= item.title %></p>
+            <p><%= item.actor %> </p>
+          </div>
+        <% }) %>
+      </div> 
+   </div>
+</main>
+
+<%- include('../partials/footer') %>

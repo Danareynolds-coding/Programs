@@ -91,7 +91,7 @@ const directorsDao = {
                 d.directors_id,
                 CONCAT(d.fName, ' ', d.lName) AS director,
                 CONCAT(a.fName, ' ', a.lName) AS actor,
-                p.title AS program
+                p.title
             FROM directors d
             JOIN programs_to_directors ptd ON d.directors_id = ptd.directors_id
             JOIN programs p ON ptd.programs_id = p.programs_id

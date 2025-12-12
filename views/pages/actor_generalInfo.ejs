@@ -1,15 +1,22 @@
 <%- include('../partials/header') %> 
 
 <main class="main text-center" id="main">
-  <h1 class="text-center">General Information About the Program This Actor Performed In</h1>
-  <% data.forEach(item => {%>
-    <p><%= item.fName %> <%= item.lName %></p>
-    <p><%= item.title %></p>
-    <p><%= item.yr_released %></p>
-    <p><%= item.rating %></p>
-    <p><%= item.showing %></p>
-    <p><%= item.runtime %></p>
-  <% }) %>  
+  <div class="container ">
+    <h2 class="">General Information About the Program This Actor Performed In</h2>
+    <div class="row d-flex ">
+      <div class="col">
+        <% data.forEach(item => {%>
+          <div class="box col-4">
+            <p><%= item.fName %> <%= item.lName %></p>
+            <p><%= item.title %></p>
+            <p><%= item.yr_released %></p>
+            <p><%= item.rating %></p>
+            <p><%= item.showing %></p>
+            <p><%= item.runtime %></p>
+          </div>
+        <% }) %> 
+      </div> 
+  </div>    
 </main>
 
 <%- include('../partials/footer') %>

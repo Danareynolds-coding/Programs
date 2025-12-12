@@ -98,24 +98,20 @@ const actorsDao = {
             JOIN programs p ON pta.programs_id = p.programs_id
             WHERE a.actors_id = ?`;
         connect.execute(
-            sql,
-            [id],
-            (error, rows) => {
-                if (!error) {
-                    if (rows.length === 1) {
-                        res.json(...rows);
-                    } else {
-                        res.json(rows);
-                    }
-                } else {
-                    console.log(`DAO Error: ${error}`);
-                    res.json({
-                        message: "error",
-                        table: `actors`,
-                        error: error,
-                    });
-                }
+          sql,
+          [id],
+          (error, rows) => {
+            if (!error) {
+              res.json(rows);
+            } else {
+              console.log(`DAO Error: ${error}`);
+              res.json({
+                message: "error",
+                table: `actors`,
+                error: error,
+              });
             }
+          }
         );
     }
 };
