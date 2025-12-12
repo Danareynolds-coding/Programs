@@ -76,21 +76,21 @@ const productionCoDao = {
         console.log("Dao error", error);
         res.json({
           message: "error",
-          table: table,
+          table: productionCo,
           error: error,
         });
       }
     });
   },
   findfivePointRatingByProductionCo: (res, table, id) => {
-    let sql = `SELECT 
-            pc.productionCo_id,
-            pc.productionCo,
-            p.fivePointRating AS programs_fivePointRating,
-            p.title AS programs_title
-            FROM productionCo AS pc
-            INNER JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
-            ORDER BY p.fivePointRating DESC;`;
+        let sql = `SELECT 
+          pc.productionCo_id,
+          pc.productionCo,
+          p.fivePointRating,
+          p.title 
+          FROM productionCo AS pc
+          INNER JOIN programs AS p ON pc.productionCo_id = p.productionCo_id
+          WHERE pc.productionCo_id = ?;`
     connect.execute(
       sql,
       [id],

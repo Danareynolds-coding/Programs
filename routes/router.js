@@ -322,19 +322,20 @@ router.get('/production_oldies', (req, res)=>{
       })
     })
 })
-router.get('/production_five', (req, res)=> {
+
+router.get('/production_five/:id', (req, res)=> {
   const id = req.params.id;
-  const url = `http://localhost:3000/api/productionCo/get_fivePointRatingByPCo/${id}`
+  const url = `http://localhost:3000/api/productionCo/get_fivePointRatingByPCo/${id}`;
   axios.get(url)
-    .then(resp=> {get
-      // console.log(resp.data);
+    .then(resp=> {
       res.render('pages/production_five', {
         title:'Program Rating by Production Company',
         name:'Program Rating by Production Company',
         data:resp.data
       })
     })
-})
+});
+
 router.get('/production_program', (req, res)=>{
   const id = req.params.id;
   const url = `http://localhost:3000/api/productionCo/get_programsByProductionCo/${id}`
